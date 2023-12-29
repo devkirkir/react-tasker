@@ -1,0 +1,72 @@
+.ExpandList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  & h4 {
+    color: var(--secondary-text-color);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    opacity: 1;
+    cursor: pointer;
+    user-select: none;
+
+    &::before {
+      content: "";
+      position: relative;
+      top: -3px;
+      display: inline-block;
+
+      width: 6px;
+      height: 6px;
+
+      border-bottom: 1px solid var(--secondary-text-color);
+      border-right: 1px solid var(--secondary-text-color);
+
+      background-color: transparent;
+
+      margin: 0 8px 0 10px;
+
+      transform: rotate(45deg);
+
+      transition: transform 0.2s linear;
+    }
+  }
+
+  & .ExpandBlock {
+    display: grid;
+    grid-template-rows: 1fr;
+
+    transition: grid-template-rows 500ms;
+
+    & > ul {
+      overflow: hidden;
+    }
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      list-style: none;
+    }
+  }
+}
+
+.ExpandListHidden {
+  & h4 {
+    &::before {
+      top: 2px;
+
+      transform: rotate(225deg);
+    }
+  }
+
+  & .ExpandBlock {
+    grid-template-rows: 0fr;
+
+    transition: grid-template-rows 500ms;
+  }
+}

@@ -1,0 +1,62 @@
+.Sidebar {
+  max-width: var(--sidebar-show-width);
+  width: 100%;
+  height: 100vh;
+
+  background-color: var(--bg-color);
+
+  border-right: 1px solid var(--container-border-color);
+
+  padding: 20px;
+
+  overflow: hidden;
+  transition: all 0.2s linear;
+
+  &:not(.HiddenSidebar) {
+    min-width: var(--sidebar-min-width);
+  }
+
+  & .SidebarHeader {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 32px;
+  }
+
+  & .HiddenSidebarHeader {
+    justify-content: center;
+  }
+
+  & .Container {
+    margin-top: 24px;
+
+    & .Label {
+      color: var(--secondary-text-color);
+      font-size: 12px;
+
+      opacity: 1;
+      cursor: default;
+
+      transition: opacity 0.2s linear;
+    }
+
+    & .HiddenLabel {
+      opacity: 0;
+    }
+  }
+}
+
+.HiddenSidebar {
+  max-width: var(--sidebar-hidden-width);
+  width: var(--sidebar-hidden-width);
+  min-width: var(--sidebar-hidden-width);
+
+  & .Container {
+    & .Label {
+      opacity: 0;
+    }
+  }
+}

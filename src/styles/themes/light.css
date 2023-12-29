@@ -1,0 +1,49 @@
+.light {
+  /** BACKGROUND COLORS **/
+
+  --bg-color: #fff;
+  --header-color: #fff;
+
+  /** TEXT COLORS **/
+
+  --text-color: #272a34;
+  --text-color-hover: #3e85ff;
+
+  --secondary-text-color: #a3a3a3;
+
+  /** BORDER COLORS **/
+
+  --border-color: #eee;
+
+  /** PRIMARY COLORS **/
+
+  --primary-color: #3e85ff;
+  --primary-color-hover: #2e70e2;
+  --primary-color-active: #2968d4;
+
+  --in-primary-color-text: #fff;
+
+  /** PRIMARY BUTTON COLORS **/
+
+  --primary-button-color: #3e85ff;
+  --primary-button-color-hover: #2e70e2;
+  --primary-button-color-active: #2968d4;
+
+  --primary-button-text-color: #a3a3a3;
+  --primary-button-text-color-active: #fff;
+
+  /** SECONDARY BUTTON COLORS **/
+
+  --secondary-button-color: transparent;
+  --secondary-button-color-hover: #f1f1f1;
+  --secondary-button-color-active: #e2e2e2;
+
+  --border-color: #e0e0e0;
+
+  --secondary-button-text-color: #9b9b9b;
+  --secondary-button-text-color-active: #686868;
+
+  /* CONTAINER BORDER */
+
+  --container-border-color: #eee;
+}

@@ -1,0 +1,49 @@
+.dark {
+  /** BACKGROUND COLORS **/
+
+  --bg-color: #1b1c23;
+  --header-color: #1b1c23;
+
+  /** TEXT COLORS **/
+
+  --text-color: #fff;
+  --text-color-hover: #fff;
+
+  --secondary-text-color: #777;
+
+  /** BORDER COLORS **/
+
+  --border-color: #262931;
+
+  /** PRIMARY COLORS **/
+
+  --primary-color: #3e85ff;
+  --primary-color-hover: #2e70e2;
+  --primary-color-active: #2968d4;
+
+  --in-primary-color-text: #fff;
+
+  /** PRIMARY BUTTON COLORS **/
+
+  --primary-button-color: #29293a;
+  --primary-button-color-hover: #2e70e2;
+  --primary-button-color-active: #2968d4;
+
+  --primary-button-text-color: #a3a3a3;
+  --primary-button-text-color-active: #fff;
+
+  /** SECONDARY BUTTON COLORS **/
+
+  --secondary-button-color: transparent;
+  --secondary-button-color-hover: #29293a;
+  --secondary-button-color-active: #242435;
+
+  --border-color: #262931;
+
+  --secondary-button-text-color: #777;
+  --secondary-button-text-color-active: #fff;
+
+  /* CONTAINER BORDER */
+
+  --container-border-color: #262931;
+}

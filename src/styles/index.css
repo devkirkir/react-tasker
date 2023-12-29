@@ -1,0 +1,17 @@
+@import "./reset.css";
+@import "./vars/global.css";
+@import "./themes/light.css";
+@import "./themes/dark.css";
+
+.App {
+  display: flex;
+  height: 100lvh;
+
+  color: var(--text-color);
+
+  background-color: var(--bg-color);
+
+  transition:
+    color 0.2s linear,
+    background 0.2s linear;
+}

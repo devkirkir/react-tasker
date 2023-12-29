@@ -1,0 +1,120 @@
+.PrimaryLink,
+.PrimaryLinkActive {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--primary-button-text-color);
+  font-weight: 500;
+
+  text-decoration: none;
+  text-transform: capitalize;
+
+  border-radius: 5px;
+
+  padding: 12px 12px 12px 0;
+
+  transition: 0.2s linear;
+
+  & .Label {
+    position: relative;
+    opacity: 1;
+
+    font-size: var(--font-size-m);
+
+    transition:
+      transform 0.2s linear,
+      opacity 0.3s linear;
+  }
+
+  & .ToggleLabel {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  & svg {
+    min-width: 32px;
+
+    background-color: var(--bg-color);
+
+    border-left: 12px solid var(--bg-color);
+
+    transition: 0.2s linear;
+
+    z-index: 1;
+
+    & rect,
+    & path {
+      stroke: var(--primary-button-text-color);
+    }
+  }
+
+  & svg rect,
+  & svg path {
+    transition: stroke 0.2s linear;
+  }
+
+  &:hover {
+    @media (pointer: fine) {
+      background-color: var(--secondary-button-color-hover);
+
+      & svg {
+        background-color: var(--secondary-button-color-hover);
+
+        border-color: var(--secondary-button-color-hover);
+      }
+    }
+  }
+}
+
+.PrimaryLinkActive {
+  color: var(--primary-button-text-color-active);
+
+  background-color: var(--primary-button-color);
+
+  pointer-events: none;
+
+  & svg {
+    background-color: var(--primary-button-color);
+    border-color: var(--primary-button-color);
+  }
+
+  & svg rect,
+  & svg path {
+    stroke: var(--primary-button-text-color-active);
+  }
+}
+
+.SecondaryLink,
+.SecondaryLinkActive {
+  width: 100%;
+  display: block;
+
+  color: var(--secondary-text-color);
+  font-size: var(--font-size-m);
+  text-decoration: none;
+
+  border-radius: 5px;
+
+  padding: 8px;
+
+  transition:
+    background 0.2s linear,
+    color 0.2s linear;
+  overflow: hidden;
+
+  &:hover {
+    @media (pointer: fine) {
+      background-color: var(--secondary-button-color-hover);
+    }
+  }
+}
+
+.SecondaryLinkActive {
+  color: var(--secondary-button-text-color-active);
+  background-color: var(--secondary-button-color-hover);
+
+  &:hover {
+    pointer-events: none;
+  }
+}

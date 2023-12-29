@@ -1,0 +1,14 @@
+.SidebarNav {
+  overflow: hidden;
+  margin-top: 16px;
+
+  & .List {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    & .ListItem {
+      list-style: none;
+    }
+  }
+}

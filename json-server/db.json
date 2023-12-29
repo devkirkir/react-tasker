@@ -1,0 +1,49 @@
+{
+  "projects": [
+    {
+      "id": "project-id-1",
+      "projectTitle": "Alpha",
+      "favorite": true,
+      "icon": {
+        "iconType": "Star",
+        "color": "green"
+      }
+    },
+    {
+      "id": "project-id-2",
+      "projectTitle": "Beta",
+      "favorite": true,
+      "icon": {
+        "iconType": "Star",
+        "color": "green"
+      }
+    },
+    {
+      "id": "project-id-3",
+      "projectTitle": "Omega",
+      "favorite": false,
+      "icon": {
+        "iconType": "Star",
+        "color": "green"
+      }
+    },
+    {
+      "id": "project-id-4",
+      "projectTitle": "Gamma",
+      "favorite": false,
+      "icon": {
+        "iconType": "Star",
+        "color": "green"
+      }
+    },
+    {
+      "id": "project-id-5",
+      "projectTitle": "Delta",
+      "favorite": false,
+      "icon": {
+        "iconType": "Star",
+        "color": "green"
+      }
+    }
+  ]
+}
