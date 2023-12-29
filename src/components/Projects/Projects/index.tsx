@@ -30,7 +30,7 @@ export const Projects = () => {
   };
 
   const renderProjects = (projects: IProjects[]) =>
-    projects.map(({ projectTitle, id, icon }) => (
+    projects.map(({ projectTitle, id }) => (
       <li key={`project-link-${id}`}>
         <NavigateLink
           id={id}

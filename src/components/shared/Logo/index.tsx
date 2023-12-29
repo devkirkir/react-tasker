@@ -3,7 +3,6 @@ import LogoIcon from "assets/icons/Logo.svg";
 
 import classNames from "classnames";
 import classes from "./Logo.module.css";
-import { memo } from "react";
 
 interface IProps {
   isSidebarShow?: boolean;

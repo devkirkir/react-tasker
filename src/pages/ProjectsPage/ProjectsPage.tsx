@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
 import { Projects } from "components/Projects";
@@ -9,7 +8,7 @@ const ProjectsPage = () => {
     <>
       <Projects />
 
-      <Suspense fallback={"sosat..."}>
+      <Suspense fallback={"Suspense Projects"}>
         <Outlet />
       </Suspense>
     </>

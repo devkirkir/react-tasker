@@ -22,7 +22,7 @@ class ErrorBoundary extends React.Component<PropsWithChildren, IErrorBoundarySta
     };
   }
 
-  static getDerivedStateFromError(error: Error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 

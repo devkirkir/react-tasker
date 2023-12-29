@@ -6,7 +6,7 @@ import classes from "./Container.module.css";
 export const Container = () => {
   return (
     <main className={classes.Container}>
-      <Suspense fallback={"...loading app..."}>
+      <Suspense fallback={"Suspense App Container"}>
         <Outlet />
       </Suspense>
     </main>

@@ -5,6 +5,7 @@ import { ProtectedRoute } from "../ProtectedRoute";
 
 import { LandingPageLazy as LandingPage } from "pages/LandingPage/LandingPage.lazy";
 import { AppPageLazy as AppPage } from "pages/AppPage/AppPage.lazy";
+
 import { NotFoundPageLazy as NotFoundPage } from "pages/NotFoundPage/NotFoundPage.lazy";
 import { DashboardPageLazy as DashboardPage } from "pages/DashboardPage/DashboardPage.lazy";
 import { ProjectsPageLazy as ProjectsPage } from "pages/ProjectsPage/ProjectsPage.lazy";
