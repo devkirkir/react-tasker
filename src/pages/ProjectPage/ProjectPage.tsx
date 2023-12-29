@@ -5,13 +5,13 @@ import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
 
 import { projectsActions } from "store/slices/projectsSlice";
-import { getProjectId } from "store/slices/projectsSlice/selectors/getProjectId";
+import { getCurrentProjectId } from "store/slices/projectsSlice/selectors/getCurrentProjectId";
 
 const ProjectPage = () => {
   const { projectId } = useParams();
 
   const dispatch = useAppDispatch();
-  const currentProjectId = useAppSelector(getProjectId);
+  const currentProjectId = useAppSelector(getCurrentProjectId);
 
   useEffect(() => {
     if (currentProjectId == null) {

@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { IProjectsSchema } from "./types";
+import { EProjectsLoading, type IProjectsSchema } from "./types";
 import { fetchAllProjects } from "./servcies/fetchAllProjects";
 
 const initialState: IProjectsSchema = {
   projects: [],
-  loading: "fulfilled",
+  loading: EProjectsLoading.FULFILLED,
   error: false,
   currentProjectId: null,
 };
@@ -21,14 +21,14 @@ const projectSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllProjects.pending, (state) => {
-        state.loading = "pending";
+        state.loading = EProjectsLoading.PENDING;
       })
       .addCase(fetchAllProjects.fulfilled, (state, { payload }) => {
-        state.loading = "fulfilled";
+        state.loading = EProjectsLoading.FULFILLED;
         state.projects = payload;
       })
       .addCase(fetchAllProjects.rejected, (state) => {
-        state.loading = "rejected";
+        state.loading = EProjectsLoading.REJECTED;
         state.error = true;
       });
   },

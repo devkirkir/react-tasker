@@ -1,3 +1,9 @@
+export enum EProjectsLoading {
+  PENDING = "pending",
+  FULFILLED = "fulfilled",
+  REJECTED = "rejected",
+}
+
 export interface IProjects {
   id: string;
   projectTitle: string;
@@ -7,7 +13,7 @@ export interface IProjects {
 
 export interface IProjectsSchema {
   projects: IProjects[];
-  loading: "pending" | "fulfilled" | "rejected";
+  loading: EProjectsLoading;
   error: boolean;
   currentProjectId: string | null;
 }
