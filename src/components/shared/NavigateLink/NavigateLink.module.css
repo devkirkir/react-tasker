@@ -88,7 +88,8 @@
 .SecondaryLink,
 .SecondaryLinkActive {
   width: 100%;
-  display: block;
+  display: flex;
+  align-items: center;
 
   color: var(--secondary-text-color);
   font-size: var(--font-size-m);
@@ -106,6 +107,12 @@
   &:hover {
     @media (pointer: fine) {
       background-color: var(--secondary-button-color-hover);
+
+      & svg {
+        & path:last-child {
+          fill: var(--secondary-button-color-hover);
+        }
+      }
     }
   }
 }
@@ -113,6 +120,14 @@
 .SecondaryLinkActive {
   color: var(--secondary-button-text-color-active);
   background-color: var(--secondary-button-color-hover);
+
+  & div {
+    & svg {
+      & path:last-child {
+        fill: var(--secondary-button-color-hover);
+      }
+    }
+  }
 
   &:hover {
     pointer-events: none;

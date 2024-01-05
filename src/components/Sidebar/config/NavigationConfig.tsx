@@ -1,8 +1,8 @@
 import { DashboardPageLazy as DashboardPage } from "pages/DashboardPage/DashboardPage.lazy";
 import { ProjectsPageLazy as ProjectPage } from "pages/ProjectsPage/ProjectsPage.lazy";
 
-import DashboardIcon from "../../../assets/icons/DashboardNavIcon.svg";
-import ProjectsNavIcon from "../../../assets/icons/TaskNavIcon.svg";
+import DashboardIcon from "../../../assets/icons/NavIcons/DashboardNavIcon.svg";
+import ProjectsNavIcon from "../../../assets/icons/NavIcons/TaskNavIcon.svg";
 
 export enum ENavigationValues {
   DASHBOARD = "Dashboard",

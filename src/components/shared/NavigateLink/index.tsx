@@ -1,10 +1,12 @@
+import { ReactElement, ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 
 import type { ENavigationValues, ENavigationPaths } from "../../Sidebar/config/NavigationConfig";
 
 import classNames from "classnames";
 import classes from "./NavigateLink.module.css";
-import { ReactNode } from "react";
+import { TProjectIcon } from "store/slices/projectsSlice/types";
+import { ShapedIcon } from "../ShapedIcon";
 
 export enum ELinkTypes {
   PRIMARY = "primary",
@@ -16,7 +18,7 @@ interface IProps {
   path: ENavigationPaths | string;
   type: ELinkTypes;
   id?: string;
-  icon?: ReactNode | JSX.Element;
+  icon: JSX.Element | TProjectIcon;
   isSidebarShow?: boolean;
   testid?: string;
   // callback - для chooseProject в Projects
@@ -47,7 +49,7 @@ export const NavigateLink = (props: IProps) => {
       to={path}
       onClick={() => callback(id)}
     >
-      {icon}
+      {"iconType" in icon ? <ShapedIcon iconType={icon.iconType} color={icon.color} /> : icon}
 
       <span className={labelClassNames}>{value}</span>
     </NavLink>

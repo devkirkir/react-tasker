@@ -5,7 +5,7 @@
       "projectTitle": "Alpha",
       "favorite": true,
       "icon": {
-        "iconType": "Star",
+        "iconType": "circle",
         "color": "green"
       }
     },
@@ -14,8 +14,8 @@
       "projectTitle": "Beta",
       "favorite": true,
       "icon": {
-        "iconType": "Star",
-        "color": "green"
+        "iconType": "square",
+        "color": "orange"
       }
     },
     {
@@ -23,8 +23,8 @@
       "projectTitle": "Omega",
       "favorite": false,
       "icon": {
-        "iconType": "Star",
-        "color": "green"
+        "iconType": "triangle",
+        "color": "purple"
       }
     },
     {
@@ -32,8 +32,8 @@
       "projectTitle": "Gamma",
       "favorite": false,
       "icon": {
-        "iconType": "Star",
-        "color": "green"
+        "iconType": "star",
+        "color": "pink"
       }
     },
     {
@@ -41,8 +41,8 @@
       "projectTitle": "Delta",
       "favorite": false,
       "icon": {
-        "iconType": "Star",
-        "color": "green"
+        "iconType": "circle",
+        "color": "blue"
       }
     }
   ]

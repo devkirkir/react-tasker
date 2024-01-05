@@ -1,0 +1,76 @@
+.ShapedIcon {
+  display: inline-block;
+  height: 17px;
+
+  margin-right: 8px;
+
+  & svg {
+    & path:first-child {
+      transition: fill 0.2s linear;
+    }
+
+    & path:last-child {
+      transition: fill 0.2s linear;
+    }
+  }
+}
+
+.green {
+  & svg {
+    & path:first-child {
+      fill: var(--green-icon);
+    }
+
+    & path:last-child {
+      fill: var(--bg-color);
+    }
+  }
+}
+
+.orange {
+  & svg {
+    & path:first-child {
+      fill: var(--orange-icon);
+    }
+
+    & path:last-child {
+      fill: var(--bg-color);
+    }
+  }
+}
+
+.pink {
+  & svg {
+    & path:first-child {
+      fill: var(--pink-icon);
+    }
+
+    & path:last-child {
+      fill: var(--bg-color);
+    }
+  }
+}
+
+.purple {
+  & svg {
+    & path:first-child {
+      fill: var(--purple-icon);
+    }
+
+    & path:last-child {
+      fill: var(--bg-color);
+    }
+  }
+}
+
+.blue {
+  & svg {
+    & path:first-child {
+      fill: var(--blue-icon);
+    }
+
+    & path:last-child {
+      fill: var(--bg-color);
+    }
+  }
+}

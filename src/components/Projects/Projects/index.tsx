@@ -30,12 +30,13 @@ export const Projects = () => {
   };
 
   const renderProjects = (projects: IProjects[]) =>
-    projects.map(({ projectTitle, id }) => (
+    projects.map(({ projectTitle, id, icon }) => (
       <li key={`project-link-${id}`}>
         <NavigateLink
           id={id}
           value={projectTitle}
           path={id}
+          icon={icon}
           type={ELinkTypes.SECONDARY}
           testid={`link-${projectTitle}-${id}`}
           callback={chooseProject}

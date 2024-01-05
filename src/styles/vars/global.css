@@ -22,4 +22,12 @@
   /* Paddings */
 
   --padding-sides: 0 clamp(5px, 5vw, 60px) 0 20px;
+
+  /* PROJECT ICONS */
+
+  --orange-icon: #bc822b;
+  --purple-icon: #7864f1;
+  --pink-icon: #de4fa5;
+  --green-icon: #55b03f;
+  --blue-icon: #2a7de1;
 }

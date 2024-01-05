@@ -4,11 +4,18 @@ export enum EProjectsLoading {
   REJECTED = "rejected",
 }
 
+type TIconType = "star" | "circle" | "triangle" | "square";
+
+export type TProjectIcon = {
+  iconType: TIconType;
+  color: string;
+};
+
 export interface IProjects {
   id: string;
   projectTitle: string;
   favorite: boolean;
-  icon: object;
+  icon: TProjectIcon;
 }
 
 export interface IProjectsSchema {

@@ -22,7 +22,7 @@ const ExpandList = (props: IProps) => {
 
   return (
     <section className={classesExpandList}>
-      <h4 onClick={collapseBlock}>{title}</h4>
+      <button onClick={collapseBlock}>{title}</button>
 
       <div className={classes.ExpandBlock}>
         <ul>{items}</ul>

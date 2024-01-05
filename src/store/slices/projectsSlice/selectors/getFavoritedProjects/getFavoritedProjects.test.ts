@@ -12,7 +12,7 @@ describe("Projects | Selector getFavoritedProjects", () => {
             projectTitle: "title",
             favorite: false,
             icon: {
-              iconType: "Star",
+              iconType: "star",
               color: "green",
             },
           },
@@ -21,7 +21,7 @@ describe("Projects | Selector getFavoritedProjects", () => {
             projectTitle: "title",
             favorite: true,
             icon: {
-              iconType: "Circle",
+              iconType: "circle",
               color: "green",
             },
           },
@@ -35,7 +35,7 @@ describe("Projects | Selector getFavoritedProjects", () => {
         projectTitle: "title",
         favorite: true,
         icon: {
-          iconType: "Circle",
+          iconType: "circle",
           color: "green",
         },
       },
