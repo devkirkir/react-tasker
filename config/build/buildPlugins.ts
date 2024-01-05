@@ -5,7 +5,7 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { WebpackPluginInstance } from "webpack";
 import { BuildPaths } from "./types/config";
 
-export function buildPlugins(paths: BuildPaths): WebpackPluginInstance[] {
+export function buildPlugins(paths: BuildPaths, isDev: boolean): WebpackPluginInstance[] {
   return [
     new HTMLWebpackPlugin({
       template: paths.html,
@@ -15,6 +15,6 @@ export function buildPlugins(paths: BuildPaths): WebpackPluginInstance[] {
       filename: "./css/[name].[contenthash].css",
       chunkFilename: "./css/[name].[contenthash].css",
     }),
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
+    new BundleAnalyzerPlugin({ openAnalyzer: false, analyzerMode: isDev ? "server" : "disabled" }),
   ];
 }
