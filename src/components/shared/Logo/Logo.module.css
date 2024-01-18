@@ -12,11 +12,11 @@
     width 0.2s linear;
 
   .Icon {
-    width: clamp(20px, 8vw, 32px);
+    width: 26px;
   }
 
   .Label {
-    font-size: var(--font-size-l);
+    font-size: 18px;
     color: var(--text-color);
     font-weight: 700;
 

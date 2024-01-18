@@ -3,6 +3,12 @@
   flex-direction: column;
   gap: 8px;
 
+  margin-top: 12px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
   & button {
     color: var(--secondary-text-color);
     font-size: 12px;

@@ -2,10 +2,11 @@ import { NavLink } from "react-router-dom";
 
 import type { ENavigationValues, ENavigationPaths } from "../../Sidebar/config/NavigationConfig";
 
-import classNames from "classnames";
-import classes from "./NavigateLink.module.css";
 import { TProjectIcon } from "store/slices/projectsSlice/types";
 import { ShapedIcon } from "../ShapedIcon";
+
+import classNames from "classnames";
+import classes from "./NavigateLink.module.css";
 
 export enum ELinkTypes {
   PRIMARY = "primary",

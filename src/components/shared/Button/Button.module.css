@@ -1,0 +1,48 @@
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 16px;
+
+  border-radius: 5px;
+  border: none;
+
+  padding: 12px;
+
+  cursor: pointer;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear;
+
+  & svg {
+    & path {
+      transition: fill 0.2s linear;
+    }
+  }
+}
+
+.secondary {
+  color: var(--secondary-text-color);
+
+  background-color: var(--secondary-button-color);
+
+  & svg {
+    & path {
+      fill: var(--secondary-text-color);
+    }
+  }
+
+  &:hover {
+    @media (pointer: fine) {
+      color: var(--secondary-button-text-color-active);
+      background-color: var(--secondary-button-color-hover);
+
+      & path {
+        fill: var(--secondary-button-text-color-active);
+      }
+    }
+  }
+}

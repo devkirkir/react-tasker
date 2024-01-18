@@ -1,5 +1,5 @@
 import { projectsActions, projectsReducer } from ".";
-import { EProjectsLoading, IProjectsSchema } from "./types";
+import { EProjectsLoading, type IProjectsSchema } from "./types";
 
 describe("Projects | projectsSlice", () => {
   test("Action setCurrentProjectId", () => {

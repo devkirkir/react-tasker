@@ -1,6 +1,7 @@
 .Projects {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 8px;
 
   max-width: var(--projects-max-width);

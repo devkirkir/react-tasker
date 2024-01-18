@@ -8,10 +8,13 @@ import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllPr
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
 
+import ExpandList from "components/shared/ExpandList";
+import { Button } from "components/shared/Button";
+
+import { ELinkTypes, NavigateLink } from "components/shared/NavigateLink";
 import type { IProjects } from "store/slices/projectsSlice/types";
 
-import ExpandList from "components/shared/ExpandList";
-import { ELinkTypes, NavigateLink } from "components/shared/NavigateLink";
+import Plus from "../../../assets/icons/plus.svg";
 
 import classes from "./Projects.module.css";
 
@@ -27,6 +30,10 @@ export const Projects = () => {
 
   const chooseProject = (id: string) => {
     dispatch(projectsActions.setCurrentProjectId(id));
+  };
+
+  const addProject = () => {
+    console.log("open modal");
   };
 
   const renderProjects = (projects: IProjects[]) =>
@@ -46,11 +53,17 @@ export const Projects = () => {
 
   return (
     <section className={classes.Projects}>
-      {favoriteProjects.length !== 0 && (
-        <ExpandList title="favorites" items={renderProjects(favoriteProjects)} />
-      )}
+      <div>
+        {favoriteProjects.length !== 0 && (
+          <ExpandList title="favorites" items={renderProjects(favoriteProjects)} />
+        )}
 
-      <ExpandList title="projects" items={renderProjects(basicsProjects)} />
+        <ExpandList title="projects" items={renderProjects(basicsProjects)} />
+      </div>
+
+      <Button title="Add Project" type="secondary" callback={addProject}>
+        <Plus />
+      </Button>
     </section>
   );
 };

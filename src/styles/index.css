@@ -5,7 +5,7 @@
 
 .App {
   display: flex;
-  height: 100lvh;
+  min-height: 100lvh;
 
   color: var(--text-color);
 

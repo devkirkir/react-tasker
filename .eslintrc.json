@@ -23,5 +23,10 @@
     "react/no-unescaped-entities": 0,
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { ToggleButton } from "../ToggleButton";
 import { SidebarNav } from "../SidebarNav";
@@ -12,9 +12,9 @@ import classes from "./Sidebar.module.css";
 export const Sidebar = () => {
   const [isSidebarShow, setToggleSidebar] = useState<boolean>(true);
 
-  const toggleSidebar = () => {
+  const toggleSidebar = useCallback(() => {
     setToggleSidebar((isSidebarShow) => !isSidebarShow);
-  };
+  }, [isSidebarShow]);
 
   const sidebarClassNames = classNames(classes.Sidebar, {
     [classes.HiddenSidebar]: !isSidebarShow,
@@ -32,6 +32,7 @@ export const Sidebar = () => {
         <span className={classes.Label}>MENU</span>
 
         <SidebarNav isSidebarShow={isSidebarShow} />
+
         <ThemeSwitcher />
       </section>
     </aside>
