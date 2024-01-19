@@ -2,19 +2,17 @@ import { useState } from "react";
 import classes from "./ExpandList.module.css";
 import classNames from "classnames";
 
-interface IProps {
+interface ExpandListProps {
   title: string;
   items: JSX.Element[];
 }
 
-const ExpandList = (props: IProps) => {
+export const ExpandList = (props: ExpandListProps) => {
   const { items, title } = props;
 
-  const [isExpand, setExpand] = useState<boolean>(false);
+  const [isExpand, setExpand] = useState(false);
 
-  const collapseBlock = () => {
-    setExpand((isExpand) => !isExpand);
-  };
+  const collapseBlock = () => setExpand((isExpand) => !isExpand);
 
   const classesExpandList = classNames(classes.ExpandList, {
     [classes.ExpandListHidden]: isExpand,
@@ -30,5 +28,3 @@ const ExpandList = (props: IProps) => {
     </section>
   );
 };
-
-export default ExpandList;

@@ -8,7 +8,7 @@ import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllPr
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
 
-import ExpandList from "components/shared/ExpandList";
+import { ExpandList } from "components/shared/ExpandList";
 import { Button } from "components/shared/Button";
 
 import { ELinkTypes, NavigateLink } from "components/shared/NavigateLink";
@@ -28,9 +28,7 @@ export const Projects = () => {
   const basicsProjects = useAppSelector(getBasicProjects);
   const favoriteProjects = useAppSelector(getFavoritedProjects);
 
-  const chooseProject = (id: string) => {
-    dispatch(projectsActions.setCurrentProjectId(id));
-  };
+  const chooseProject = (id: string) => dispatch(projectsActions.setCurrentProjectId(id));
 
   const addProject = () => {
     console.log("open modal");
@@ -54,7 +52,7 @@ export const Projects = () => {
   return (
     <section className={classes.Projects}>
       <div>
-        {favoriteProjects.length !== 0 && (
+        {favoriteProjects && (
           <ExpandList title="favorites" items={renderProjects(favoriteProjects)} />
         )}
 

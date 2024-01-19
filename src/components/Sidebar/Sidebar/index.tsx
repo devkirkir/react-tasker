@@ -10,7 +10,7 @@ import classNames from "classnames";
 import classes from "./Sidebar.module.css";
 
 export const Sidebar = () => {
-  const [isSidebarShow, setToggleSidebar] = useState<boolean>(true);
+  const [isSidebarShow, setToggleSidebar] = useState(true);
 
   const toggleSidebar = useCallback(() => {
     setToggleSidebar((isSidebarShow) => !isSidebarShow);

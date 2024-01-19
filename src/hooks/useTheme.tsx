@@ -19,9 +19,7 @@ const useTheme = (): IUseTheme => {
     theme === ETheme.DARK ? setTheme(ETheme.LIGHT) : setTheme(ETheme.DARK);
   };
 
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+  useEffect(() => localStorage.setItem("theme", theme), [theme]);
 
   return { theme, toggleTheme };
 };

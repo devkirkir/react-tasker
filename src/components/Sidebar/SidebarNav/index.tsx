@@ -4,11 +4,11 @@ import { NavigationConfig, type ENavigationValues } from "../config/NavigationCo
 
 import classes from "./SidebarNav.module.css";
 
-interface IProps {
+interface SidebarNavProps {
   isSidebarShow: boolean;
 }
 
-export const SidebarNav = (props: IProps) => {
+export const SidebarNav = (props: SidebarNavProps) => {
   const { isSidebarShow } = props;
 
   const renderedLinks = Object.keys(NavigationConfig).map((route: ENavigationValues) => {

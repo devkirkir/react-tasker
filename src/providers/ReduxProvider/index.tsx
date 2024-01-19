@@ -4,11 +4,11 @@ import { configStore } from "store/store";
 
 import type { IStateSchema } from "store/types/StateSchema";
 
-interface IProps extends PropsWithChildren {
+interface ReduxProviderProps extends PropsWithChildren {
   initialState?: IStateSchema;
 }
 
-const ReduxProvider = (props: IProps) => {
+const ReduxProvider = (props: ReduxProviderProps) => {
   const { children, initialState } = props;
 
   const store = configStore(initialState);

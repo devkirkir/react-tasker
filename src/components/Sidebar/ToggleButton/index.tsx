@@ -1,12 +1,12 @@
 import classes from "./ToggleButton.module.css";
 import classNames from "classnames";
 
-interface IProps {
+interface ToggleButtonProps {
   isSidebarShow: boolean;
   toggleSidebar: () => void;
 }
 
-export const ToggleButton = (props: IProps) => {
+export const ToggleButton = (props: ToggleButtonProps) => {
   const { isSidebarShow, toggleSidebar } = props;
 
   const rightClassName = classNames(classes.ToggleButton, {

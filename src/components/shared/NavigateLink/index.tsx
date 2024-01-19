@@ -13,7 +13,7 @@ export enum ELinkTypes {
   SECONDARY = "secondary",
 }
 
-interface IProps {
+interface NavigateLinkProps {
   value: ENavigationValues | string;
   path: ENavigationPaths | string;
   type: ELinkTypes;
@@ -25,7 +25,7 @@ interface IProps {
   callback?: (id: string) => void;
 }
 
-export const NavigateLink = (props: IProps) => {
+export const NavigateLink = (props: NavigateLinkProps) => {
   const { id, value, path, icon, callback = () => {}, type, isSidebarShow = true, testid } = props;
 
   const labelClassNames = classNames(classes.Label, {

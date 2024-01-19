@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
 import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
 
 import classes from "./Container.module.css";
 

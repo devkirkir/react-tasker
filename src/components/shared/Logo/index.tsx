@@ -4,11 +4,11 @@ import LogoIcon from "assets/icons/Logo.svg";
 import classNames from "classnames";
 import classes from "./Logo.module.css";
 
-interface IProps {
+interface LogoProps {
   isSidebarShow?: boolean;
 }
 
-export const Logo = (props: IProps): JSX.Element => {
+export const Logo = (props: LogoProps): JSX.Element => {
   const { isSidebarShow = true } = props;
 
   const toggleLogoInSidebar = classNames(classes.Logo, {
