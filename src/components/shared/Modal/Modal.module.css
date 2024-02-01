@@ -1,0 +1,8 @@
+.Modal {
+  width: 200px;
+  height: 300px;
+
+  background-color: var(--bg-color);
+
+  cursor: default;
+}
