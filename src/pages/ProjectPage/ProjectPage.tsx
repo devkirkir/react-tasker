@@ -19,7 +19,7 @@ const ProjectPage = () => {
     }
   }, []);
 
-  return <div>prtoject id - {projectId}</div>;
+  return <div>prtoject id - {currentProjectId}</div>;
 };
 
 export default ProjectPage;

@@ -1,40 +1,34 @@
-import { useEffect, useState } from "react";
-
+import { useEffect } from "react";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
-
 import { projectsActions } from "store/slices/projectsSlice";
 import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllProjects";
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
-
 import { ExpandList } from "components/shared/ExpandList";
 import { Button } from "components/shared/Button";
-import { Modal } from "components/Modal";
-
 import { ELinkTypes, NavigateLink } from "components/shared/NavigateLink";
 import type { IProjects } from "store/slices/projectsSlice/types";
-
 import Plus from "../../../assets/icons/plus.svg";
-
 import classes from "./Projects.module.css";
 
 export const Projects = () => {
   const dispatch = useAppDispatch();
-  const [isModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllProjects());
   }, []);
 
-  function toggleModalHandler() {
-    setModalOpen((isModalOpen) => !isModalOpen);
-  }
-
   const basicsProjects = useAppSelector(getBasicProjects);
   const favoriteProjects = useAppSelector(getFavoritedProjects);
 
+  console.log(favoriteProjects);
+
   const chooseProject = (id: string) => dispatch(projectsActions.setCurrentProjectId(id));
+
+  const addProject = () => {
+    console.log("open modal");
+  };
 
   const renderProjects = (projects: IProjects[]) =>
     projects.map(({ projectTitle, id, icon }) => (
@@ -62,15 +56,13 @@ export const Projects = () => {
       </div>
 
       <>
-        <Button title="Add Project" type="secondary" callback={toggleModalHandler}>
+        <Button title="Add Project" type="secondary" callback={addProject}>
           <Plus />
         </Button>
 
-        {isModalOpen && (
-          <Modal isOpen={isModalOpen} toggleHandler={toggleModalHandler}>
-            <span>hello</span>
-          </Modal>
-        )}
+        {/* <Portal id={EPortalTypes.MODAL}>
+              <Modal />
+            </Portal> */}
       </>
     </section>
   );

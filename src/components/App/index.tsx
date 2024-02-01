@@ -8,8 +8,9 @@ const App = () => {
   const { theme } = useTheme();
 
   return (
-    <div className={`App ${theme}`} data-testid="app">
+    <div id={"App"} className={`App ${theme}`} data-testid="app">
       <RouterProvider />
+      <div id="modal"></div>
     </div>
   );
 };
