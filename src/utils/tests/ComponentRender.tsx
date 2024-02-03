@@ -5,7 +5,6 @@ import { DeepPartial } from "@reduxjs/toolkit";
 import { ThemeProvider } from "providers/ThemeProvider";
 import ReduxProvider from "providers/ReduxProvider";
 import { IStateSchema } from "store/types/StateSchema";
-// import { IStateSchema } from "providers/ReduxProvider/config/stateSchema";
 
 interface IComponentRenderOptions {
   initialState?: DeepPartial<IStateSchema>;

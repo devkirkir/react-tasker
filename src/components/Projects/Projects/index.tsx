@@ -8,17 +8,18 @@ import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllPr
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
 
+import { AnimatePresence } from "framer-motion";
+
 import { ExpandList } from "components/shared/ExpandList";
 import { Button } from "components/shared/Button";
 import { Modal } from "components/shared/Modal";
-
 import { ELinkTypes, NavigateLink } from "components/shared/NavigateLink";
+
 import type { IProjects } from "store/slices/projectsSlice/types";
 
 import Plus from "../../../assets/icons/plus.svg";
 
 import classes from "./Projects.module.css";
-import { AnimatePresence } from "framer-motion";
 
 export const Projects = () => {
   const dispatch = useAppDispatch();
@@ -69,7 +70,7 @@ export const Projects = () => {
 
         <AnimatePresence>
           {isModalOpen && (
-            <Modal isOpen={isModalOpen} toggleHandler={toggleModalHandler}>
+            <Modal toggleHandler={toggleModalHandler}>
               <span>hello</span>
             </Modal>
           )}

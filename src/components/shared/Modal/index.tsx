@@ -1,5 +1,6 @@
 import { type PropsWithChildren, useEffect } from "react";
 import { createPortal } from "react-dom";
+
 import { motion } from "framer-motion";
 
 import { Backdrop } from "../Backdrop";
@@ -7,8 +8,8 @@ import { Backdrop } from "../Backdrop";
 import classes from "./Modal.module.css";
 
 interface IProps extends PropsWithChildren {
-  isOpen: boolean;
   toggleHandler: () => void;
+  portalContainer?: HTMLElement;
 }
 
 const slideInAnimation = {
@@ -27,7 +28,7 @@ const slideInAnimation = {
 };
 
 export const Modal = (props: IProps) => {
-  const { children, toggleHandler } = props;
+  const { children, toggleHandler, portalContainer = document.getElementById("modal") } = props;
 
   const onKeyDownHandle = ({ key }: KeyboardEvent) => {
     if (key === "Escape") toggleHandler();
@@ -49,10 +50,11 @@ export const Modal = (props: IProps) => {
         initial="hidden"
         animate="visible"
         exit="exit"
+        data-testid="Modal"
       >
         {children}
       </motion.div>
     </Backdrop>,
-    document.getElementById("modal"),
+    portalContainer,
   );
 };
