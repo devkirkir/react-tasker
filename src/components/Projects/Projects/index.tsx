@@ -20,6 +20,7 @@ import type { IProjects } from "store/slices/projectsSlice/types";
 import Plus from "../../../assets/icons/plus.svg";
 
 import classes from "./Projects.module.css";
+import { FormAddProject } from "components/Forms/FormAddProject";
 
 export const Projects = () => {
   const dispatch = useAppDispatch();
@@ -69,9 +70,9 @@ export const Projects = () => {
         </Button>
 
         <AnimatePresence>
-          {isModalOpen && (
+          {!isModalOpen && (
             <Modal toggleHandler={toggleModalHandler}>
-              <span>hello</span>
+              <FormAddProject />
             </Modal>
           )}
         </AnimatePresence>
