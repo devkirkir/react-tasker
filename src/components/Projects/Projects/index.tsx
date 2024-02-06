@@ -70,7 +70,7 @@ export const Projects = () => {
         </Button>
 
         <AnimatePresence>
-          {!isModalOpen && (
+          {isModalOpen && (
             <Modal toggleHandler={toggleModalHandler}>
               <FormAddProject />
             </Modal>

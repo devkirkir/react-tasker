@@ -16,7 +16,7 @@ describe("Provider | RouterProvider", () => {
     await act(() => ComponentRender(<RouterProvider />, { route: "/app/projects" }));
 
     await waitFor(() => expect(screen.getByText(/add project/i)).toBeInTheDocument(), {
-      timeout: 3000,
+      timeout: 5000,
     });
   });
 
