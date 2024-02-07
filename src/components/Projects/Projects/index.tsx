@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
@@ -7,8 +8,6 @@ import { projectsActions } from "store/slices/projectsSlice";
 import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllProjects";
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
-
-import { AnimatePresence } from "framer-motion";
 
 import { ExpandList } from "components/shared/ExpandList";
 import { Button } from "components/shared/Button";
