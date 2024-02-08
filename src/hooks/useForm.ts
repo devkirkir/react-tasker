@@ -1,18 +1,33 @@
 import { ChangeEvent, useState } from "react";
+import useInputValid, { type IValidFields } from "./useInputValid";
 
 const useForm = <T>(initState: T) => {
   const [values, setValues] = useState<T>(initState);
-  const [errors, setErrors] = useState<T>(initState);
+
+  const { isValid } = useInputValid();
 
   const handleChange = (event: ChangeEvent<HTMLFormElement>) => {
     const { name, value } = event.target;
 
-    setErrors({ ...errors, [name]: !value ? "error" : "" });
+    // это типа костыль я хз, иначе не видит типизацию
+    const { validSettings }: IValidFields = initState[name as keyof T];
 
-    setValues({ ...values, [name]: value });
+    const resultValidation = isValid(event.target, validSettings);
+
+    if (validSettings && Boolean(resultValidation)) {
+      setValues({
+        ...values,
+        [name]: { ...values[name as keyof T], value, error: resultValidation },
+      });
+    } else {
+      setValues({
+        ...values,
+        [name]: { ...values[name as keyof T], value, error: "" },
+      });
+    }
   };
 
-  return { values, errors, handleChange };
+  return { values, handleChange };
 };
 
 export default useForm;
