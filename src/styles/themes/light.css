@@ -46,4 +46,8 @@
   /* CONTAINER BORDER */
 
   --container-border-color: #eee;
+
+  /* ERROR COLOR */
+
+  --error-color: #ff5353;
 }

@@ -1,32 +1,41 @@
+import { Button } from "components/shared/Button";
+import FormErrorHandler from "components/shared/FormErrorHandler";
+import Input from "components/shared/Input";
+
 import useForm from "hooks/useForm";
-import { IValidFields } from "hooks/useInputValid";
+import { type IValidFields } from "hooks/useInputValid";
 
 export interface IInput extends IValidFields {
   value: string;
 }
 
 interface IInputs {
-  title: IInput;
-  desc: IInput;
+  projectName: IInput;
 }
 
 const initialInputs: IInputs = {
-  title: { value: "", validSettings: { max: 10, min: 3 } },
-  desc: { value: "", validSettings: { isEmail: true } },
+  projectName: { value: "", validSettings: { min: 1, max: 20 } },
 };
 
 export const FormAddProject = () => {
   const { values, handleChange } = useForm<IInputs>(initialInputs);
+  const { projectName } = values;
 
   return (
     <form onChange={handleChange}>
-      <input name="title" type="text" defaultValue={values.title.value} />
-      {values.title.error && <span>{values.title.error}</span>}
+      <Input
+        name="projectName"
+        type="text"
+        inputmode="text"
+        placeholder="Project name"
+        defaultValue={projectName.value}
+        isError={!!projectName.error}
+        required={true}
+      />
 
-      <input name="desc" type="text" defaultValue={values.desc.value} />
-      {values.desc.error && <span>{values.desc.error}</span>}
+      {projectName.error && <FormErrorHandler>{projectName.error}</FormErrorHandler>}
 
-      <button type="submit">submit</button>
+      <Button isSubmit={true} type="primary" title="Add Project" />
     </form>
   );
 };

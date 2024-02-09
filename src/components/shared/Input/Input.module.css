@@ -1,0 +1,25 @@
+.Input {
+  width: 100%;
+
+  color: var(--text-color);
+  font-size: var(--font-size-m);
+
+  background: transparent;
+
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+
+  padding: 8px 12px;
+
+  transition: border 0.2s linear;
+  outline: var(--primary-color);
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: var(--primary-color);
+  }
+}
+
+.Error {
+  border-color: var(--error-color);
+}

@@ -11,5 +11,8 @@
   padding: 0;
   margin: 0;
 
+  outline-offset: -1px;
+  outline-color: var(--primary-color);
+
   box-sizing: border-box;
 }
