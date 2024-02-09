@@ -1,8 +1,21 @@
 .Modal {
-  width: 200px;
-  height: 300px;
+  width: auto;
+  height: auto;
 
   background-color: var(--bg-color);
 
+  border-radius: 8px;
+
+  padding: 22px;
+  margin: 12px;
   cursor: default;
+
+  & .Title {
+    display: block;
+
+    color: var(--secondary-text-color);
+    font-size: var(--font-size-l);
+    font-weight: 700;
+    text-align: center;
+  }
 }

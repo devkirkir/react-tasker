@@ -4,10 +4,6 @@
   --font-size-m: clamp(14px, 8vw, 16px);
   --font-size-l: clamp(16px, 8vw, 20px);
 
-  /* Header */
-
-  --header-height: 60px;
-
   /* Sidebar */
 
   --sidebar-show-width: 240px;
@@ -18,10 +14,6 @@
 
   --projects-max-width: 180px;
   --projects-min-width: 140px;
-
-  /* Paddings */
-
-  --padding-sides: 0 clamp(5px, 5vw, 60px) 0 20px;
 
   /* PROJECT ICONS */
 

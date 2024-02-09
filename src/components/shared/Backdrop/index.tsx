@@ -5,17 +5,17 @@ import { motion } from "framer-motion";
 import classes from "./Backdrop.module.css";
 
 interface IBackdrop extends PropsWithChildren {
-  onClick: () => void;
+  onMouseDown: () => void;
 }
 
 const Backdrop = (props: IBackdrop) => {
-  const { children, onClick } = props;
+  const { children, onMouseDown } = props;
 
   const ref = useRef<HTMLDivElement>(null);
 
   const closeHandler = (event: React.MouseEvent) => {
     if (event.target == ref.current) {
-      onClick();
+      onMouseDown();
     }
   };
 
@@ -23,7 +23,7 @@ const Backdrop = (props: IBackdrop) => {
     <motion.div
       className={classes.Backdrop}
       ref={ref}
-      onClick={closeHandler}
+      onMouseDown={closeHandler}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

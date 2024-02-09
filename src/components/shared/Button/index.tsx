@@ -1,22 +1,29 @@
 import { PropsWithChildren } from "react";
 
 import classes from "./Button.module.css";
+import classNames from "classnames";
 
 interface ButtonProps extends PropsWithChildren {
   title: string;
   type: "primary" | "secondary";
   isSubmit?: boolean;
+  isDisabled?: boolean;
   callback?: () => void;
 }
 
 const Button = (props: ButtonProps) => {
-  const { title, type, isSubmit = false, callback, children } = props;
+  const { title, type, isSubmit = false, isDisabled = false, callback, children } = props;
+
+  const disabledClassNames = classNames(classes.Button, classes[type], {
+    [classes.Disabled]: isDisabled,
+  });
 
   return (
     <button
       type={isSubmit ? "submit" : "button"}
-      className={`${classes.Button} ${classes[type]}`}
+      className={disabledClassNames}
       onClick={callback}
+      disabled={isDisabled}
     >
       {children}
       <span>{title}</span>

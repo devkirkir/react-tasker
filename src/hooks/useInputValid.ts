@@ -5,7 +5,7 @@ export type TValidSettings = {
 };
 
 export interface IValidFields {
-  validSettings?: TValidSettings;
+  validSettings?: TValidSettings | undefined;
   error?: string;
 }
 

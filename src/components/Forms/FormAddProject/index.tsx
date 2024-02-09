@@ -1,12 +1,13 @@
-import useForm from "hooks/useForm";
-import { type IValidFields } from "hooks/useInputValid";
+import useForm, { type IInput } from "hooks/useForm";
 
 import Button from "components/shared/Button";
 import FormErrorHandler from "components/shared/FormErrorHandler";
 import Input from "components/shared/Input";
 
-export interface IInput extends IValidFields {
-  value: string;
+import classes from "./FormAddProject.module.css";
+
+interface IFormAddProjectProps {
+  toggleHandler: () => void;
 }
 
 interface IInputs {
@@ -14,28 +15,37 @@ interface IInputs {
 }
 
 const initialInputs: IInputs = {
-  projectName: { value: "", validSettings: { min: 1, max: 20 } },
+  projectName: { value: "", validSettings: { min: 2, max: 15 } },
 };
 
-const FormAddProject = () => {
-  const { inputsValues, handleChange } = useForm<IInputs>(initialInputs);
+const FormAddProject = (props: IFormAddProjectProps) => {
+  const { toggleHandler } = props;
+
+  const { inputsValues, handleSubmit, handleChange, submitDisable } =
+    useForm<IInputs>(initialInputs);
   const { projectName } = inputsValues;
 
   return (
-    <form onChange={handleChange}>
+    <form className={classes.Form} onSubmit={handleSubmit} onChange={handleChange}>
       <Input
         name="projectName"
         type="text"
-        inputmode="text"
+        inputMode="text"
         placeholder="Project name"
         defaultValue={projectName.value}
-        isError={!!projectName.error}
+        iserror={projectName.error ? 1 : undefined}
         required={true}
       />
 
       {projectName.error && <FormErrorHandler>{projectName.error}</FormErrorHandler>}
 
-      <Button isSubmit={true} type="primary" title="Add Project" />
+      <Input name="checkbox" type="checkbox" required={false} defaultChecked={false} />
+
+      <div className={classes.Buttons}>
+        <Button isSubmit={true} type="primary" title="Add Project" isDisabled={submitDisable} />
+
+        <Button type="secondary" title="Close" callback={toggleHandler} />
+      </div>
     </form>
   );
 };

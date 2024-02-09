@@ -11,6 +11,10 @@
 
   --secondary-text-color: #777;
 
+  --label-color: #6e6e6e;
+
+  --backdrop-hint-color: rgba(255, 255, 255, 0.5);
+
   /** BORDER COLORS **/
 
   --border-color: #262931;

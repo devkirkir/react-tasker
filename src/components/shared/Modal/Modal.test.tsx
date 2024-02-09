@@ -49,7 +49,7 @@ describe("Component| Modal", () => {
       </Modal>,
     );
 
-    fireEvent.click(screen.getByTestId("Backdrop"));
+    fireEvent.mouseDown(screen.getByTestId("Backdrop"));
 
     expect(toggleHandler).toHaveBeenCalled();
   });

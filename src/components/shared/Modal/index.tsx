@@ -9,6 +9,7 @@ import classes from "./Modal.module.css";
 
 interface IProps extends PropsWithChildren {
   toggleHandler: () => void;
+  modalName?: string;
   portalContainer?: HTMLElement;
 }
 
@@ -28,7 +29,12 @@ const slideInAnimation = {
 };
 
 const Modal = (props: IProps) => {
-  const { children, toggleHandler, portalContainer = document.getElementById("modal") } = props;
+  const {
+    children,
+    toggleHandler,
+    modalName,
+    portalContainer = document.getElementById("modal"),
+  } = props;
 
   const onKeyDownHandle = ({ key }: KeyboardEvent) => {
     if (key === "Escape") toggleHandler();
@@ -43,7 +49,7 @@ const Modal = (props: IProps) => {
   }, []);
 
   return createPortal(
-    <Backdrop onClick={toggleHandler}>
+    <Backdrop onMouseDown={toggleHandler}>
       <motion.div
         className={classes.Modal}
         variants={slideInAnimation}
@@ -52,6 +58,7 @@ const Modal = (props: IProps) => {
         exit="exit"
         data-testid="Modal"
       >
+        <span className={classes.Title}>{modalName}</span>
         {children}
       </motion.div>
     </Backdrop>,

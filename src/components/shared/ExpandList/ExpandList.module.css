@@ -23,6 +23,7 @@
     opacity: 1;
     cursor: pointer;
     user-select: none;
+    transition: color 0.3s linear;
 
     &::before {
       content: "";

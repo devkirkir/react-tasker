@@ -8,19 +8,24 @@ interface IProps {
   name: string;
   type: TInputTypes;
   required: boolean;
-  defaultValue: string;
-  isError?: boolean;
+  defaultValue?: string;
+  iserror?: number;
   placeholder?: string;
   defaultChecked?: boolean;
-  inputmode?: TInputMode;
+  inputMode?: TInputMode;
 }
 
 const Input = (props: IProps) => {
   const errorClassnames = classNames(classes.Input, {
-    [classes.Error]: props.isError,
+    [classes.Error]: props.iserror,
   });
 
-  return <input className={errorClassnames} {...props} />;
+  return (
+    <div className={classes.InputContainer}>
+      <input className={errorClassnames} {...props} />
+      <span className={classes.Label}>Label</span>
+    </div>
+  );
 };
 
 export default Input;

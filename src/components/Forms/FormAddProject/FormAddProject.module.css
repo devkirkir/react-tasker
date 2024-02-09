@@ -1,0 +1,17 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 26px;
+
+  & .Buttons {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 16px;
+
+    & button:nth-child(n) {
+      flex: 1 1 100px;
+    }
+  }
+}

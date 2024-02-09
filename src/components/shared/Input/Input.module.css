@@ -1,25 +1,52 @@
-.Input {
-  width: 100%;
+.InputContainer {
+  position: relative;
 
-  color: var(--text-color);
-  font-size: var(--font-size-m);
+  & .Input {
+    width: 100%;
 
-  background: transparent;
+    color: var(--text-color);
+    font-size: var(--font-size-m);
 
-  border: 2px solid var(--border-color);
-  border-radius: 5px;
+    background: transparent;
 
-  padding: 8px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
 
-  transition: border 0.2s linear;
-  outline: var(--primary-color);
-  box-sizing: border-box;
+    padding: 12px;
 
-  &:focus {
-    border-color: var(--primary-color);
+    transition: border 0.2s linear;
+    outline: var(--primary-color);
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: var(--primary-color);
+    }
+
+    &:focus + .Label {
+      color: var(--primary-color);
+    }
   }
-}
 
-.Error {
-  border-color: var(--error-color);
+  & .Error {
+    border-color: var(--error-color);
+
+    & + .Label {
+      color: var(--error-color);
+    }
+  }
+
+  & .Label {
+    position: absolute;
+    top: -7px;
+    left: 16px;
+
+    color: var(--label-color);
+    font-weight: 500;
+    font-size: 12px;
+
+    background-color: var(--bg-color);
+
+    transition: color 0.2s linear;
+    padding: 0 4px;
+  }
 }

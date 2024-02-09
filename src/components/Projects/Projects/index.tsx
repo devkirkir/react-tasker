@@ -70,8 +70,8 @@ const Projects = () => {
 
         <AnimatePresence>
           {isModalOpen && (
-            <Modal toggleHandler={toggleModalHandler}>
-              <FormAddProject />
+            <Modal toggleHandler={toggleModalHandler} modalName="Add Project">
+              <FormAddProject toggleHandler={toggleModalHandler} />
             </Modal>
           )}
         </AnimatePresence>
