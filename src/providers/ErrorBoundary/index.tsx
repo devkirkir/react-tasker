@@ -1,6 +1,6 @@
 import React, { ErrorInfo, PropsWithChildren } from "react";
 
-import { Logo } from "components/shared/Logo";
+import Logo from "components/shared/Logo";
 
 import { ETheme } from "hooks/useTheme";
 

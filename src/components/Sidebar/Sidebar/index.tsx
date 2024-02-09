@@ -1,15 +1,15 @@
 import { useCallback, useState } from "react";
 
-import { ToggleButton } from "../ToggleButton";
-import { SidebarNav } from "../SidebarNav";
+import ToggleButton from "../ToggleButton";
+import SidebarNav from "../SidebarNav";
 
-import { Logo } from "components/shared/Logo";
-import { ThemeSwitcher } from "components/shared/ThemeSwitcher";
+import Logo from "components/shared/Logo";
+import ThemeSwitcher from "components/shared/ThemeSwitcher";
 
 import classNames from "classnames";
 import classes from "./Sidebar.module.css";
 
-export const Sidebar = () => {
+const Sidebar = () => {
   const [isSidebarShow, setToggleSidebar] = useState(true);
 
   const toggleSidebar = useCallback(() => {
@@ -38,3 +38,5 @@ export const Sidebar = () => {
     </aside>
   );
 };
+
+export default Sidebar;

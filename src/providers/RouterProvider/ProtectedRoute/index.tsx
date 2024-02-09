@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
-export const ProtectedRoute = (props: PropsWithChildren) => {
+const ProtectedRoute = (props: PropsWithChildren) => {
   const { children } = props;
   const { pathname } = useLocation();
 
@@ -22,3 +22,5 @@ export const ProtectedRoute = (props: PropsWithChildren) => {
 
   return children;
 };
+
+export default ProtectedRoute;

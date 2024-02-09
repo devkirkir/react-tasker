@@ -29,7 +29,7 @@
   --primary-button-color-hover: #2e70e2;
   --primary-button-color-active: #2968d4;
 
-  --primary-button-text-color: #a3a3a3;
+  --primary-button-text-color: #fff;
   --primary-button-text-color-active: #fff;
 
   /** SECONDARY BUTTON COLORS **/
@@ -42,6 +42,17 @@
 
   --secondary-button-text-color: #9b9b9b;
   --secondary-button-text-color-active: #686868;
+
+  /* PRIMARY NAVIGATE LINK */
+
+  --primary-navigatelink-color: #3e85ff;
+  --primary-navigatelink-text-color: #a3a3a3;
+  --primary-navigatelink-text-color-active: #fff;
+
+  /* SECONDARY NAVIGATE LINK */
+
+  --secondary-navigatelink-color-hover: #f1f1f1;
+  --secondary-navigatelink-text-color-active: #686868;
 
   /* CONTAINER BORDER */
 

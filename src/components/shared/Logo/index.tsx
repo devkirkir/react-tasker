@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import LogoIcon from "assets/icons/Logo.svg";
 
 import classNames from "classnames";
@@ -8,7 +9,7 @@ interface LogoProps {
   isSidebarShow?: boolean;
 }
 
-export const Logo = (props: LogoProps): JSX.Element => {
+const Logo = (props: LogoProps): JSX.Element => {
   const { isSidebarShow = true } = props;
 
   const toggleLogoInSidebar = classNames(classes.Logo, {
@@ -23,3 +24,5 @@ export const Logo = (props: LogoProps): JSX.Element => {
     </Link>
   );
 };
+
+export default Logo;

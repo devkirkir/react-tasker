@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { EProjectsLoading, type IProjectsSchema } from "./types";
 import { fetchAllProjects } from "./servcies/fetchAllProjects";
 import { addNewProject } from "./servcies/addNewProject";
+
+import { EProjectsLoading, type IProjectsSchema } from "./types";
 
 const initialState: IProjectsSchema = {
   projects: [],

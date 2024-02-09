@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from "react";
+
 import useInputValid, { type IValidFields } from "./useInputValid";
 
 const useForm = <T>(initState: T) => {
-  const [values, setValues] = useState<T>(initState);
+  const [inputsValues, setInputsValues] = useState<T>(initState);
 
   const { isValid } = useInputValid();
 
@@ -15,19 +16,19 @@ const useForm = <T>(initState: T) => {
     const resultValidation = isValid(event.target, validSettings);
 
     if (validSettings && Boolean(resultValidation)) {
-      setValues({
-        ...values,
-        [name]: { ...values[name as keyof T], value, error: resultValidation },
+      setInputsValues({
+        ...inputsValues,
+        [name]: { ...inputsValues[name as keyof T], value, error: resultValidation },
       });
     } else {
-      setValues({
-        ...values,
-        [name]: { ...values[name as keyof T], value, error: "" },
+      setInputsValues({
+        ...inputsValues,
+        [name]: { ...inputsValues[name as keyof T], value, error: "" },
       });
     }
   };
 
-  return { values, handleChange };
+  return { inputsValues, handleChange };
 };
 
 export default useForm;

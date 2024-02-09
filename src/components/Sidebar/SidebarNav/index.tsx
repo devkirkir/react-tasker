@@ -1,4 +1,4 @@
-import { ELinkTypes, NavigateLink } from "../../shared/NavigateLink";
+import NavigateLink from "../../shared/NavigateLink";
 
 import { NavigationConfig, type ENavigationValues } from "../config/NavigationConfig";
 
@@ -8,7 +8,7 @@ interface SidebarNavProps {
   isSidebarShow: boolean;
 }
 
-export const SidebarNav = (props: SidebarNavProps) => {
+const SidebarNav = (props: SidebarNavProps) => {
   const { isSidebarShow } = props;
 
   const renderedLinks = Object.keys(NavigationConfig).map((route: ENavigationValues) => {
@@ -20,7 +20,7 @@ export const SidebarNav = (props: SidebarNavProps) => {
           value={value}
           path={path}
           icon={icon}
-          type={ELinkTypes.PRIMARY}
+          type="primary"
           isSidebarShow={isSidebarShow}
           testid={`link-${value}`}
         />
@@ -34,3 +34,5 @@ export const SidebarNav = (props: SidebarNavProps) => {
     </nav>
   );
 };
+
+export default SidebarNav;

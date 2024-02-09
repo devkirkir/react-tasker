@@ -9,7 +9,7 @@ interface ButtonProps extends PropsWithChildren {
   callback?: () => void;
 }
 
-export const Button = (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   const { title, type, isSubmit = false, callback, children } = props;
 
   return (
@@ -23,3 +23,5 @@ export const Button = (props: ButtonProps) => {
     </button>
   );
 };
+
+export default Button;

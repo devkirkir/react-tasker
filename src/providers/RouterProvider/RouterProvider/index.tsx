@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { ProtectedRoute } from "../ProtectedRoute";
+import ProtectedRoute from "../ProtectedRoute";
 
 import { LandingPageLazy as LandingPage } from "pages/LandingPage/LandingPage.lazy";
 import { AppPageLazy as AppPage } from "pages/AppPage/AppPage.lazy";
@@ -11,7 +11,7 @@ import { DashboardPageLazy as DashboardPage } from "pages/DashboardPage/Dashboar
 import { ProjectsPageLazy as ProjectsPage } from "pages/ProjectsPage/ProjectsPage.lazy";
 import { ProjectPageLazy as ProjectPage } from "pages/ProjectPage/ProjectPage.lazy";
 
-export const RouterProvider = () => {
+const RouterProvider = () => {
   return (
     <Suspense fallback="Loading Routes...">
       <Routes>
@@ -45,3 +45,5 @@ export const RouterProvider = () => {
     </Suspense>
   );
 };
+
+export default RouterProvider;

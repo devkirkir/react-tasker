@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 import classes from "./Container.module.css";
 
-export const Container = () => {
+const Container = () => {
   return (
     <main className={classes.Container}>
       <Suspense fallback={"Container Suspense"}>
@@ -12,3 +12,5 @@ export const Container = () => {
     </main>
   );
 };
+
+export default Container;

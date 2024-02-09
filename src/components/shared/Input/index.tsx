@@ -1,5 +1,4 @@
 import classNames from "classnames";
-
 import classes from "./Input.module.css";
 
 type TInputTypes = "text" | "checkbox" | "email" | "number" | "password" | "radio" | "tel";

@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 
 import { motion } from "framer-motion";
 
-import { Backdrop } from "../Backdrop";
+import Backdrop from "../Backdrop";
 
 import classes from "./Modal.module.css";
 
@@ -27,7 +27,7 @@ const slideInAnimation = {
   },
 };
 
-export const Modal = (props: IProps) => {
+const Modal = (props: IProps) => {
   const { children, toggleHandler, portalContainer = document.getElementById("modal") } = props;
 
   const onKeyDownHandle = ({ key }: KeyboardEvent) => {
@@ -58,3 +58,5 @@ export const Modal = (props: IProps) => {
     portalContainer,
   );
 };
+
+export default Modal;

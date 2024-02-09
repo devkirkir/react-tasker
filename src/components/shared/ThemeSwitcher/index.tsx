@@ -1,10 +1,8 @@
-import useTheme from "hooks/useTheme";
-
-import { ETheme } from "hooks/useTheme";
+import useTheme, { ETheme } from "hooks/useTheme";
 
 import classes from "./ThemeSwitcher.module.css";
 
-export const ThemeSwitcher = () => {
+const ThemeSwitcher = () => {
   const { theme, toggleTheme } = useTheme();
 
   const classNames =
@@ -32,3 +30,5 @@ export const ThemeSwitcher = () => {
     </button>
   );
 };
+
+export default ThemeSwitcher;

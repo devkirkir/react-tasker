@@ -8,7 +8,7 @@ interface IBackdrop extends PropsWithChildren {
   onClick: () => void;
 }
 
-export const Backdrop = (props: IBackdrop) => {
+const Backdrop = (props: IBackdrop) => {
   const { children, onClick } = props;
 
   const ref = useRef<HTMLDivElement>(null);
@@ -35,3 +35,5 @@ export const Backdrop = (props: IBackdrop) => {
     </motion.div>
   );
 };
+
+export default Backdrop;

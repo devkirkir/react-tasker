@@ -2,8 +2,8 @@ import { fireEvent, screen } from "@testing-library/dom";
 import { renderHook, act } from "@testing-library/react";
 import { useState } from "react";
 
-import { ComponentRender } from "utils/tests/ComponentRender";
-import { Modal } from ".";
+import Modal from ".";
+import ComponentRender from "utils/tests/ComponentRender";
 
 describe("Component| Modal", () => {
   test("Modal Mount by State", () => {

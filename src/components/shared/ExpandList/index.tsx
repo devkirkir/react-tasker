@@ -1,13 +1,14 @@
 import { useState } from "react";
-import classes from "./ExpandList.module.css";
+
 import classNames from "classnames";
+import classes from "./ExpandList.module.css";
 
 interface ExpandListProps {
   title: string;
   items: JSX.Element[];
 }
 
-export const ExpandList = (props: ExpandListProps) => {
+const ExpandList = (props: ExpandListProps) => {
   const { items, title } = props;
 
   const [isExpand, setExpand] = useState(false);
@@ -28,3 +29,5 @@ export const ExpandList = (props: ExpandListProps) => {
     </section>
   );
 };
+
+export default ExpandList;

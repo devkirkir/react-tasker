@@ -1,7 +1,8 @@
 import { screen, waitFor } from "@testing-library/dom";
 import { act } from "@testing-library/react";
-import { ComponentRender } from "utils/tests/ComponentRender";
-import { RouterProvider } from ".";
+
+import RouterProvider from ".";
+import ComponentRender from "utils/tests/ComponentRender";
 
 describe("Provider | RouterProvider", () => {
   test("Dashboard Route", async () => {

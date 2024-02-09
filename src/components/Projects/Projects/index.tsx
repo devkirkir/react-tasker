@@ -9,19 +9,19 @@ import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllPr
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
 
-import { ExpandList } from "components/shared/ExpandList";
-import { Button } from "components/shared/Button";
-import { Modal } from "components/shared/Modal";
-import { ELinkTypes, NavigateLink } from "components/shared/NavigateLink";
+import FormAddProject from "components/Forms/FormAddProject";
+import ExpandList from "components/shared/ExpandList";
+import Button from "components/shared/Button";
+import Modal from "components/shared/Modal";
+import NavigateLink from "components/shared/NavigateLink";
 
 import type { IProjects } from "store/slices/projectsSlice/types";
 
 import Plus from "../../../assets/icons/plus.svg";
 
 import classes from "./Projects.module.css";
-import { FormAddProject } from "components/Forms/FormAddProject";
 
-export const Projects = () => {
+const Projects = () => {
   const dispatch = useAppDispatch();
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -46,7 +46,7 @@ export const Projects = () => {
           value={projectTitle}
           path={id}
           icon={icon}
-          type={ELinkTypes.SECONDARY}
+          type="secondary"
           testid={`link-${projectTitle}-${id}`}
           callback={chooseProject}
         />
@@ -79,3 +79,5 @@ export const Projects = () => {
     </section>
   );
 };
+
+export default Projects;

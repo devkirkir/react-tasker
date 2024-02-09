@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
-import { ThemeProvider } from "providers/ThemeProvider";
+import ThemeProvider from "providers/ThemeProvider";
 import useTheme, { ETheme } from "../useTheme";
 
 describe("Hook | useTheme", () => {

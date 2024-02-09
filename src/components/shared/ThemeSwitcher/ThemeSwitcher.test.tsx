@@ -2,8 +2,8 @@ import { fireEvent, screen } from "@testing-library/react";
 
 import App from "components/App";
 
-import { ThemeSwitcher } from ".";
-import { ComponentRender } from "utils/tests/ComponentRender";
+import ThemeSwitcher from ".";
+import ComponentRender from "utils/tests/ComponentRender";
 
 describe("Component | ThemeSwitcher", () => {
   test("Dark to Light", () => {

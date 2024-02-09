@@ -1,9 +1,9 @@
-import { Button } from "components/shared/Button";
-import FormErrorHandler from "components/shared/FormErrorHandler";
-import Input from "components/shared/Input";
-
 import useForm from "hooks/useForm";
 import { type IValidFields } from "hooks/useInputValid";
+
+import Button from "components/shared/Button";
+import FormErrorHandler from "components/shared/FormErrorHandler";
+import Input from "components/shared/Input";
 
 export interface IInput extends IValidFields {
   value: string;
@@ -17,9 +17,9 @@ const initialInputs: IInputs = {
   projectName: { value: "", validSettings: { min: 1, max: 20 } },
 };
 
-export const FormAddProject = () => {
-  const { values, handleChange } = useForm<IInputs>(initialInputs);
-  const { projectName } = values;
+const FormAddProject = () => {
+  const { inputsValues, handleChange } = useForm<IInputs>(initialInputs);
+  const { projectName } = inputsValues;
 
   return (
     <form onChange={handleChange}>
@@ -39,3 +39,5 @@ export const FormAddProject = () => {
     </form>
   );
 };
+
+export default FormAddProject;

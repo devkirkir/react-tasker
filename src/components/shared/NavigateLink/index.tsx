@@ -3,20 +3,18 @@ import { NavLink } from "react-router-dom";
 import type { ENavigationValues, ENavigationPaths } from "../../Sidebar/config/NavigationConfig";
 
 import { TProjectIcon } from "store/slices/projectsSlice/types";
-import { ShapedIcon } from "../ShapedIcon";
+
+import ShapedIcon from "../ShapedIcon";
 
 import classNames from "classnames";
 import classes from "./NavigateLink.module.css";
 
-export enum ELinkTypes {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-}
+type TLinkTypes = "primary" | "secondary";
 
 interface NavigateLinkProps {
   value: ENavigationValues | string;
   path: ENavigationPaths | string;
-  type: ELinkTypes;
+  type: TLinkTypes;
   id?: string;
   icon: JSX.Element | TProjectIcon;
   isSidebarShow?: boolean;
@@ -25,7 +23,7 @@ interface NavigateLinkProps {
   callback?: (id: string) => void;
 }
 
-export const NavigateLink = (props: NavigateLinkProps) => {
+const NavigateLink = (props: NavigateLinkProps) => {
   const { id, value, path, icon, callback = () => {}, type, isSidebarShow = true, testid } = props;
 
   const labelClassNames = classNames(classes.Label, {
@@ -33,13 +31,13 @@ export const NavigateLink = (props: NavigateLinkProps) => {
   });
 
   const linkTypesClassNames = classNames({
-    [classes.PrimaryLink]: type == ELinkTypes.PRIMARY,
-    [classes.SecondaryLink]: type == ELinkTypes.SECONDARY,
+    [classes.PrimaryLink]: type == "primary",
+    [classes.SecondaryLink]: type == "secondary",
   });
 
   const linkTypesActiveClassNames = classNames({
-    [classes.PrimaryLinkActive]: type == ELinkTypes.PRIMARY,
-    [classes.SecondaryLinkActive]: type == ELinkTypes.SECONDARY,
+    [classes.PrimaryLinkActive]: type == "primary",
+    [classes.SecondaryLinkActive]: type == "secondary",
   });
 
   return (
@@ -55,3 +53,5 @@ export const NavigateLink = (props: NavigateLinkProps) => {
     </NavLink>
   );
 };
+
+export default NavigateLink;

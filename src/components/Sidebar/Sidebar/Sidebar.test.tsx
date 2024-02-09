@@ -1,7 +1,7 @@
-import { Sidebar } from ".";
+import Sidebar from ".";
 import { fireEvent, screen } from "@testing-library/react";
 
-import { ComponentRender } from "utils/tests/ComponentRender";
+import ComponentRender from "utils/tests/ComponentRender";
 
 describe("Component | Sidebar", () => {
   test("Hide Sidebar", () => {

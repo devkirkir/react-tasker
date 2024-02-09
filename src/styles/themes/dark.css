@@ -47,6 +47,17 @@
 
   --container-border-color: #262931;
 
+  /* PRIMARY NAVIGATE LINK */
+
+  --primary-navigatelink-color: #29293a;
+  --primary-navigatelink-text-color: #a3a3a3;
+  --primary-navigatelink-text-color-active: #fff;
+
+  /* SECONDARY NAVIGATE LINK */
+
+  --secondary-navigatelink-color-hover: #29293a;
+  --secondary-navigatelink-text-color-active: #777;
+
   /* ERROR COLOR */
 
   --error-color: #ff5353;

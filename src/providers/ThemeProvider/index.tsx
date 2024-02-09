@@ -10,7 +10,7 @@ interface IContextProps {
 
 export const ThemeContext = createContext<IContextProps>({});
 
-export const ThemeProvider = (props: PropsWithChildren) => {
+const ThemeProvider = (props: PropsWithChildren) => {
   const { children } = props;
 
   const currentTheme = localStorage.getItem("theme")
@@ -29,3 +29,5 @@ export const ThemeProvider = (props: PropsWithChildren) => {
 
   return <ThemeContext.Provider value={defaultProps}>{children}</ThemeContext.Provider>;
 };
+
+export default ThemeProvider;
