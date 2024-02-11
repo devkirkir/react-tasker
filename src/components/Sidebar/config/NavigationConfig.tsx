@@ -4,33 +4,33 @@ import { ProjectsPageLazy as ProjectPage } from "pages/ProjectsPage/ProjectsPage
 import DashboardIcon from "../../../assets/icons/NavIcons/DashboardNavIcon.svg";
 import ProjectsNavIcon from "../../../assets/icons/NavIcons/TaskNavIcon.svg";
 
-export enum ENavigationValues {
+export enum NavigationTitles {
   DASHBOARD = "Dashboard",
   PROJECTS = "Projects",
 }
 
-export enum ENavigationPaths {
+export enum NavigationPaths {
   DASHBOARD = "/app/dashboard",
   PROJECTS = "/app/projects",
 }
 
-interface INavigationObject {
-  value: ENavigationValues;
-  path: ENavigationPaths;
+interface NavigationObject {
+  value: NavigationTitles;
+  path: NavigationPaths;
   element: JSX.Element;
   icon: JSX.Element;
 }
 
-export const NavigationConfig: Record<ENavigationValues, INavigationObject> = {
-  [ENavigationValues.DASHBOARD]: {
-    value: ENavigationValues.DASHBOARD,
-    path: ENavigationPaths.DASHBOARD,
+export const NavigationConfig: Record<NavigationTitles, NavigationObject> = {
+  [NavigationTitles.DASHBOARD]: {
+    value: NavigationTitles.DASHBOARD,
+    path: NavigationPaths.DASHBOARD,
     element: <DashboardPage />,
     icon: <DashboardIcon />,
   },
-  [ENavigationValues.PROJECTS]: {
-    value: ENavigationValues.PROJECTS,
-    path: ENavigationPaths.PROJECTS,
+  [NavigationTitles.PROJECTS]: {
+    value: NavigationTitles.PROJECTS,
+    path: NavigationPaths.PROJECTS,
     element: <ProjectPage />,
     icon: <ProjectsNavIcon />,
   },

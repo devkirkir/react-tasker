@@ -7,7 +7,7 @@ import Backdrop from "../Backdrop";
 
 import classes from "./Modal.module.css";
 
-interface IProps extends PropsWithChildren {
+interface ModalProps extends PropsWithChildren {
   toggleHandler: () => void;
   modalName?: string;
   portalContainer?: HTMLElement;
@@ -28,7 +28,7 @@ const slideInAnimation = {
   },
 };
 
-const Modal = (props: IProps) => {
+const Modal = (props: ModalProps) => {
   const {
     children,
     toggleHandler,

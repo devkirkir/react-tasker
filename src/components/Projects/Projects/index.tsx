@@ -15,7 +15,7 @@ import Button from "components/shared/Button";
 import Modal from "components/shared/Modal";
 import NavigateLink from "components/shared/NavigateLink";
 
-import type { IProjects } from "store/slices/projectsSlice/types";
+import type { ProjectsSchema } from "store/slices/projectsSlice/types";
 
 import Plus from "../../../assets/icons/plus.svg";
 
@@ -38,7 +38,7 @@ const Projects = () => {
 
   const chooseProject = (id: string) => dispatch(projectsActions.setCurrentProjectId(id));
 
-  const renderProjects = (projects: IProjects[]) =>
+  const renderProjects = (projects: ProjectsSchema[]) =>
     projects.map(({ projectTitle, id, icon }) => (
       <li key={`project-link-${id}`}>
         <NavigateLink

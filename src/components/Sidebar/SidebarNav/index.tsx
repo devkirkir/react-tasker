@@ -1,6 +1,6 @@
 import NavigateLink from "../../shared/NavigateLink";
 
-import { NavigationConfig, type ENavigationValues } from "../config/NavigationConfig";
+import { NavigationConfig, type NavigationTitles } from "../config/NavigationConfig";
 
 import classes from "./SidebarNav.module.css";
 
@@ -11,7 +11,7 @@ interface SidebarNavProps {
 const SidebarNav = (props: SidebarNavProps) => {
   const { isSidebarShow } = props;
 
-  const renderedLinks = Object.keys(NavigationConfig).map((route: ENavigationValues) => {
+  const renderedLinks = Object.keys(NavigationConfig).map((route: NavigationTitles) => {
     const { value, path, icon } = NavigationConfig[route];
 
     return (

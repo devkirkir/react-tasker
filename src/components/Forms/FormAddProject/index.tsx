@@ -1,48 +1,69 @@
-import useForm, { type IInput } from "hooks/useForm";
+import useForm, { type InputValues } from "hooks/useForm";
 
 import Button from "components/shared/Button";
-import FormErrorHandler from "components/shared/FormErrorHandler";
-import Input from "components/shared/Input";
+import InputErrorMessage from "components/shared/InputErrorMessage";
+import InputText from "components/shared/InputText";
+// import InputSwitcher from "components/shared/InputSwitcher";
 
 import classes from "./FormAddProject.module.css";
 
-interface IFormAddProjectProps {
+interface FormAddProjectProps {
   toggleHandler: () => void;
 }
 
-interface IInputs {
-  projectName: IInput;
+interface Inputs {
+  projectName: InputValues;
+  radioIcons: InputValues;
+  radioColors: InputValues;
 }
 
-const initialInputs: IInputs = {
-  projectName: { value: "", validSettings: { min: 2, max: 15 } },
+// начальные значения инпутов и их настройка валидации
+const initialInputs: Inputs = {
+  projectName: { validSettings: { min: 2, max: 15 } },
+  radioIcons: { value: "" },
+  radioColors: { value: "" },
 };
 
-const FormAddProject = (props: IFormAddProjectProps) => {
+const FormAddProject = (props: FormAddProjectProps) => {
   const { toggleHandler } = props;
 
-  const { inputsValues, handleSubmit, handleChange, submitDisable } =
-    useForm<IInputs>(initialInputs);
+  const { inputsValues, handleSubmit, handleChange, submitButtonDisable } =
+    useForm<Inputs>(initialInputs);
+
   const { projectName } = inputsValues;
 
   return (
     <form className={classes.Form} onSubmit={handleSubmit} onChange={handleChange}>
-      <Input
-        name="projectName"
-        type="text"
-        inputMode="text"
-        placeholder="Project name"
-        defaultValue={projectName.value}
-        iserror={projectName.error ? 1 : undefined}
-        required={true}
+      <InputText
+        inputAttributes={{
+          name: "projectName",
+          type: "text",
+          inputMode: "text",
+          placeholder: "Project name",
+          defaultValue: projectName.value,
+          required: true,
+        }}
+        isError={!!projectName.error}
+        label="Project name"
       />
 
-      {projectName.error && <FormErrorHandler>{projectName.error}</FormErrorHandler>}
+      {projectName.error && <InputErrorMessage>{projectName.error}</InputErrorMessage>}
 
-      <Input name="checkbox" type="checkbox" required={false} defaultChecked={false} />
+      <fieldset className={classes.Fieldset}>
+        <legend>Choose icon for project</legend>
+      </fieldset>
+
+      <fieldset className={classes.Fieldset}>
+        <legend>Choose color for icon</legend>
+      </fieldset>
 
       <div className={classes.Buttons}>
-        <Button isSubmit={true} type="primary" title="Add Project" isDisabled={submitDisable} />
+        <Button
+          isSubmit={true}
+          type="primary"
+          title="Add Project"
+          isDisabled={submitButtonDisable}
+        />
 
         <Button type="secondary" title="Close" callback={toggleHandler} />
       </div>

@@ -38,7 +38,7 @@
   & .Label {
     position: absolute;
     top: -7px;
-    left: 16px;
+    left: 12px;
 
     color: var(--label-color);
     font-weight: 500;

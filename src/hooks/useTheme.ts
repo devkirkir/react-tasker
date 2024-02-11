@@ -2,21 +2,21 @@ import { useContext, useEffect } from "react";
 
 import { ThemeContext } from "providers/ThemeProvider";
 
-export enum ETheme {
+export enum ThemeVariants {
   LIGHT = "light",
   DARK = "dark",
 }
 
-interface IUseTheme {
-  theme: ETheme;
+interface UseTheme {
+  theme: ThemeVariants;
   toggleTheme: () => void;
 }
 
-const useTheme = (): IUseTheme => {
+const useTheme = (): UseTheme => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   const toggleTheme = () => {
-    theme === ETheme.DARK ? setTheme(ETheme.LIGHT) : setTheme(ETheme.DARK);
+    theme === ThemeVariants.DARK ? setTheme(ThemeVariants.LIGHT) : setTheme(ThemeVariants.DARK);
   };
 
   useEffect(() => localStorage.setItem("theme", theme), [theme]);

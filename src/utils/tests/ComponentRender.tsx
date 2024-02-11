@@ -5,18 +5,18 @@ import { DeepPartial } from "@reduxjs/toolkit";
 import ThemeProvider from "providers/ThemeProvider";
 import ReduxProvider from "providers/ReduxProvider";
 
-import { IStateSchema } from "store/types/StateSchema";
+import { StateSchema } from "store/types/StateSchema";
 
-interface IComponentRenderOptions {
-  initialState?: DeepPartial<IStateSchema>;
+interface ComponentRenderOptions {
+  initialState?: DeepPartial<StateSchema>;
   route?: string;
 }
 
-function ComponentRender(component: JSX.Element, options: IComponentRenderOptions = {}) {
+function ComponentRender(component: JSX.Element, options: ComponentRenderOptions = {}) {
   const { route = "/app/dashboard", initialState = {} } = options;
 
   return render(
-    <ReduxProvider initialState={initialState as IStateSchema}>
+    <ReduxProvider initialState={initialState as StateSchema}>
       <ThemeProvider>
         <MemoryRouter initialEntries={[route]}>{component}</MemoryRouter>
       </ThemeProvider>

@@ -1,10 +1,10 @@
 import { addNewProject } from ".";
 import { projectsReducer } from "../..";
-import { EProjectsLoading, IProjects, type IProjectsSchema } from "../../types";
+import { ProjectsLoadingStatuses, ProjectsSchema, type ProjectsSliceSchema } from "../../types";
 
-const initialState: IProjectsSchema = {
+const initialState: ProjectsSliceSchema = {
   projects: [],
-  loading: EProjectsLoading.PENDING,
+  loading: ProjectsLoadingStatuses.PENDING,
   error: false,
   currentProjectId: "id",
 };
@@ -13,17 +13,17 @@ describe("Projects | Service addNewProject", () => {
   test("addNewProject.pending", () => {
     const state = projectsReducer(initialState, addNewProject.pending);
 
-    expect(state.loading).toBe(EProjectsLoading.PENDING);
+    expect(state.loading).toBe(ProjectsLoadingStatuses.PENDING);
   });
 
   test("addNewProject.rejected", () => {
     const state = projectsReducer(initialState, addNewProject.rejected);
 
-    expect(state.loading).toBe(EProjectsLoading.REJECTED);
+    expect(state.loading).toBe(ProjectsLoadingStatuses.REJECTED);
   });
 
   test("addNewProject.fulfilled", () => {
-    const mock: IProjects = {
+    const mock: ProjectsSchema = {
       id: "project-id",
       projectTitle: "Post",
       favorite: false,
@@ -35,7 +35,7 @@ describe("Projects | Service addNewProject", () => {
 
     const state = projectsReducer(initialState, addNewProject.fulfilled(mock, null, null));
 
-    expect(state.loading).toBe(EProjectsLoading.FULFILLED);
+    expect(state.loading).toBe(ProjectsLoadingStatuses.FULFILLED);
     expect(state.projects[0]).toMatchObject({
       id: "project-id",
       projectTitle: "Post",

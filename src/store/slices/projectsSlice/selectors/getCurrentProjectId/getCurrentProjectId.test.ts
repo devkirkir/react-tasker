@@ -1,15 +1,15 @@
 import { DeepPartial } from "@reduxjs/toolkit";
-import { IStateSchema } from "store/types/StateSchema";
+import { StateSchema } from "store/types/StateSchema";
 import { getCurrentProjectId } from ".";
 
 describe("Projects | Selector getFavoritedProjects", () => {
   test("Get Project Id", () => {
-    const initialState: DeepPartial<IStateSchema> = {
+    const initialState: DeepPartial<StateSchema> = {
       projects: {
         currentProjectId: "project-id",
       },
     };
 
-    expect(getCurrentProjectId(initialState as IStateSchema)).toBe("project-id");
+    expect(getCurrentProjectId(initialState as StateSchema)).toBe("project-id");
   });
 });

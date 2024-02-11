@@ -1,26 +1,26 @@
-export enum EProjectsLoading {
+export enum ProjectsLoadingStatuses {
   PENDING = "pending",
   FULFILLED = "fulfilled",
   REJECTED = "rejected",
 }
 
-type TIconType = "star" | "circle" | "triangle" | "square";
+type IconType = "star" | "circle" | "triangle" | "square";
 
-export type TProjectIcon = {
-  iconType: TIconType;
+export type ProjectIcon = {
+  iconType: IconType;
   color: string;
 };
 
-export interface IProjects {
+export interface ProjectsSchema {
   id: string;
   projectTitle: string;
   favorite: boolean;
-  icon: TProjectIcon;
+  icon: ProjectIcon;
 }
 
-export interface IProjectsSchema {
-  projects: IProjects[];
-  loading: EProjectsLoading;
+export interface ProjectsSliceSchema {
+  projects: ProjectsSchema[];
+  loading: ProjectsLoadingStatuses;
   error: boolean;
   currentProjectId: string | null;
 }

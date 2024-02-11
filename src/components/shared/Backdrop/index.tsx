@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 import classes from "./Backdrop.module.css";
 
-interface IBackdrop extends PropsWithChildren {
+interface BackdropProps extends PropsWithChildren {
   onMouseDown: () => void;
 }
 
-const Backdrop = (props: IBackdrop) => {
+const Backdrop = (props: BackdropProps) => {
   const { children, onMouseDown } = props;
 
   const ref = useRef<HTMLDivElement>(null);

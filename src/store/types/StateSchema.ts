@@ -1,5 +1,5 @@
-import type { IProjectsSchema } from "store/slices/projectsSlice/types";
+import type { ProjectsSliceSchema } from "store/slices/projectsSlice/types";
 
-export interface IStateSchema {
-  projects: IProjectsSchema;
+export interface StateSchema {
+  projects: ProjectsSliceSchema;
 }

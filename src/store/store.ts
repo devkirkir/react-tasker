@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { projectsReducer } from "store/slices/projectsSlice";
 
-import type { IStateSchema } from "./types/StateSchema";
+import type { StateSchema } from "./types/StateSchema";
 
-export const configStore = (preloadedState?: IStateSchema) => {
+export const configStore = (preloadedState?: StateSchema) => {
   return configureStore({
     reducer: {
       projects: projectsReducer,

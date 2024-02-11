@@ -2,23 +2,23 @@ import React, { ErrorInfo, PropsWithChildren } from "react";
 
 import Logo from "components/shared/Logo";
 
-import { ETheme } from "hooks/useTheme";
+import { ThemeVariants } from "hooks/useTheme";
 
 import "./ErrorBoundary.css";
 
-interface IErrorBoundaryState {
+interface ErrorBoundaryState {
   hasError: boolean;
-  theme: ETheme;
+  theme: ThemeVariants;
 }
 
-class ErrorBoundary extends React.Component<PropsWithChildren, IErrorBoundaryState> {
+class ErrorBoundary extends React.Component<PropsWithChildren, ErrorBoundaryState> {
   constructor(props: PropsWithChildren) {
     super(props);
     this.state = {
       hasError: false,
       theme: localStorage.getItem("theme")
-        ? (localStorage.getItem("theme") as ETheme)
-        : ETheme.DARK,
+        ? (localStorage.getItem("theme") as ThemeVariants)
+        : ThemeVariants.DARK,
     };
   }
 

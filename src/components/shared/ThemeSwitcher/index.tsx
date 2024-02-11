@@ -1,4 +1,4 @@
-import useTheme, { ETheme } from "hooks/useTheme";
+import useTheme, { ThemeVariants } from "hooks/useTheme";
 
 import classes from "./ThemeSwitcher.module.css";
 
@@ -6,7 +6,7 @@ const ThemeSwitcher = () => {
   const { theme, toggleTheme } = useTheme();
 
   const classNames =
-    theme == ETheme.LIGHT
+    theme == ThemeVariants.LIGHT
       ? `${classes.toggle} ${classes.toggleLight}`
       : `${classes.toggle} ${classes.toggleDark}`;
 

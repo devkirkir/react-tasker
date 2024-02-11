@@ -1,25 +1,25 @@
 import { PropsWithChildren, createContext, useMemo, useState } from "react";
-import { ETheme } from "hooks/useTheme";
+import { ThemeVariants } from "hooks/useTheme";
 
-interface IContextProps {
+interface ThemeContextProps {
   // eslint-disable-next-line
-  theme?: ETheme;
+  theme?: ThemeVariants;
   // eslint-disable-next-line
-  setTheme?: (theme: ETheme) => void;
+  setTheme?: (theme: ThemeVariants) => void;
 }
 
-export const ThemeContext = createContext<IContextProps>({});
+export const ThemeContext = createContext<ThemeContextProps>({});
 
 const ThemeProvider = (props: PropsWithChildren) => {
   const { children } = props;
 
   const currentTheme = localStorage.getItem("theme")
-    ? (localStorage.getItem("theme") as ETheme)
-    : ETheme.DARK;
+    ? (localStorage.getItem("theme") as ThemeVariants)
+    : ThemeVariants.DARK;
 
-  const [theme, setTheme] = useState<ETheme>(currentTheme);
+  const [theme, setTheme] = useState<ThemeVariants>(currentTheme);
 
-  const defaultProps: IContextProps = useMemo(
+  const defaultProps: ThemeContextProps = useMemo(
     () => ({
       theme,
       setTheme,

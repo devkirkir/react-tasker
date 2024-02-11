@@ -1,16 +1,16 @@
-export type TValidSettings = {
+export type ValidSettings = {
   min?: number;
   max?: number;
   isEmail?: boolean;
 };
 
-export interface IValidFields {
-  validSettings?: TValidSettings | undefined;
+export interface ValidFields {
+  validSettings?: ValidSettings | undefined;
   error?: string;
 }
 
 const useInputValid = () => {
-  const isValid = (input: HTMLFormElement, settings: TValidSettings) => {
+  const isValid = (input: HTMLFormElement, settings: ValidSettings) => {
     const { value } = input;
 
     for (const setting in settings) {

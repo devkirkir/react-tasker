@@ -1,11 +1,11 @@
 import { projectsActions, projectsReducer } from ".";
-import { EProjectsLoading, type IProjectsSchema } from "./types";
+import { ProjectsLoadingStatuses, type ProjectsSliceSchema } from "./types";
 
 describe("Projects | projectsSlice", () => {
   test("Action setCurrentProjectId", () => {
-    const initialState: IProjectsSchema = {
+    const initialState: ProjectsSliceSchema = {
       projects: [],
-      loading: EProjectsLoading.PENDING,
+      loading: ProjectsLoadingStatuses.PENDING,
       error: false,
       currentProjectId: "id",
     };

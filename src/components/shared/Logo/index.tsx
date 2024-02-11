@@ -9,7 +9,7 @@ interface LogoProps {
   isSidebarShow?: boolean;
 }
 
-const Logo = (props: LogoProps): JSX.Element => {
+const Logo = (props: LogoProps) => {
   const { isSidebarShow = true } = props;
 
   const toggleLogoInSidebar = classNames(classes.Logo, {

@@ -2,11 +2,11 @@ import { memo } from "react";
 
 import { ShapedIcons } from "./config/ShapedIconConfig";
 
-import type { TProjectIcon } from "store/slices/projectsSlice/types";
+import type { ProjectIcon } from "store/slices/projectsSlice/types";
 
 import classes from "./ShapedIcon.module.css";
 
-const ShapedIcon = memo((props: TProjectIcon) => {
+const ShapedIcon = memo((props: ProjectIcon) => {
   const { iconType, color } = props;
 
   return <div className={`${classes.ShapedIcon} ${classes[color]}`}>{ShapedIcons[iconType]}</div>;

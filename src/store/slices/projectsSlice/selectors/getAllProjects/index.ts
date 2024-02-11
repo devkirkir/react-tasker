@@ -1,3 +1,3 @@
-import { IStateSchema } from "store/types/StateSchema";
+import { StateSchema } from "store/types/StateSchema";
 
-export const getAllProjects = (state: IStateSchema) => state.projects.projects;
+export const getAllProjects = (state: StateSchema) => state.projects.projects;

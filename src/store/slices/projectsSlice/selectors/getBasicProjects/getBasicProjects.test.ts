@@ -1,10 +1,10 @@
 import { DeepPartial } from "@reduxjs/toolkit";
-import { IStateSchema } from "store/types/StateSchema";
+import { StateSchema } from "store/types/StateSchema";
 import { getBasicProjects } from ".";
 
 describe("Projects | Selector getBasicProjects", () => {
   test("Get Basic Projects", () => {
-    const initialState: DeepPartial<IStateSchema> = {
+    const initialState: DeepPartial<StateSchema> = {
       projects: {
         projects: [
           {
@@ -29,7 +29,7 @@ describe("Projects | Selector getBasicProjects", () => {
       },
     };
 
-    expect(getBasicProjects(initialState as IStateSchema)).toMatchObject([
+    expect(getBasicProjects(initialState as StateSchema)).toMatchObject([
       {
         id: "id",
         projectTitle: "title",

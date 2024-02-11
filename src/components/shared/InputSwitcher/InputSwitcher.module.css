@@ -1,0 +1,25 @@
+.InputSwitcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+
+  padding: 12px;
+
+  transition: border 0.2s linear;
+  outline: var(--primary-color);
+  box-sizing: border-box;
+
+  &:has(input:checked) {
+    border-color: var(--primary-color);
+  }
+
+  & input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}

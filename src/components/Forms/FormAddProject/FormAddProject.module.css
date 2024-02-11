@@ -1,14 +1,40 @@
 .Form {
   display: flex;
   flex-direction: column;
+  gap: 12px;
 
   margin-top: 26px;
+
+  & .Fieldset {
+    display: flex;
+    gap: 6px;
+
+    border-radius: 5px;
+    border: 2px solid var(--border-color);
+
+    padding: 12px;
+
+    overflow: hidden;
+
+    & legend {
+      color: var(--label-color);
+      font-size: 12px;
+      font-weight: 500;
+
+      background-color: var(--bg-color);
+
+      transition: color 0.2s linear;
+      padding: 0 4px;
+    }
+    & input[type="color"] {
+      background-color: transparent;
+      border: none;
+    }
+  }
 
   & .Buttons {
     display: flex;
     gap: 8px;
-
-    margin-top: 16px;
 
     & button:nth-child(n) {
       flex: 1 1 100px;

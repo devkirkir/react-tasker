@@ -2,10 +2,10 @@ import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 import { configStore } from "store/store";
 
-import type { IStateSchema } from "store/types/StateSchema";
+import type { StateSchema } from "store/types/StateSchema";
 
 interface ReduxProviderProps extends PropsWithChildren {
-  initialState?: IStateSchema;
+  initialState?: StateSchema;
 }
 
 const ReduxProvider = (props: ReduxProviderProps) => {

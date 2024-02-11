@@ -1,22 +1,22 @@
 import { NavLink } from "react-router-dom";
 
-import type { ENavigationValues, ENavigationPaths } from "../../Sidebar/config/NavigationConfig";
+import type { NavigationTitles, NavigationPaths } from "../../Sidebar/config/NavigationConfig";
 
-import { TProjectIcon } from "store/slices/projectsSlice/types";
+import { ProjectIcon } from "store/slices/projectsSlice/types";
 
 import ShapedIcon from "../ShapedIcon";
 
 import classNames from "classnames";
 import classes from "./NavigateLink.module.css";
 
-type TLinkTypes = "primary" | "secondary";
+type LinkTypes = "primary" | "secondary";
 
 interface NavigateLinkProps {
-  value: ENavigationValues | string;
-  path: ENavigationPaths | string;
-  type: TLinkTypes;
+  value: NavigationTitles | string;
+  path: NavigationPaths | string;
+  type: LinkTypes;
   id?: string;
-  icon: JSX.Element | TProjectIcon;
+  icon: JSX.Element | ProjectIcon;
   isSidebarShow?: boolean;
   testid?: string;
   // callback - для chooseProject в Projects

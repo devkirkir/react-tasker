@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, memo } from "react";
 
 import classes from "./Button.module.css";
 import classNames from "classnames";
@@ -11,7 +11,7 @@ interface ButtonProps extends PropsWithChildren {
   callback?: () => void;
 }
 
-const Button = (props: ButtonProps) => {
+const Button = memo((props: ButtonProps) => {
   const { title, type, isSubmit = false, isDisabled = false, callback, children } = props;
 
   const disabledClassNames = classNames(classes.Button, classes[type], {
@@ -29,6 +29,8 @@ const Button = (props: ButtonProps) => {
       <span>{title}</span>
     </button>
   );
-};
+});
+
+Button.displayName = "Button";
 
 export default Button;

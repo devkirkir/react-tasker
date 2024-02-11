@@ -1,10 +1,10 @@
 import { DeepPartial } from "@reduxjs/toolkit";
-import { IStateSchema } from "store/types/StateSchema";
+import { StateSchema } from "store/types/StateSchema";
 import { getFavoritedProjects } from ".";
 
 describe("Projects | Selector getFavoritedProjects", () => {
   test("Get Favorited Projects", () => {
-    const initialState: DeepPartial<IStateSchema> = {
+    const initialState: DeepPartial<StateSchema> = {
       projects: {
         projects: [
           {
@@ -29,7 +29,7 @@ describe("Projects | Selector getFavoritedProjects", () => {
       },
     };
 
-    expect(getFavoritedProjects(initialState as IStateSchema)).toMatchObject([
+    expect(getFavoritedProjects(initialState as StateSchema)).toMatchObject([
       {
         id: "id2",
         projectTitle: "title",
