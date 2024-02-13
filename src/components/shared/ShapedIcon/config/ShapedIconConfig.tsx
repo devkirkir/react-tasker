@@ -1,32 +1,13 @@
-import Triangle from "../../../../assets/icons/ProjectsIcons/Triangle.svg";
-import Circle from "../../../../assets/icons/ProjectsIcons/Circle.svg";
-import Star from "../../../../assets/icons/ProjectsIcons/Star.svg";
-import Square from "../../../../assets/icons/ProjectsIcons/Square.svg";
+import TriangleIcon from "components/shared/Icons/ProjectIcons/TriangleIcon";
+import CircleIcon from "components/shared/Icons/ProjectIcons/CircleIcon";
+import StarIcon from "components/shared/Icons/ProjectIcons/StarIcon";
+import SquareIcon from "components/shared/Icons/ProjectIcons/SquareIcon";
 
-export type TColors = "green" | "orange" | "blue" | "pink" | "purple";
+export type ShapedIcons = "triangle" | "circle" | "star" | "square";
 
-export enum EIcons {
-  TRIANGLE = "triangle",
-  CIRCLE = "circle",
-  STAR = "star",
-  SQUARE = "square",
-}
-
-// export const ShapedIconsColors: TColors[] = ["green", "orange", "blue", "pink", "purple"];
-
-export const ShapedIconsColors: Record<TColors, string> = {
-  green: "#2a7de1",
-  orange: "#bc822b",
-  blue: "#2a7de1",
-  pink: "#de4fa5",
-  purple: "#7864f1",
-};
-
-export type TIcons = "triangle" | "circle" | "star" | "square";
-
-export const ShapedIcons: Record<TIcons, JSX.Element> = {
-  triangle: <Triangle />,
-  circle: <Circle />,
-  star: <Star />,
-  square: <Square />,
+export const ShapedIconsComponents: Record<ShapedIcons, JSX.Element> = {
+  triangle: <TriangleIcon />,
+  circle: <CircleIcon />,
+  star: <StarIcon />,
+  square: <SquareIcon />,
 };

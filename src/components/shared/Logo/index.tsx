@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import LogoIcon from "assets/icons/Logo.svg";
+import LogoIcon from "../Icons/LogoIcon";
 
 import classNames from "classnames";
 import classes from "./Logo.module.css";

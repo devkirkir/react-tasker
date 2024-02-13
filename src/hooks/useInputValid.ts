@@ -36,7 +36,7 @@ const useInputValid = () => {
     return false;
   };
 
-  return { isValid };
+  return isValid;
 };
 
 export default useInputValid;

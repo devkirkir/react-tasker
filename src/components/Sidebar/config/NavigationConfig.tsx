@@ -1,8 +1,8 @@
 import { DashboardPageLazy as DashboardPage } from "pages/DashboardPage/DashboardPage.lazy";
 import { ProjectsPageLazy as ProjectPage } from "pages/ProjectsPage/ProjectsPage.lazy";
 
-import DashboardIcon from "../../../assets/icons/NavIcons/DashboardNavIcon.svg";
-import ProjectsNavIcon from "../../../assets/icons/NavIcons/TaskNavIcon.svg";
+import DashboardIcon from "components/shared/Icons/NavIcons/DashboardIcon";
+import ProjectsIcon from "components/shared/Icons/NavIcons/ProjectsIcon";
 
 export enum NavigationTitles {
   DASHBOARD = "Dashboard",
@@ -32,6 +32,6 @@ export const NavigationConfig: Record<NavigationTitles, NavigationObject> = {
     value: NavigationTitles.PROJECTS,
     path: NavigationPaths.PROJECTS,
     element: <ProjectPage />,
-    icon: <ProjectsNavIcon />,
+    icon: <ProjectsIcon />,
   },
 };

@@ -6,7 +6,7 @@
       "favorite": true,
       "icon": {
         "iconType": "circle",
-        "color": "green"
+        "color": "#2a7de1"
       }
     },
     {
@@ -15,7 +15,7 @@
       "favorite": true,
       "icon": {
         "iconType": "square",
-        "color": "orange"
+        "color": "#bc822b"
       }
     },
     {
@@ -24,7 +24,7 @@
       "favorite": false,
       "icon": {
         "iconType": "triangle",
-        "color": "purple"
+        "color": "#7864f1"
       }
     },
     {
@@ -33,7 +33,7 @@
       "favorite": false,
       "icon": {
         "iconType": "star",
-        "color": "pink"
+        "color": "#de4fa5"
       }
     },
     {
@@ -42,7 +42,7 @@
       "favorite": false,
       "icon": {
         "iconType": "circle",
-        "color": "blue"
+        "color": "#2a7de1"
       }
     }
   ]

@@ -15,9 +15,9 @@ import Button from "components/shared/Button";
 import Modal from "components/shared/Modal";
 import NavigateLink from "components/shared/NavigateLink";
 
-import type { ProjectsSchema } from "store/slices/projectsSlice/types";
+import PlusIcon from "components/shared/Icons/PlusIcon";
 
-import Plus from "../../../assets/icons/plus.svg";
+import type { ProjectsSchema } from "store/slices/projectsSlice/types";
 
 import classes from "./Projects.module.css";
 
@@ -56,7 +56,7 @@ const Projects = () => {
   return (
     <section className={classes.Projects}>
       <div>
-        {Boolean(favoriteProjects.length) && (
+        {!!favoriteProjects.length && (
           <ExpandList title="favorites" items={renderProjects(favoriteProjects)} />
         )}
 
@@ -65,7 +65,7 @@ const Projects = () => {
 
       <>
         <Button title="Add Project" type="secondary" callback={toggleModalHandler}>
-          <Plus />
+          <PlusIcon />
         </Button>
 
         <AnimatePresence>

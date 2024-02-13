@@ -11,10 +11,8 @@ const useForm = <T>(initState: T) => {
   const [inputsValues, setInputsValues] = useState<T>(initState);
   const [submitButtonDisable, setSubmitButtonDisable] = useState(true);
 
-  const { isValid } = useInputValid();
-
   // проверяем на ошибки все поля, и меняем состояние
-  const checkErrors = () => {
+  const changeStateSubmitByErrors = () => {
     for (const key in inputsValues) {
       const { error }: ValidFields = inputsValues[key];
 
@@ -27,11 +25,13 @@ const useForm = <T>(initState: T) => {
     }
   };
 
-  useEffect(() => checkErrors(), [inputsValues]);
+  useEffect(() => changeStateSubmitByErrors(), [inputsValues]);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
   };
+
+  const isValid = useInputValid();
 
   const handleChange = (event: ChangeEvent<HTMLFormElement>) => {
     const { name, value } = event.target;
