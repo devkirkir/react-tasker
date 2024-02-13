@@ -10,7 +10,7 @@ export interface ValidFields {
 }
 
 const useInputValid = () => {
-  const isValid = (input: HTMLFormElement, settings: ValidSettings) => {
+  const isValid = (input: HTMLFormElement | HTMLInputElement, settings: ValidSettings) => {
     const { value } = input;
 
     for (const setting in settings) {
