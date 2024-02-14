@@ -3,9 +3,10 @@ import useForm, { type InputValues } from "hooks/useForm";
 import Button from "components/shared/Button";
 import InputErrorMessage from "components/shared/InputErrorMessage";
 import InputText from "components/shared/InputText";
-// import InputSwitcher from "components/shared/InputSwitcher";
 
 import classes from "./FormAddProject.module.css";
+import InputSwitcher from "components/shared/InputSwitcher";
+import { ShapedIconsComponents } from "components/shared/ShapedIcon/config/ShapedIconConfig";
 
 interface FormAddProjectProps {
   toggleHandler: () => void;
@@ -32,6 +33,44 @@ const FormAddProject = (props: FormAddProjectProps) => {
 
   const { projectName } = inputsValues;
 
+  const renderIconRadios = Object.entries(ShapedIconsComponents).map(([name, icon], index) => (
+    <InputSwitcher
+      inputAttributes={{
+        name: "radioIcons",
+        type: "radio",
+        defaultValue: name,
+        required: true,
+      }}
+      key={`radio-${name}-formAddProject-${index}`}
+    >
+      {icon}
+    </InputSwitcher>
+  ));
+
+  // const renderRadios = mapObjectOrArrayToComponent(
+  //   ShapedIconsComponents,
+  //   InputSwitcher,
+  //   {
+  //     inputAttributes: {
+  //       type: "radio",
+  //       required: true,
+  //     },
+  //   },
+  //   ["name", "defaultValue"],
+  // );
+
+  //   <InputSwitcher
+  //   inputAttributes={{
+  //     name: inputName,
+  //     type: "radio",
+  //     defaultValue: name,
+  //     required: true,
+  //   }}
+  //   key={`radio-${name}-formAddProject-${index}`}
+  // >
+  //   {elem}
+  // </InputSwitcher>
+
   return (
     <form className={classes.Form} onSubmit={handleSubmit} onChange={handleChange}>
       <InputText
@@ -51,6 +90,7 @@ const FormAddProject = (props: FormAddProjectProps) => {
 
       <fieldset className={classes.Fieldset}>
         <legend>Choose icon for project</legend>
+        {renderIconRadios}
       </fieldset>
 
       <fieldset className={classes.Fieldset}>

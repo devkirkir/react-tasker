@@ -1,5 +1,3 @@
-import { PropsWithChildren } from "react";
-
 import classes from "./InputSwitcher.module.css";
 
 type InputSwitcherTypes = "radio" | "checkbox";
@@ -12,7 +10,8 @@ interface InputSwitcherAttributes {
   defaultChecked?: boolean;
 }
 
-interface InputSwitcherProps extends PropsWithChildren {
+interface InputSwitcherProps {
+  children: JSX.Element;
   inputAttributes: InputSwitcherAttributes;
   isError?: boolean;
 }
