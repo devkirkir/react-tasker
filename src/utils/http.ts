@@ -1,4 +1,4 @@
-type HttpMethods = "GET" | "POST";
+// type HttpMethods = "GET" | "POST";
 
 const initialHttpOptions = {
   method: "GET",
