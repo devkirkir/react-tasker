@@ -1,14 +1,17 @@
+import {
+  ShapedIconsColors,
+  ShapedIcons,
+} from "components/shared/ShapedIcon/config/ShapedIconConfig";
+
 export enum ProjectsLoadingStatuses {
   PENDING = "pending",
   FULFILLED = "fulfilled",
   REJECTED = "rejected",
 }
 
-type IconType = "star" | "circle" | "triangle" | "square";
-
 export type ProjectIcon = {
-  iconType: IconType;
-  color: string;
+  iconType: ShapedIcons;
+  color: ShapedIconsColors;
 };
 
 export interface ProjectsSchema {

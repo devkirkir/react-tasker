@@ -27,7 +27,7 @@ describe("Projects | Service fetchAllProjects", () => {
       id: "id",
       projectTitle: "title",
       favorite: false,
-      icon: { color: "green", iconType: "star" },
+      icon: { color: "#de4fa5", iconType: "star" },
     };
 
     const state = projectsReducer(initialState, fetchAllProjects.fulfilled(mock, null));
@@ -38,7 +38,7 @@ describe("Projects | Service fetchAllProjects", () => {
       id: "id",
       projectTitle: "title",
       favorite: false,
-      icon: { color: "green", iconType: "star" },
+      icon: { color: "#de4fa5", iconType: "star" },
     });
   });
 });

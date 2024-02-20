@@ -27,8 +27,10 @@ const useForm = <T>(initState: T) => {
 
   useEffect(() => changeStateSubmitByErrors(), [inputsValues]);
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = (event: FormEvent, callback: () => void) => {
     event.preventDefault();
+
+    callback();
   };
 
   const isValid = useInputValid();

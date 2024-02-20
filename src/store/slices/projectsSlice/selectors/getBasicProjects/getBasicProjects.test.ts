@@ -13,7 +13,7 @@ describe("Projects | Selector getBasicProjects", () => {
             favorite: false,
             icon: {
               iconType: "star",
-              color: "green",
+              color: "#bc822b",
             },
           },
           {
@@ -22,7 +22,7 @@ describe("Projects | Selector getBasicProjects", () => {
             favorite: true,
             icon: {
               iconType: "circle",
-              color: "green",
+              color: "#bc822b",
             },
           },
         ],
@@ -36,7 +36,7 @@ describe("Projects | Selector getBasicProjects", () => {
         favorite: false,
         icon: {
           iconType: "star",
-          color: "green",
+          color: "#bc822b",
         },
       },
     ]);

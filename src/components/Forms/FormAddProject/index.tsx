@@ -6,7 +6,14 @@ import InputText from "components/shared/InputText";
 
 import classes from "./FormAddProject.module.css";
 import InputSwitcher from "components/shared/InputSwitcher";
-import { ShapedIconsComponents } from "components/shared/ShapedIcon/config/ShapedIconConfig";
+import {
+  ShapedIcons,
+  ShapedIconsColors,
+  ShapedIconsComponents,
+} from "components/shared/ShapedIcon/config/ShapedIconConfig";
+import { useAppDispatch } from "hooks/useAppDispatch";
+import { addNewProject } from "store/slices/projectsSlice/servcies/addNewProject";
+import { ProjectsSchema } from "store/slices/projectsSlice/types";
 
 interface FormAddProjectProps {
   toggleHandler: () => void;
@@ -27,11 +34,12 @@ const initialInputs: Inputs = {
 
 const FormAddProject = (props: FormAddProjectProps) => {
   const { toggleHandler } = props;
+  const dispatch = useAppDispatch();
 
   const { inputsValues, handleSubmit, handleChange, submitButtonDisable } =
     useForm<Inputs>(initialInputs);
 
-  const { projectName } = inputsValues;
+  const { projectName, radioIcons, radioColors } = inputsValues;
 
   const renderIconRadios = Object.entries(ShapedIconsComponents).map(([name, icon], index) => (
     <InputSwitcher
@@ -47,32 +55,44 @@ const FormAddProject = (props: FormAddProjectProps) => {
     </InputSwitcher>
   ));
 
-  // const renderRadios = mapObjectOrArrayToComponent(
-  //   ShapedIconsComponents,
-  //   InputSwitcher,
-  //   {
-  //     inputAttributes: {
-  //       type: "radio",
-  //       required: true,
-  //     },
-  //   },
-  //   ["name", "defaultValue"],
-  // );
+  const renderIconColors = ShapedIconsColors.map((color: ShapedIconsColors, index) => (
+    <InputSwitcher
+      inputAttributes={{
+        name: "radioColors",
+        type: "radio",
+        defaultValue: color,
+        required: true,
+      }}
+      key={`radio-${color}-formAddProject-${index}`}
+    >
+      <div
+        style={{ width: "16px", height: "16px", borderRadius: "50%", backgroundColor: color }}
+      ></div>
+    </InputSwitcher>
+  ));
 
-  //   <InputSwitcher
-  //   inputAttributes={{
-  //     name: inputName,
-  //     type: "radio",
-  //     defaultValue: name,
-  //     required: true,
-  //   }}
-  //   key={`radio-${name}-formAddProject-${index}`}
-  // >
-  //   {elem}
-  // </InputSwitcher>
+  const onSubmit = async () => {
+    const newProject: ProjectsSchema = {
+      id: `${projectName.value}-${Date.now()}`,
+      projectTitle: projectName.value,
+      favorite: false,
+      icon: {
+        iconType: radioIcons.value as ShapedIcons,
+        color: radioColors.value as ShapedIconsColors,
+      },
+    };
+
+    const result = dispatch(addNewProject(newProject));
+
+    // console.log(dispatch(addNewProject(newProject)));
+  };
 
   return (
-    <form className={classes.Form} onSubmit={handleSubmit} onChange={handleChange}>
+    <form
+      className={classes.Form}
+      onSubmit={(event) => handleSubmit(event, onSubmit)}
+      onChange={handleChange}
+    >
       <InputText
         inputAttributes={{
           name: "projectName",
@@ -95,6 +115,7 @@ const FormAddProject = (props: FormAddProjectProps) => {
 
       <fieldset className={classes.Fieldset}>
         <legend>Choose color for icon</legend>
+        {renderIconColors}
       </fieldset>
 
       <div className={classes.Buttons}>
