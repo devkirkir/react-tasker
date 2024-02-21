@@ -1,23 +1,23 @@
 .light {
   /** BACKGROUND COLORS **/
 
-  --bg-color: #fff;
-  --header-color: #fff;
+  --bg-color: #f1f1f1;
 
   /** TEXT COLORS **/
 
   --text-color: #272a34;
   --text-color-hover: #3e85ff;
 
-  --secondary-text-color: #a3a3a3;
+  --secondary-text-color: #888888;
 
-  --label-color: #858585;
+  --label-color: #888888;
 
-  --backdrop-hint-color: rgba(255, 255, 255, 0.7);
+  --backdrop-hint-color: rgba(255, 255, 255, 0.5);
 
   /** BORDER COLORS **/
 
-  --border-color: #eee;
+  --border-color: #e9e9e9;
+  --border-color-hover: #dbdbdb;
 
   /** PRIMARY COLORS **/
 
@@ -38,29 +38,22 @@
 
   /** SECONDARY BUTTON COLORS **/
 
-  --secondary-button-color: #eee;
-  --secondary-button-color-hover: #f1f1f1;
-  --secondary-button-color-active: #e2e2e2;
+  --secondary-button-color: #dbdbdb;
+  --secondary-button-color-hover: #cecece;
 
-  --border-color: #e0e0e0;
-
-  --secondary-button-text-color: #9b9b9b;
+  --secondary-button-text-color: #888888;
   --secondary-button-text-color-active: #686868;
 
   /* PRIMARY NAVIGATE LINK */
 
   --primary-navigatelink-color: #3e85ff;
-  --primary-navigatelink-text-color: #a3a3a3;
+  --primary-navigatelink-text-color: #888888;
   --primary-navigatelink-text-color-active: #fff;
 
   /* SECONDARY NAVIGATE LINK */
 
-  --secondary-navigatelink-color-hover: #f1f1f1;
+  --secondary-navigatelink-color-hover: #e4e4e4;
   --secondary-navigatelink-text-color-active: #686868;
-
-  /* CONTAINER BORDER */
-
-  --container-border-color: #eee;
 
   /* ERROR COLOR */
 

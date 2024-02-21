@@ -2,7 +2,6 @@
   /** BACKGROUND COLORS **/
 
   --bg-color: #1b1c23;
-  --header-color: #1b1c23;
 
   /** TEXT COLORS **/
 
@@ -41,16 +40,9 @@
 
   --secondary-button-color: #20222b;
   --secondary-button-color-hover: #29293a;
-  --secondary-button-color-active: #242435;
-
-  --border-color: #262931;
 
   --secondary-button-text-color: #777;
   --secondary-button-text-color-active: #fff;
-
-  /* CONTAINER BORDER */
-
-  --container-border-color: #262931;
 
   /* PRIMARY NAVIGATE LINK */
 
