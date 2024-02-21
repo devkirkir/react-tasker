@@ -55,7 +55,7 @@ const Projects = () => {
 
   return (
     <section className={classes.Projects}>
-      <div>
+      <div className={classes.ProjectsList}>
         {!!favoriteProjects.length && (
           <ExpandList title="favorites" items={renderProjects(favoriteProjects)} />
         )}
@@ -63,7 +63,7 @@ const Projects = () => {
         <ExpandList title="projects" items={renderProjects(basicsProjects)} />
       </div>
 
-      <>
+      <div className={classes.ProjectsBottom}>
         <Button title="Add Project" type="secondary" callback={toggleModalHandler}>
           <PlusIcon />
         </Button>
@@ -75,7 +75,7 @@ const Projects = () => {
             </Modal>
           )}
         </AnimatePresence>
-      </>
+      </div>
     </section>
   );
 };

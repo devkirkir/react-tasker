@@ -120,6 +120,7 @@
 .SecondaryLinkActive {
   color: var(--secondary-navigatelink-text-color-active);
   background-color: var(--secondary-navigatelink-color-hover);
+  pointer-events: none;
 
   & div {
     & svg {
@@ -127,9 +128,5 @@
         fill: var(--secondary-navigatelink-color-hover);
       }
     }
-  }
-
-  &:hover {
-    pointer-events: none;
   }
 }

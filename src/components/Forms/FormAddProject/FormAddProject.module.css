@@ -26,10 +26,6 @@
       transition: color 0.2s linear;
       padding: 0 4px;
     }
-    & input[type="color"] {
-      background-color: transparent;
-      border: none;
-    }
   }
 
   & .Buttons {

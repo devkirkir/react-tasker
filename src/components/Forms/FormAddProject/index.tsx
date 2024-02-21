@@ -1,19 +1,24 @@
+import { useNavigate } from "react-router-dom";
+
+import { useAppDispatch } from "hooks/useAppDispatch";
 import useForm, { type InputValues } from "hooks/useForm";
 
 import Button from "components/shared/Button";
 import InputErrorMessage from "components/shared/InputErrorMessage";
 import InputText from "components/shared/InputText";
-
-import classes from "./FormAddProject.module.css";
 import InputSwitcher from "components/shared/InputSwitcher";
+
+import { addNewProject } from "store/slices/projectsSlice/servcies/addNewProject";
+import { projectsActions } from "store/slices/projectsSlice";
+
+import { ProjectsSchema } from "store/slices/projectsSlice/types";
 import {
   ShapedIcons,
   ShapedIconsColors,
   ShapedIconsComponents,
 } from "components/shared/ShapedIcon/config/ShapedIconConfig";
-import { useAppDispatch } from "hooks/useAppDispatch";
-import { addNewProject } from "store/slices/projectsSlice/servcies/addNewProject";
-import { ProjectsSchema } from "store/slices/projectsSlice/types";
+
+import classes from "./FormAddProject.module.css";
 
 interface FormAddProjectProps {
   toggleHandler: () => void;
@@ -34,7 +39,9 @@ const initialInputs: Inputs = {
 
 const FormAddProject = (props: FormAddProjectProps) => {
   const { toggleHandler } = props;
+
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const { inputsValues, handleSubmit, handleChange, submitButtonDisable } =
     useForm<Inputs>(initialInputs);
@@ -72,8 +79,9 @@ const FormAddProject = (props: FormAddProjectProps) => {
   ));
 
   const onSubmit = async () => {
+    const projectId = `${projectName.value}-${Date.now()}`;
     const newProject: ProjectsSchema = {
-      id: `${projectName.value}-${Date.now()}`,
+      id: projectId,
       projectTitle: projectName.value,
       favorite: false,
       icon: {
@@ -82,9 +90,12 @@ const FormAddProject = (props: FormAddProjectProps) => {
       },
     };
 
-    const result = dispatch(addNewProject(newProject));
+    dispatch(addNewProject(newProject));
+    dispatch(projectsActions.setCurrentProjectId(projectId));
 
-    // console.log(dispatch(addNewProject(newProject)));
+    toggleHandler();
+
+    navigate(`/app/projects/${projectId}`);
   };
 
   return (
