@@ -14,7 +14,7 @@ export type ProjectIcon = {
   color: ShapedIconsColors;
 };
 
-export interface ProjectsSchema {
+export interface ProjectSchema {
   id: string;
   projectTitle: string;
   favorite: boolean;
@@ -22,8 +22,9 @@ export interface ProjectsSchema {
 }
 
 export interface ProjectsSliceSchema {
-  projects: ProjectsSchema[];
+  projects: ProjectSchema[];
   loading: ProjectsLoadingStatuses;
   error: boolean;
   currentProjectId: string | null;
+  currentProject: ProjectSchema | null;
 }

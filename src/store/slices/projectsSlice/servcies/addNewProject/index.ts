@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ProjectsSchema } from "../../types";
+import { ProjectSchema } from "../../types";
 import http from "utils/http";
 
-export const addNewProject = createAsyncThunk("addNewProject", async (data: ProjectsSchema) => {
+export const addNewProject = createAsyncThunk("addNewProject", async (data: ProjectSchema) => {
   const response = await http("http://localhost:4000/projects", {
     method: "POST",
     headers: {

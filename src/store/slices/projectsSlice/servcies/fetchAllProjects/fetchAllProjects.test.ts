@@ -1,12 +1,13 @@
 import { fetchAllProjects } from ".";
 import { projectsReducer } from "../..";
-import { ProjectsLoadingStatuses, ProjectsSchema, ProjectsSliceSchema } from "../../types";
+import { ProjectsLoadingStatuses, ProjectSchema, ProjectsSliceSchema } from "../../types";
 
 const initialState: ProjectsSliceSchema = {
   projects: [],
   loading: ProjectsLoadingStatuses.PENDING,
   error: false,
-  currentProjectId: "id",
+  currentProjectId: null,
+  currentProject: null,
 };
 
 describe("Projects | Service fetchAllProjects", () => {
@@ -23,7 +24,7 @@ describe("Projects | Service fetchAllProjects", () => {
   });
 
   test("fetchAllProjects.fulfilled", () => {
-    const mock: ProjectsSchema = {
+    const mock: ProjectSchema = {
       id: "id",
       projectTitle: "title",
       favorite: false,

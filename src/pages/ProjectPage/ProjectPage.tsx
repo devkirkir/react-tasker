@@ -5,21 +5,19 @@ import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
 
 import { projectsActions } from "store/slices/projectsSlice";
-import { getCurrentProjectId } from "store/slices/projectsSlice/selectors/getCurrentProjectId";
+import { getCurrentProject } from "store/slices/projectsSlice/selectors/getCurrentProject";
 
 const ProjectPage = () => {
   const { projectId } = useParams();
 
   const dispatch = useAppDispatch();
-  const currentProjectId = useAppSelector(getCurrentProjectId);
+  const currentProject = useAppSelector(getCurrentProject(projectId));
 
   useEffect(() => {
-    if (currentProjectId == null) {
-      dispatch(projectsActions.setCurrentProjectId(projectId));
-    }
-  }, []);
+    dispatch(projectsActions.setCurrentProject(currentProject));
+  }, [currentProject]);
 
-  return <div>prtoject id - {currentProjectId}</div>;
+  return <section>{projectId}</section>;
 };
 
 export default ProjectPage;

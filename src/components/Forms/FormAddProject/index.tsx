@@ -11,7 +11,7 @@ import InputSwitcher from "components/shared/InputSwitcher";
 import { addNewProject } from "store/slices/projectsSlice/servcies/addNewProject";
 import { projectsActions } from "store/slices/projectsSlice";
 
-import { ProjectsSchema } from "store/slices/projectsSlice/types";
+import { ProjectSchema } from "store/slices/projectsSlice/types";
 import {
   ShapedIcons,
   ShapedIconsColors,
@@ -80,7 +80,7 @@ const FormAddProject = (props: FormAddProjectProps) => {
 
   const onSubmit = async () => {
     const projectId = `${projectName.value}-${Date.now()}`;
-    const newProject: ProjectsSchema = {
+    const newProject: ProjectSchema = {
       id: projectId,
       projectTitle: projectName.value,
       favorite: false,
@@ -91,7 +91,7 @@ const FormAddProject = (props: FormAddProjectProps) => {
     };
 
     dispatch(addNewProject(newProject));
-    dispatch(projectsActions.setCurrentProjectId(projectId));
+    dispatch(projectsActions.setCurrentProject(newProject));
 
     toggleHandler();
 

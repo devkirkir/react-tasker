@@ -1,12 +1,13 @@
 import { addNewProject } from ".";
 import { projectsReducer } from "../..";
-import { ProjectsLoadingStatuses, ProjectsSchema, type ProjectsSliceSchema } from "../../types";
+import { ProjectsLoadingStatuses, ProjectSchema, type ProjectsSliceSchema } from "../../types";
 
 const initialState: ProjectsSliceSchema = {
   projects: [],
   loading: ProjectsLoadingStatuses.PENDING,
   error: false,
-  currentProjectId: "id",
+  currentProjectId: null,
+  currentProject: null,
 };
 
 describe("Projects | Service addNewProject", () => {
@@ -23,7 +24,7 @@ describe("Projects | Service addNewProject", () => {
   });
 
   test("addNewProject.fulfilled", () => {
-    const mock: ProjectsSchema = {
+    const mock: ProjectSchema = {
       id: "project-id",
       projectTitle: "Post",
       favorite: false,

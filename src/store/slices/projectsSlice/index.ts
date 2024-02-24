@@ -10,6 +10,7 @@ const initialState: ProjectsSliceSchema = {
   loading: ProjectsLoadingStatuses.FULFILLED,
   error: false,
   currentProjectId: null,
+  currentProject: null,
 };
 
 const projectSlice = createSlice({
@@ -18,6 +19,9 @@ const projectSlice = createSlice({
   reducers: {
     setCurrentProjectId(state, { payload }) {
       state.currentProjectId = payload;
+    },
+    setCurrentProject(state, { payload }) {
+      state.currentProject = payload[0];
     },
   },
   extraReducers: (builder) => {

@@ -8,7 +8,8 @@
     "build:dev": "npx webpack --env mode=development",
     "build:prod": "npx webpack --env mode=production",
     "start-server": "json-server --watch json-server/db.json --port 4000",
-    "eslint": "eslint '**/*.{ts,tsx}'",
+    "eslint": "eslint \"**/*.{ts,tsx}\"",
+    "prettier": "prettier --config ./.prettierrc . --write",
     "eslint:fix": "eslint '**/*.{ts,tsx}' --fix",
     "test:jest": "jest --config ./config/jest/jest.config.ts"
   },

@@ -4,10 +4,10 @@ import { AnimatePresence } from "framer-motion";
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
 
-import { projectsActions } from "store/slices/projectsSlice";
 import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllProjects";
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
+import { projectsActions } from "store/slices/projectsSlice";
 
 import FormAddProject from "components/Forms/FormAddProject";
 import ExpandList from "components/shared/ExpandList";
@@ -17,7 +17,7 @@ import NavigateLink from "components/shared/NavigateLink";
 
 import PlusIcon from "components/shared/Icons/PlusIcon";
 
-import type { ProjectsSchema } from "store/slices/projectsSlice/types";
+import type { ProjectSchema } from "store/slices/projectsSlice/types";
 
 import classes from "./Projects.module.css";
 
@@ -36,9 +36,11 @@ const Projects = () => {
   const basicsProjects = useAppSelector(getBasicProjects);
   const favoriteProjects = useAppSelector(getFavoritedProjects);
 
-  const chooseProject = (id: string) => dispatch(projectsActions.setCurrentProjectId(id));
+  const chooseProject = (id: string) => {
+    dispatch(projectsActions.setCurrentProjectId(id));
+  };
 
-  const renderProjects = (projects: ProjectsSchema[]) =>
+  const renderProjects = (projects: ProjectSchema[]) =>
     projects.map(({ projectTitle, id, icon }) => (
       <li key={`project-link-${id}`}>
         <NavigateLink
