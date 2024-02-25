@@ -7,10 +7,12 @@ import Button from "components/shared/Button";
 import InputErrorMessage from "components/shared/InputErrorMessage";
 import InputText from "components/shared/InputText";
 import InputSwitcher from "components/shared/InputSwitcher";
+import ColorCircle from "components/shared/ColorCircle";
 
 import { addNewProject } from "store/slices/projectsSlice/servcies/addNewProject";
 import { projectsActions } from "store/slices/projectsSlice";
 
+import { RU_EN_DIGITS_REGEXP } from "consts/regexp";
 import { ProjectSchema } from "store/slices/projectsSlice/types";
 import {
   ShapedIcons,
@@ -32,7 +34,7 @@ interface Inputs {
 
 // начальные значения инпутов и их настройка валидации
 const initialInputs: Inputs = {
-  projectName: { validSettings: { min: 2, max: 15 } },
+  projectName: { validSettings: { min: 2, max: 15, pattern: RU_EN_DIGITS_REGEXP } },
   radioIcons: { value: "" },
   radioColors: { value: "" },
 };
@@ -72,13 +74,11 @@ const FormAddProject = (props: FormAddProjectProps) => {
       }}
       key={`radio-${color}-formAddProject-${index}`}
     >
-      <div
-        style={{ width: "16px", height: "16px", borderRadius: "50%", backgroundColor: color }}
-      ></div>
+      <ColorCircle color={color} />
     </InputSwitcher>
   ));
 
-  const onSubmit = async () => {
+  const onSubmit = () => {
     const projectId = `${projectName.value}-${Date.now()}`;
     const newProject: ProjectSchema = {
       id: projectId,

@@ -1,7 +1,10 @@
+import { MAIL_REGEXP, RU_EN_DIGITS_REGEXP } from "consts/regexp";
+
 export type ValidSettings = {
   min?: number;
   max?: number;
   isEmail?: boolean;
+  pattern?: RegExp;
 };
 
 export interface ValidFields {
@@ -24,12 +27,12 @@ const useInputValid = () => {
         return `Max length ${settings[setting]}`;
       }
 
-      if (
-        setting == "isEmail" &&
-        settings[setting] &&
-        !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)
-      ) {
+      if (setting == "isEmail" && !MAIL_REGEXP.test(value)) {
         return "Invalid Email";
+      }
+
+      if (setting == "pattern" && !RU_EN_DIGITS_REGEXP.test(value)) {
+        return "Invalid Pattern";
       }
     }
 

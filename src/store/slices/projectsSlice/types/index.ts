@@ -25,6 +25,5 @@ export interface ProjectsSliceSchema {
   projects: ProjectSchema[];
   loading: ProjectsLoadingStatuses;
   error: boolean;
-  currentProjectId: string | null;
   currentProject: ProjectSchema | null;
 }

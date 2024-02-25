@@ -19,12 +19,10 @@ interface NavigateLinkProps {
   icon: JSX.Element | ProjectIcon;
   isSidebarShow?: boolean;
   testid?: string;
-  // callback - для chooseProject в Projects
-  callback?: (id: string) => void;
 }
 
 const NavigateLink = (props: NavigateLinkProps) => {
-  const { id, value, path, icon, callback = () => {}, type, isSidebarShow = true, testid } = props;
+  const { value, path, icon, type, isSidebarShow = true, testid } = props;
 
   const labelClassNames = classNames(classes.Label, {
     [classes.ToggleLabel]: !isSidebarShow,
@@ -45,7 +43,6 @@ const NavigateLink = (props: NavigateLinkProps) => {
       data-testid={testid}
       className={({ isActive }) => (isActive ? linkTypesActiveClassNames : linkTypesClassNames)}
       to={path}
-      onClick={() => callback(id)}
     >
       {"iconType" in icon ? <ShapedIcon iconType={icon.iconType} color={icon.color} /> : icon}
 

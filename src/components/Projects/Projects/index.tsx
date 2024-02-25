@@ -7,7 +7,6 @@ import { useAppSelector } from "hooks/useAppSelector";
 import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllProjects";
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
-import { projectsActions } from "store/slices/projectsSlice";
 
 import FormAddProject from "components/Forms/FormAddProject";
 import ExpandList from "components/shared/ExpandList";
@@ -36,21 +35,15 @@ const Projects = () => {
   const basicsProjects = useAppSelector(getBasicProjects);
   const favoriteProjects = useAppSelector(getFavoritedProjects);
 
-  const chooseProject = (id: string) => {
-    dispatch(projectsActions.setCurrentProjectId(id));
-  };
-
   const renderProjects = (projects: ProjectSchema[]) =>
     projects.map(({ projectTitle, id, icon }) => (
       <li key={`project-link-${id}`}>
         <NavigateLink
-          id={id}
           value={projectTitle}
           path={id}
           icon={icon}
           type="secondary"
           testid={`link-${projectTitle}-${id}`}
-          callback={chooseProject}
         />
       </li>
     ));

@@ -5,21 +5,10 @@ const initialState: ProjectsSliceSchema = {
   projects: [],
   loading: ProjectsLoadingStatuses.PENDING,
   error: false,
-  currentProjectId: null,
   currentProject: null,
 };
 
 describe("Projects | projectsSlice", () => {
-  test("Action setCurrentProjectId", () => {
-    let state = projectsReducer(initialState, projectsActions.setCurrentProjectId("id2"));
-
-    expect(state.currentProjectId).toBe("id2");
-
-    state = projectsReducer(initialState, projectsActions.setCurrentProjectId("id23"));
-
-    expect(state.currentProjectId).toBe("id23");
-  });
-
   test("Action setCurrentProject", () => {
     const mock: ProjectSchema = {
       id: "id",

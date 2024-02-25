@@ -6,7 +6,6 @@ const initialState: ProjectsSliceSchema = {
   projects: [],
   loading: ProjectsLoadingStatuses.PENDING,
   error: false,
-  currentProjectId: null,
   currentProject: null,
 };
 
