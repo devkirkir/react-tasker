@@ -3,11 +3,7 @@ import {
   ShapedIcons,
 } from "components/shared/ShapedIcon/config/ShapedIconConfig";
 
-export enum ProjectsLoadingStatuses {
-  PENDING = "pending",
-  FULFILLED = "fulfilled",
-  REJECTED = "rejected",
-}
+export type ProjectsLoadingStatuses = "pending" | "fulfilled" | "rejected";
 
 export type ProjectIcon = {
   iconType: ShapedIcons;

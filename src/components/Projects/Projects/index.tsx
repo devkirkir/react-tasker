@@ -13,16 +13,21 @@ import ExpandList from "components/shared/ExpandList";
 import Button from "components/shared/Button";
 import Modal from "components/shared/Modal";
 import NavigateLink from "components/shared/NavigateLink";
-
 import PlusIcon from "components/shared/Icons/PlusIcon";
 
 import type { ProjectSchema } from "store/slices/projectsSlice/types";
 
 import classes from "./Projects.module.css";
+import { getLoadingStatusProjects } from "store/slices/projectsSlice/selectors/getLoadingStatusProjects";
+import ProjectsSkeleton from "components/Skeletons/ProjectsSkeleton";
 
 const Projects = () => {
   const dispatch = useAppDispatch();
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const loadingStatus = useAppSelector(getLoadingStatusProjects);
+  const basicsProjects = useAppSelector(getBasicProjects);
+  const favoriteProjects = useAppSelector(getFavoritedProjects);
 
   useEffect(() => {
     dispatch(fetchAllProjects());
@@ -31,9 +36,6 @@ const Projects = () => {
   const toggleModalHandler = () => {
     setModalOpen((isModalOpen) => !isModalOpen);
   };
-
-  const basicsProjects = useAppSelector(getBasicProjects);
-  const favoriteProjects = useAppSelector(getFavoritedProjects);
 
   const renderProjects = (projects: ProjectSchema[]) =>
     projects.map(({ projectTitle, id, icon }) => (
@@ -49,28 +51,35 @@ const Projects = () => {
     ));
 
   return (
-    <section className={classes.Projects}>
-      <div className={classes.ProjectsList}>
-        {!!favoriteProjects.length && (
-          <ExpandList title="favorites" items={renderProjects(favoriteProjects)} />
-        )}
+    <section className={classes.Projects} data-testid="projects-page">
+      {/* нужно сделать анимацию появления */}
+      {loadingStatus == "fulfilled" ? (
+        <>
+          <div className={classes.ProjectsList}>
+            {!!favoriteProjects.length && (
+              <ExpandList title="favorites" items={renderProjects(favoriteProjects)} />
+            )}
 
-        <ExpandList title="projects" items={renderProjects(basicsProjects)} />
-      </div>
+            <ExpandList title="projects" items={renderProjects(basicsProjects)} />
+          </div>
 
-      <div className={classes.ProjectsBottom}>
-        <Button title="Add Project" type="secondary" callback={toggleModalHandler}>
-          <PlusIcon />
-        </Button>
+          <div className={classes.ProjectsBottom}>
+            <Button title="Add Project" type="secondary" callback={toggleModalHandler}>
+              <PlusIcon />
+            </Button>
 
-        <AnimatePresence>
-          {isModalOpen && (
-            <Modal toggleHandler={toggleModalHandler} modalName="Add Project">
-              <FormAddProject toggleHandler={toggleModalHandler} />
-            </Modal>
-          )}
-        </AnimatePresence>
-      </div>
+            <AnimatePresence>
+              {isModalOpen && (
+                <Modal toggleHandler={toggleModalHandler} modalName="Add Project">
+                  <FormAddProject toggleHandler={toggleModalHandler} />
+                </Modal>
+              )}
+            </AnimatePresence>
+          </div>
+        </>
+      ) : (
+        <ProjectsSkeleton />
+      )}
     </section>
   );
 };

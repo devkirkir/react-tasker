@@ -1,10 +1,10 @@
 import { addNewProject } from ".";
 import { projectsReducer } from "../..";
-import { ProjectsLoadingStatuses, ProjectSchema, type ProjectsSliceSchema } from "../../types";
+import { ProjectSchema, type ProjectsSliceSchema } from "../../types";
 
 const initialState: ProjectsSliceSchema = {
   projects: [],
-  loading: ProjectsLoadingStatuses.PENDING,
+  loading: "pending",
   error: false,
   currentProject: null,
 };
@@ -13,13 +13,13 @@ describe("Projects | Service addNewProject", () => {
   test("addNewProject.pending", () => {
     const state = projectsReducer(initialState, addNewProject.pending);
 
-    expect(state.loading).toBe(ProjectsLoadingStatuses.PENDING);
+    expect(state.loading).toBe("pending");
   });
 
   test("addNewProject.rejected", () => {
     const state = projectsReducer(initialState, addNewProject.rejected);
 
-    expect(state.loading).toBe(ProjectsLoadingStatuses.REJECTED);
+    expect(state.loading).toBe("rejected");
   });
 
   test("addNewProject.fulfilled", () => {
@@ -35,7 +35,7 @@ describe("Projects | Service addNewProject", () => {
 
     const state = projectsReducer(initialState, addNewProject.fulfilled(mock, null, null));
 
-    expect(state.loading).toBe(ProjectsLoadingStatuses.FULFILLED);
+    expect(state.loading).toBe("fulfilled");
     expect(state.projects[0]).toMatchObject({
       id: "project-id",
       projectTitle: "Post",

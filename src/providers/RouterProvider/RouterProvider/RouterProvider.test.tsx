@@ -8,24 +8,28 @@ describe("Provider | RouterProvider", () => {
   test("Dashboard Route", async () => {
     await act(() => ComponentRender(<RouterProvider />, { route: "/app/dashboard" }));
 
-    await waitFor(() => expect(screen.getByText(/dashboard/i)).toBeInTheDocument(), {
-      timeout: 3000,
-    });
+    await waitFor(() => expect(screen.getByTestId("page-dashboard")).toBeInTheDocument());
   });
 
   test("Projects Route", async () => {
-    await act(() => ComponentRender(<RouterProvider />, { route: "/app/projects" }));
+    await act(() =>
+      ComponentRender(<RouterProvider />, {
+        route: "/app/projects",
+        initialState: {
+          projects: {
+            projects: [],
+            loading: "fulfilled",
+          },
+        },
+      }),
+    );
 
-    await waitFor(() => expect(screen.getByText(/add project/i)).toBeInTheDocument(), {
-      timeout: 5000,
-    });
+    await waitFor(() => expect(screen.getByTestId("projects-page")).toBeInTheDocument());
   });
 
   test("404 Route", async () => {
     await act(() => ComponentRender(<RouterProvider />, { route: "/q" }));
 
-    await waitFor(() => expect(screen.getByText(/notfoundpage/i)).toBeInTheDocument(), {
-      timeout: 3000,
-    });
+    await waitFor(() => expect(screen.getByText(/notfoundpage/i)).toBeInTheDocument());
   });
 });

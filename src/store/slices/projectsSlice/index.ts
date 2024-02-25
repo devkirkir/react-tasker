@@ -3,13 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchAllProjects } from "./servcies/fetchAllProjects";
 import { addNewProject } from "./servcies/addNewProject";
 
-import { ProjectsLoadingStatuses, type ProjectsSliceSchema } from "./types";
+import { type ProjectsSliceSchema } from "./types";
 
 const initialState: ProjectsSliceSchema = {
   projects: [],
-  loading: ProjectsLoadingStatuses.FULFILLED,
+  loading: "pending",
   error: false,
-
   currentProject: null,
 };
 
@@ -24,26 +23,26 @@ const projectSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllProjects.pending, (state) => {
-        state.loading = ProjectsLoadingStatuses.PENDING;
+        state.loading = "pending";
       })
       .addCase(fetchAllProjects.fulfilled, (state, { payload }) => {
-        state.loading = ProjectsLoadingStatuses.FULFILLED;
+        state.loading = "fulfilled";
         state.projects = payload;
       })
       .addCase(fetchAllProjects.rejected, (state) => {
-        state.loading = ProjectsLoadingStatuses.REJECTED;
+        state.loading = "rejected";
         state.error = true;
       })
 
       .addCase(addNewProject.pending, (state) => {
-        state.loading = ProjectsLoadingStatuses.PENDING;
+        state.loading = "pending";
       })
       .addCase(addNewProject.fulfilled, (state, action) => {
-        state.loading = ProjectsLoadingStatuses.FULFILLED;
+        state.loading = "fulfilled";
         state.projects.push(action.payload);
       })
       .addCase(addNewProject.rejected, (state) => {
-        state.loading = ProjectsLoadingStatuses.REJECTED;
+        state.loading = "rejected";
       });
   },
 });

@@ -1,9 +1,9 @@
 import { projectsActions, projectsReducer } from ".";
-import { ProjectSchema, ProjectsLoadingStatuses, type ProjectsSliceSchema } from "./types";
+import { ProjectSchema, type ProjectsSliceSchema } from "./types";
 
 const initialState: ProjectsSliceSchema = {
   projects: [],
-  loading: ProjectsLoadingStatuses.PENDING,
+  loading: "pending",
   error: false,
   currentProject: null,
 };
