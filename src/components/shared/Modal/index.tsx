@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 
 import Backdrop from "../Backdrop";
 
+import { SLIDE_BOTTOM_ANIM } from "consts/animations";
+
 import classes from "./Modal.module.css";
 
 interface ModalProps extends PropsWithChildren {
@@ -12,21 +14,6 @@ interface ModalProps extends PropsWithChildren {
   modalName?: string;
   portalContainer?: HTMLElement;
 }
-
-const slideInAnimation = {
-  hidden: {
-    opacity: 0,
-    y: 300,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-  exit: {
-    opacity: 0,
-    y: 300,
-  },
-};
 
 const Modal = (props: ModalProps) => {
   const {
@@ -52,7 +39,7 @@ const Modal = (props: ModalProps) => {
     <Backdrop onMouseDown={toggleHandler}>
       <motion.div
         className={classes.Modal}
-        variants={slideInAnimation}
+        variants={SLIDE_BOTTOM_ANIM}
         initial="hidden"
         animate="visible"
         exit="exit"

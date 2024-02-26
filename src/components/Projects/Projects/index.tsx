@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
@@ -7,6 +7,8 @@ import { useAppSelector } from "hooks/useAppSelector";
 import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllProjects";
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
+import { getLoadingStatusProjects } from "store/slices/projectsSlice/selectors/getLoadingStatusProjects";
+import type { ProjectSchema } from "store/slices/projectsSlice/types";
 
 import FormAddProject from "components/Forms/FormAddProject";
 import ExpandList from "components/shared/ExpandList";
@@ -14,12 +16,11 @@ import Button from "components/shared/Button";
 import Modal from "components/shared/Modal";
 import NavigateLink from "components/shared/NavigateLink";
 import PlusIcon from "components/shared/Icons/PlusIcon";
+import ProjectsSkeleton from "components/Skeletons/ProjectsSkeleton";
 
-import type { ProjectSchema } from "store/slices/projectsSlice/types";
+import { SLIDE_BOTTOM_ANIM } from "consts/animations";
 
 import classes from "./Projects.module.css";
-import { getLoadingStatusProjects } from "store/slices/projectsSlice/selectors/getLoadingStatusProjects";
-import ProjectsSkeleton from "components/Skeletons/ProjectsSkeleton";
 
 const Projects = () => {
   const dispatch = useAppDispatch();
@@ -52,16 +53,21 @@ const Projects = () => {
 
   return (
     <section className={classes.Projects} data-testid="projects-page">
-      {/* нужно сделать анимацию появления */}
       {loadingStatus == "fulfilled" ? (
-        <>
-          <div className={classes.ProjectsList}>
+        <AnimatePresence>
+          <motion.div
+            variants={SLIDE_BOTTOM_ANIM}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className={classes.ProjectsList}
+          >
             {!!favoriteProjects.length && (
               <ExpandList title="favorites" items={renderProjects(favoriteProjects)} />
             )}
 
             <ExpandList title="projects" items={renderProjects(basicsProjects)} />
-          </div>
+          </motion.div>
 
           <div className={classes.ProjectsBottom}>
             <Button title="Add Project" type="secondary" callback={toggleModalHandler}>
@@ -76,7 +82,7 @@ const Projects = () => {
               )}
             </AnimatePresence>
           </div>
-        </>
+        </AnimatePresence>
       ) : (
         <ProjectsSkeleton />
       )}
