@@ -1,14 +1,12 @@
-import { projectsActions, projectsReducer } from ".";
-import { ProjectSchema, type ProjectsSliceSchema } from "./types";
+import { currentProjectActions, currentProjectReducer } from ".";
+import type { ProjectSchema } from "../projectsSlice/types";
+import type { CurrentProjectSliceSchema } from "./types";
 
-const initialState: ProjectsSliceSchema = {
-  projects: [],
-  loading: "pending",
-  error: false,
+const initialState: CurrentProjectSliceSchema = {
   currentProject: null,
 };
 
-describe("Projects | projectsSlice", () => {
+describe("CurrentProject | currentProjectSlice", () => {
   test("Action setCurrentProject", () => {
     const mock: ProjectSchema = {
       id: "id",
@@ -17,7 +15,10 @@ describe("Projects | projectsSlice", () => {
       projectTitle: "title",
     };
 
-    const state = projectsReducer(initialState, projectsActions.setCurrentProject([mock]));
+    const state = currentProjectReducer(
+      initialState,
+      currentProjectActions.setCurrentProject([mock]),
+    );
 
     expect(state.currentProject).toMatchObject({
       id: "id",

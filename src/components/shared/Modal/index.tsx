@@ -1,6 +1,5 @@
 import { type PropsWithChildren, useEffect } from "react";
 import { createPortal } from "react-dom";
-
 import { motion } from "framer-motion";
 
 import Backdrop from "../Backdrop";
@@ -43,6 +42,7 @@ const Modal = (props: ModalProps) => {
         initial="hidden"
         animate="visible"
         exit="exit"
+        key="modal-motion-key"
         data-testid="Modal"
       >
         <span className={classes.Title}>{modalName}</span>

@@ -60,6 +60,7 @@ const Projects = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
+            key="projects-motion-key"
             className={classes.ProjectsList}
           >
             {!!favoriteProjects.length && (

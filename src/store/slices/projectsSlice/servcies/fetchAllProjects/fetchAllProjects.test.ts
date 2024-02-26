@@ -6,7 +6,6 @@ const initialState: ProjectsSliceSchema = {
   projects: [],
   loading: "pending",
   error: false,
-  currentProject: null,
 };
 
 describe("Projects | Service fetchAllProjects", () => {

@@ -9,11 +9,11 @@ import InputText from "components/shared/InputText";
 import InputSwitcher from "components/shared/InputSwitcher";
 import ColorCircle from "components/shared/ColorCircle";
 
+import { currentProjectActions } from "store/slices/currentProjectSlice";
 import { addNewProject } from "store/slices/projectsSlice/servcies/addNewProject";
-import { projectsActions } from "store/slices/projectsSlice";
 
 import { RU_EN_DIGITS_REGEXP } from "consts/regexp";
-import { ProjectSchema } from "store/slices/projectsSlice/types";
+import type { ProjectSchema } from "store/slices/projectsSlice/types";
 import {
   ShapedIcons,
   ShapedIconsColors,
@@ -91,7 +91,7 @@ const FormAddProject = (props: FormAddProjectProps) => {
     };
 
     dispatch(addNewProject(newProject));
-    dispatch(projectsActions.setCurrentProject(newProject));
+    dispatch(currentProjectActions.setCurrentProject(newProject));
 
     toggleHandler();
 

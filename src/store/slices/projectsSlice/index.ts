@@ -9,17 +9,12 @@ const initialState: ProjectsSliceSchema = {
   projects: [],
   loading: "pending",
   error: false,
-  currentProject: null,
 };
 
 const projectSlice = createSlice({
   name: "projects",
   initialState,
-  reducers: {
-    setCurrentProject(state, { payload }) {
-      state.currentProject = payload[0];
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllProjects.pending, (state) => {
