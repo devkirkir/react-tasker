@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { CurrentProjectSliceSchema } from "./types";
 
 const initialState: CurrentProjectSliceSchema = {
-  currentProject: null,
+  currentProject: {},
+  loading: "pending",
 };
 
 const currentProjectSlice = createSlice({
@@ -10,7 +11,8 @@ const currentProjectSlice = createSlice({
   initialState,
   reducers: {
     setCurrentProject(state, { payload }) {
-      state.currentProject = payload[0];
+      state.currentProject = payload;
+      state.loading = "fulfilled";
     },
   },
 });

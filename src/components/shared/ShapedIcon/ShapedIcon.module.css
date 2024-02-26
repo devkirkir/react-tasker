@@ -1,8 +1,5 @@
 .ShapedIcon {
   display: inline-block;
-  height: 17px;
-
-  margin-right: 8px;
 
   & svg {
     & path:first-child {
@@ -10,7 +7,6 @@
     }
 
     & path:last-child {
-      fill: var(--bg-color);
       transition: fill 0.2s linear;
     }
   }

@@ -2,12 +2,11 @@ import {
   ShapedIconsColors,
   ShapedIcons,
 } from "components/shared/ShapedIcon/config/ShapedIconConfig";
-
-export type ProjectsLoadingStatuses = "pending" | "fulfilled" | "rejected";
+import type { LoadingStatuses } from "types";
 
 export type ProjectIcon = {
   iconType: ShapedIcons;
-  color: ShapedIconsColors;
+  color?: ShapedIconsColors;
 };
 
 export interface ProjectSchema {
@@ -19,6 +18,6 @@ export interface ProjectSchema {
 
 export interface ProjectsSliceSchema {
   projects: ProjectSchema[];
-  loading: ProjectsLoadingStatuses;
+  loading: LoadingStatuses;
   error: boolean;
 }

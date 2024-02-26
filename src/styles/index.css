@@ -2,6 +2,7 @@
 @import "./vars/global.css";
 @import "./themes/light.css";
 @import "./themes/dark.css";
+@import "./animations.css";
 
 .App {
   display: flex;

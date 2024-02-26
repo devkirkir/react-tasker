@@ -21,6 +21,7 @@ import {
 } from "components/shared/ShapedIcon/config/ShapedIconConfig";
 
 import classes from "./FormAddProject.module.css";
+import ShapedIcon from "components/shared/ShapedIcon";
 
 interface FormAddProjectProps {
   toggleHandler: () => void;
@@ -50,7 +51,7 @@ const FormAddProject = (props: FormAddProjectProps) => {
 
   const { projectName, radioIcons, radioColors } = inputsValues;
 
-  const renderIconRadios = Object.entries(ShapedIconsComponents).map(([name, icon], index) => (
+  const renderIconRadios = Object.entries(ShapedIconsComponents).map(([name], index) => (
     <InputSwitcher
       inputAttributes={{
         name: "radioIcons",
@@ -60,7 +61,10 @@ const FormAddProject = (props: FormAddProjectProps) => {
       }}
       key={`radio-${name}-formAddProject-${index}`}
     >
-      {icon}
+      <ShapedIcon
+        iconType={name as ShapedIcons}
+        color={(radioColors.value as ShapedIconsColors) || "#2a7de1"}
+      />
     </InputSwitcher>
   ));
 
@@ -80,6 +84,7 @@ const FormAddProject = (props: FormAddProjectProps) => {
 
   const onSubmit = () => {
     const projectId = `${projectName.value}-${Date.now()}`;
+
     const newProject: ProjectSchema = {
       id: projectId,
       projectTitle: projectName.value,

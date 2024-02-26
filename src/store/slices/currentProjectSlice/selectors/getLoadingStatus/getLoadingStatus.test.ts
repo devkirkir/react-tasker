@@ -1,35 +1,35 @@
 import { DeepPartial } from "@reduxjs/toolkit";
+import { getLoadingStatus } from ".";
 import { StateSchema } from "store/types/StateSchema";
-import { getLoadingStatusProjects } from ".";
 
-describe("Projects | Selector getLoadingStatusProjects", () => {
+describe("Current Project | Selector getLoadingStatus", () => {
   test("Pending", () => {
     const initialState: DeepPartial<StateSchema> = {
-      projects: {
+      currentProject: {
         loading: "pending",
       },
     };
 
-    expect(getLoadingStatusProjects(initialState as StateSchema)).toBe("pending");
+    expect(getLoadingStatus(initialState as StateSchema)).toBe("pending");
   });
 
   test("Rejected", () => {
     const initialState: DeepPartial<StateSchema> = {
-      projects: {
+      currentProject: {
         loading: "rejected",
       },
     };
 
-    expect(getLoadingStatusProjects(initialState as StateSchema)).toBe("rejected");
+    expect(getLoadingStatus(initialState as StateSchema)).toBe("rejected");
   });
 
   test("Fulfilled", () => {
     const initialState: DeepPartial<StateSchema> = {
-      projects: {
+      currentProject: {
         loading: "fulfilled",
       },
     };
 
-    expect(getLoadingStatusProjects(initialState as StateSchema)).toBe("fulfilled");
+    expect(getLoadingStatus(initialState as StateSchema)).toBe("fulfilled");
   });
 });

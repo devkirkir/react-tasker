@@ -4,6 +4,7 @@ import type { CurrentProjectSliceSchema } from "./types";
 
 const initialState: CurrentProjectSliceSchema = {
   currentProject: null,
+  loading: "fulfilled",
 };
 
 describe("CurrentProject | currentProjectSlice", () => {
@@ -20,11 +21,13 @@ describe("CurrentProject | currentProjectSlice", () => {
       currentProjectActions.setCurrentProject([mock]),
     );
 
-    expect(state.currentProject).toMatchObject({
-      id: "id",
-      favorite: false,
-      icon: { color: "#2a7de1", iconType: "circle" },
-      projectTitle: "title",
-    });
+    expect(state.currentProject).toMatchObject([
+      {
+        id: "id",
+        favorite: false,
+        icon: { color: "#2a7de1", iconType: "circle" },
+        projectTitle: "title",
+      },
+    ]);
   });
 });

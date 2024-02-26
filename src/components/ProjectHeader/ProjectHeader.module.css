@@ -1,0 +1,25 @@
+.ProjectHeader {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 80px;
+
+  border-bottom: 1px solid var(--border-color);
+
+  padding: 0 18px;
+
+  transition: border 0.2s linear;
+
+  & .HeaderLeft {
+    display: flex;
+    gap: 12px;
+
+    & .Title {
+      color: var(--text-color);
+      font-size: var(--font-size-l);
+
+      transition: color 0.2s linear;
+    }
+  }
+}

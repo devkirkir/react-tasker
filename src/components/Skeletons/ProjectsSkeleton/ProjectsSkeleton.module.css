@@ -5,31 +5,19 @@
 
   padding: 18px 6px;
 
-  & div {
-    animation: blinkToLeft 1.8s linear infinite;
+  & div :global {
+    width: 100%;
+    height: 28px;
+
+    animation: blinkToLeft 1s linear infinite alternate;
+
     background: linear-gradient(
       90deg,
       var(--skeleton-from-color) 0%,
       var(--skeleton-to-color) 100%
     );
     background-size: 400%;
-    width: 100%;
-    height: 28px;
-    border-radius: 6px;
-  }
-}
 
-@keyframes blinkToLeft {
-  0% {
-    background-position: 100% 50%;
-  }
-  10% {
-    background-position: 0% 50%;
-  }
-  80% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
+    border-radius: 6px;
   }
 }

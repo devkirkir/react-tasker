@@ -7,7 +7,7 @@ import { useAppSelector } from "hooks/useAppSelector";
 import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllProjects";
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
-import { getLoadingStatusProjects } from "store/slices/projectsSlice/selectors/getLoadingStatusProjects";
+import { getLoadingStatus } from "store/slices/projectsSlice/selectors/getLoadingStatus";
 import type { ProjectSchema } from "store/slices/projectsSlice/types";
 
 import FormAddProject from "components/Forms/FormAddProject";
@@ -26,7 +26,7 @@ const Projects = () => {
   const dispatch = useAppDispatch();
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const loadingStatus = useAppSelector(getLoadingStatusProjects);
+  const loadingStatus = useAppSelector(getLoadingStatus);
   const basicsProjects = useAppSelector(getBasicProjects);
   const favoriteProjects = useAppSelector(getFavoritedProjects);
 
@@ -53,7 +53,7 @@ const Projects = () => {
 
   return (
     <section className={classes.Projects} data-testid="projects-page">
-      {loadingStatus == "fulfilled" ? (
+      {loadingStatus == "rejected" ? (
         <AnimatePresence>
           <motion.div
             variants={SLIDE_BOTTOM_ANIM}
