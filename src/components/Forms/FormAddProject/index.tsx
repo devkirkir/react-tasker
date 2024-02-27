@@ -27,6 +27,7 @@ interface FormAddProjectProps {
   toggleHandler: () => void;
 }
 
+// интерфейс с типами для полей формы
 interface Inputs {
   projectName: InputValues;
   radioIcons: InputValues;
@@ -34,6 +35,7 @@ interface Inputs {
 }
 
 // начальные значения инпутов и их настройка валидации
+// ключ объекта initialInputs равен атрибуту name в инпутах
 const initialInputs: Inputs = {
   projectName: { validSettings: { min: 2, max: 15, pattern: RU_EN_DIGITS_REGEXP } },
   radioIcons: { value: "" },
@@ -46,11 +48,13 @@ const FormAddProject = (props: FormAddProjectProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  // инициализируем кастомный хук useForm c initialInputs и вытаскиваем из него методы
   const { inputsValues, handleSubmit, handleChange, submitButtonDisable } =
     useForm<Inputs>(initialInputs);
 
   const { projectName, radioIcons, radioColors } = inputsValues;
 
+  // рендерим радио кнопки с иконками
   const renderIconRadios = Object.entries(ShapedIconsComponents).map(([name], index) => (
     <InputSwitcher
       inputAttributes={{
@@ -68,6 +72,7 @@ const FormAddProject = (props: FormAddProjectProps) => {
     </InputSwitcher>
   ));
 
+  // рендерим радио кнопки с цветами для иконок
   const renderIconColors = ShapedIconsColors.map((color: ShapedIconsColors, index) => (
     <InputSwitcher
       inputAttributes={{
@@ -83,8 +88,10 @@ const FormAddProject = (props: FormAddProjectProps) => {
   ));
 
   const onSubmit = () => {
+    // формируем id проекта
     const projectId = `${projectName.value}-${Date.now()}`;
 
+    // формируем объект нового проекта
     const newProject: ProjectSchema = {
       id: projectId,
       projectTitle: projectName.value,
@@ -95,11 +102,16 @@ const FormAddProject = (props: FormAddProjectProps) => {
       },
     };
 
+    // добавляем новый проект
     dispatch(addNewProject(newProject));
+
+    // устанавливаем новый проект как текущий проект
     dispatch(currentProjectActions.setCurrentProject(newProject));
 
+    // закрываем модалку
     toggleHandler();
 
+    // перенаправляем на только что созданный проект
     navigate(`/app/projects/${projectId}`);
   };
 

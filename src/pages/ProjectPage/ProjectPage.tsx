@@ -5,28 +5,30 @@ import { useAppDispatch } from "hooks/useAppDispatch";
 import { useAppSelector } from "hooks/useAppSelector";
 
 import { currentProjectActions } from "store/slices/currentProjectSlice";
-import { getCurrentProject } from "store/slices/projectsSlice/selectors/getCurrentProject";
+import { getProjectById } from "store/slices/projectsSlice/selectors/getProjectById";
 import { getLoadingStatus } from "store/slices/currentProjectSlice/selectors/getLoadingStatus";
 
 import ProjectHeader from "components/ProjectHeader";
+import ProjectHeaderSkeleton from "components/Skeletons/ProjectHeaderSkeleton";
 
 import classes from "./ProjectPage.module.css";
-import ProjectHeaderSkeleton from "components/Skeletons/ProjectHeaderSkeleton";
 
 const ProjectPage = () => {
   const { projectId } = useParams();
-
   const dispatch = useAppDispatch();
-  const [currentProject] = useAppSelector(getCurrentProject(projectId));
+
+  // получаем данные с помощью селекторов
+  const [currentProject] = useAppSelector(getProjectById(projectId));
   const loadingStatus = useAppSelector(getLoadingStatus);
 
   useEffect(() => {
     dispatch(currentProjectActions.setCurrentProject(currentProject));
-  }, [currentProject]);
+    dispatch(currentProjectActions.setFulfilledStatus());
+  }, [currentProject, loadingStatus]);
 
   return (
     <section className={classes.ProjectPage}>
-      {loadingStatus === "rejected" ? (
+      {loadingStatus === "fulfilled" ? (
         <ProjectHeader projectData={currentProject} />
       ) : (
         <ProjectHeaderSkeleton />

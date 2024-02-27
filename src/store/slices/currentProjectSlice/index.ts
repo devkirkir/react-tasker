@@ -12,7 +12,15 @@ const currentProjectSlice = createSlice({
   reducers: {
     setCurrentProject(state, { payload }) {
       state.currentProject = payload;
+    },
+    setFulfilledStatus(state) {
       state.loading = "fulfilled";
+    },
+    setPendingStatus(state) {
+      state.loading = "pending";
+    },
+    setRejectedStatus(state) {
+      state.loading = "rejected";
     },
   },
 });

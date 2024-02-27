@@ -1,0 +1,23 @@
+.HeartIcon {
+  & path {
+    stroke: rgba(238, 238, 238, 0.2);
+    fill: var(--bg-color);
+
+    cursor: pointer;
+    transition:
+      fill 0.2s linear,
+      stroke 0.2s linear;
+
+    &:hover {
+      fill: red;
+      stroke: transparent;
+    }
+  }
+}
+
+.HeartIconActive {
+  & path {
+    fill: red;
+    stroke: transparent;
+  }
+}

@@ -24,12 +24,16 @@ import classes from "./Projects.module.css";
 
 const Projects = () => {
   const dispatch = useAppDispatch();
+
+  // состояние для модалки
   const [isModalOpen, setModalOpen] = useState(false);
 
+  // вытаскиваем необходимые данные с помощью селекторов
   const loadingStatus = useAppSelector(getLoadingStatus);
   const basicsProjects = useAppSelector(getBasicProjects);
   const favoriteProjects = useAppSelector(getFavoritedProjects);
 
+  // при первом рендере получаем все проекты с сервера
   useEffect(() => {
     dispatch(fetchAllProjects());
   }, []);
@@ -53,7 +57,7 @@ const Projects = () => {
 
   return (
     <section className={classes.Projects} data-testid="projects-page">
-      {loadingStatus == "rejected" ? (
+      {loadingStatus == "fulfilled" ? (
         <AnimatePresence>
           <motion.div
             variants={SLIDE_BOTTOM_ANIM}

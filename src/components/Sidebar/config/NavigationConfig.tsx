@@ -21,6 +21,7 @@ interface NavigationObject {
   icon: JSX.Element;
 }
 
+// сформированный объект навигации, по которому строится SidebarNav
 export const NavigationConfig: Record<NavigationTitles, NavigationObject> = {
   [NavigationTitles.DASHBOARD]: {
     value: NavigationTitles.DASHBOARD,
