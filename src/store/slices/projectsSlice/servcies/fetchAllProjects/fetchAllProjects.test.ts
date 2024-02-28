@@ -5,7 +5,7 @@ import { ProjectSchema, ProjectsSliceSchema } from "../../types";
 const initialState: ProjectsSliceSchema = {
   projects: [],
   loading: "pending",
-  error: false,
+  error: null,
 };
 
 describe("Projects | Service fetchAllProjects", () => {

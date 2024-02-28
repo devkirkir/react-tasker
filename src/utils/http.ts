@@ -1,8 +1,8 @@
-type HttpMethods = "GET" | "POST";
+type HttpMethods = "GET" | "POST" | "PATCH";
 
 interface HttpOptions {
   method: HttpMethods;
-  headers: {
+  headers?: {
     ["Content-Type"]?: "application/json";
   };
   body?: string;
@@ -19,11 +19,13 @@ const http = async (url: string, options = initialHttpOptions) => {
   try {
     const response = await fetch(url, options);
 
-    return await response.json();
-  } catch (error) {
-    console.log(error);
+    if (response.status !== 200) {
+      throw new Error("Server Http Error");
+    }
 
-    throw error;
+    return response.json();
+  } catch (error) {
+    return error;
   }
 };
 

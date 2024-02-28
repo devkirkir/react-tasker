@@ -2,13 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { fetchAllProjects } from "./servcies/fetchAllProjects";
 import { addNewProject } from "./servcies/addNewProject";
+import { likeProject } from "./servcies/likeProject";
 
 import { type ProjectsSliceSchema } from "./types";
 
 const initialState: ProjectsSliceSchema = {
   projects: [],
   loading: "pending",
-  error: false,
+  error: null,
 };
 
 const projectSlice = createSlice({
@@ -26,7 +27,6 @@ const projectSlice = createSlice({
       })
       .addCase(fetchAllProjects.rejected, (state) => {
         state.loading = "rejected";
-        state.error = true;
       })
 
       .addCase(addNewProject.pending, (state) => {
@@ -38,6 +38,18 @@ const projectSlice = createSlice({
       })
       .addCase(addNewProject.rejected, (state) => {
         state.loading = "rejected";
+      })
+
+      .addCase(likeProject.fulfilled, (state, action) => {
+        state.loading = "fulfilled";
+        state.projects = [
+          ...state.projects.filter((project) => project.id !== action.payload.id),
+          action.payload,
+        ];
+      })
+      .addCase(likeProject.rejected, (state, action) => {
+        state.loading = "fulfilled";
+        state.error = action.error.message;
       });
   },
 });

@@ -19,5 +19,5 @@ export interface ProjectSchema {
 export interface ProjectsSliceSchema {
   projects: ProjectSchema[];
   loading: LoadingStatuses;
-  error: boolean;
+  error: null | string;
 }

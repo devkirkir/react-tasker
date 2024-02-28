@@ -23,7 +23,6 @@ const ProjectPage = () => {
 
   useEffect(() => {
     dispatch(currentProjectActions.setCurrentProject(currentProject));
-    dispatch(currentProjectActions.setFulfilledStatus());
   }, [currentProject, loadingStatus]);
 
   return (
