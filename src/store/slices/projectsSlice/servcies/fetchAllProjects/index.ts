@@ -1,7 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchAllProjects = createAsyncThunk("fetchAllProjects", async () => {
-  const response = await fetch("http://localhost:4000/projects");
+import { ApiProjects } from "api/ApiProjects";
 
-  return await response.json();
-});
+import { CustomError } from "utils/CustomError";
+
+export const fetchAllProjects = createAsyncThunk(
+  "fetchAllProjects",
+  async (_, { rejectWithValue }) => {
+    try {
+      return await new ApiProjects().getAllProjects();
+    } catch (error) {
+      if (error instanceof CustomError) {
+        return rejectWithValue(error.message);
+      }
+    }
+  },
+);

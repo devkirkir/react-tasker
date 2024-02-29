@@ -1,23 +1,25 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import http from "utils/http";
+
+import { ApiProjects } from "api/ApiProjects";
+
+import { CustomError } from "utils/CustomError";
 
 interface LikeProject {
   id: string;
   favorite: boolean;
 }
 
-export const likeProject = createAsyncThunk("likeProject", (data: LikeProject) => {
-  const { id, favorite } = data;
+export const likeProject = createAsyncThunk(
+  "likeProject",
+  async (data: LikeProject, { rejectWithValue }) => {
+    const { id, favorite } = data;
 
-  const response = http(`http://localhost:4000/projects/${id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      favorite,
-    }),
-  });
-
-  return response;
-});
+    try {
+      return await new ApiProjects(`/${id}`).likeProject(favorite);
+    } catch (error) {
+      if (error instanceof CustomError) {
+        return rejectWithValue(error.message);
+      }
+    }
+  },
+);

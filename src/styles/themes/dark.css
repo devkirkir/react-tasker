@@ -19,6 +19,10 @@
   --border-color: #262931;
   --border-color-hover: #2e313a;
 
+  /* STROKE COLORS */
+
+  --stroke-color: rgba(238, 238, 238, 0.2);
+
   /** PRIMARY COLORS **/
 
   --primary-color: #3e85ff;

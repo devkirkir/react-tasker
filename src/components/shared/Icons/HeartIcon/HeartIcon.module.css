@@ -1,6 +1,6 @@
 .HeartIcon {
   & path {
-    stroke: rgba(238, 238, 238, 0.2);
+    stroke: var(--stroke-color);
     fill: var(--bg-color);
 
     cursor: pointer;

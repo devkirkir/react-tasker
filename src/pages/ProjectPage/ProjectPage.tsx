@@ -15,9 +15,9 @@ import classes from "./ProjectPage.module.css";
 
 const ProjectPage = () => {
   const { projectId } = useParams();
+
   const dispatch = useAppDispatch();
 
-  // получаем данные с помощью селекторов
   const [currentProject] = useAppSelector(getProjectById(projectId));
   const loadingStatus = useAppSelector(getLoadingStatus);
 
