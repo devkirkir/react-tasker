@@ -18,6 +18,6 @@ export interface ProjectSchema {
 
 export interface ProjectsSliceSchema {
   projects: ProjectSchema[];
-  loading: LoadingStatuses;
+  loadingProjects: LoadingStatuses;
   error: null | string;
 }

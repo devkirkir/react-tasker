@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import classes from "./InputText.module.css";
+import { forwardRef } from "react";
 
 type InputTextTypes = "text" | "email" | "number" | "password" | "tel";
 type InputTextMode = "tel" | "email" | "numeric" | "text";
@@ -19,7 +20,7 @@ interface InputTextProps {
   isError?: boolean;
 }
 
-const InputText = (props: InputTextProps) => {
+const InputText = forwardRef<HTMLInputElement, InputTextProps>((props, ref) => {
   const { inputAttributes, isError, label } = props;
 
   const errorClassnames = classNames(classes.Input, {
@@ -28,10 +29,10 @@ const InputText = (props: InputTextProps) => {
 
   return (
     <div className={classes.InputContainer}>
-      <input className={errorClassnames} {...inputAttributes} />
+      <input className={errorClassnames} {...inputAttributes} ref={ref} />
       {label && <span className={classes.Label}>{label}</span>}
     </div>
   );
-};
+});
 
 export default InputText;

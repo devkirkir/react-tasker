@@ -11,21 +11,15 @@ describe("Provider | RouterProvider", () => {
     await waitFor(() => expect(screen.getByTestId("page-dashboard")).toBeInTheDocument());
   });
 
-  // test("Projects Route", async () => {
-  //   await act(() =>
-  //     ComponentRender(<RouterProvider />, {
-  //       route: "/app/projects",
-  //       initialState: {
-  //         projects: {
-  //           projects: [],
-  //           loading: "fulfilled",
-  //         },
-  //       },
-  //     }),
-  //   );
+  test("Projects Route", async () => {
+    await act(() =>
+      ComponentRender(<RouterProvider />, {
+        route: "/app/projects",
+      }),
+    );
 
-  //   await waitFor(() => expect(screen.getByTestId("projects-page")).toBeInTheDocument());
-  // });
+    await waitFor(() => expect(screen.getByTestId("projects-page")).toBeInTheDocument());
+  });
 
   test("404 Route", async () => {
     await act(() => ComponentRender(<RouterProvider />, { route: "/q" }));

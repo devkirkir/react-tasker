@@ -1,13 +1,13 @@
 import { currentProjectActions, currentProjectReducer } from ".";
 import type { ProjectSchema } from "../projectsSlice/types";
-import type { CurrentProjectSliceSchema } from "./types";
+import type { CurrentprojectsSliceSchema } from "./types";
 
-const initialState: CurrentProjectSliceSchema = {
+const initialState: CurrentprojectsSliceSchema = {
   currentProject: null,
   loading: "fulfilled",
 };
 
-describe("CurrentProject | currentProjectSlice", () => {
+describe("CurrentProject | currentprojectsSlice", () => {
   test("Action setCurrentProject", () => {
     const mock: ProjectSchema = {
       id: "id",

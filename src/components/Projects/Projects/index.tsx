@@ -43,7 +43,7 @@ const Projects = () => {
   };
 
   const renderProjects = (projects: ProjectSchema[]) =>
-    projects.map(({ projectTitle, id, icon }) => (
+    projects?.map(({ projectTitle, id, icon }) => (
       <li key={`project-link-${id}`}>
         <NavigateLink
           value={projectTitle}
@@ -67,7 +67,7 @@ const Projects = () => {
             key="projects-motion-key"
             className={classes.ProjectsList}
           >
-            {!!favoriteProjects.length && (
+            {!!favoriteProjects?.length && (
               <ExpandList title="favorites" items={renderProjects(favoriteProjects)} />
             )}
 

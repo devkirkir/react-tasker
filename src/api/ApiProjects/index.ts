@@ -46,7 +46,7 @@ export class ApiProjects {
     });
 
     if (!response.ok) {
-      throw new CustomError({ errorName: "HTTP_ERROR", message: "HTTP ERROR LIKE" });
+      throw new CustomError({ errorName: "HTTP_ERROR", message: "Server error" });
     }
 
     return await response.json();

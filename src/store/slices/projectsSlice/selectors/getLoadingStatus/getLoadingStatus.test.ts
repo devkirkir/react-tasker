@@ -6,7 +6,7 @@ describe("Projects | Selector getLoadingStatus", () => {
   test("Pending", () => {
     const initialState: DeepPartial<StateSchema> = {
       projects: {
-        loading: "pending",
+        loadingProjects: "pending",
       },
     };
 
@@ -16,7 +16,7 @@ describe("Projects | Selector getLoadingStatus", () => {
   test("Rejected", () => {
     const initialState: DeepPartial<StateSchema> = {
       projects: {
-        loading: "rejected",
+        loadingProjects: "rejected",
       },
     };
 
@@ -26,7 +26,7 @@ describe("Projects | Selector getLoadingStatus", () => {
   test("Fulfilled", () => {
     const initialState: DeepPartial<StateSchema> = {
       projects: {
-        loading: "fulfilled",
+        loadingProjects: "fulfilled",
       },
     };
 

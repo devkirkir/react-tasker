@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { CurrentProjectSliceSchema } from "./types";
+import type { CurrentprojectsSliceSchema } from "./types";
 import type { ProjectSchema } from "../projectsSlice/types";
 
-const initialState: CurrentProjectSliceSchema = {
+const initialState: CurrentprojectsSliceSchema = {
   currentProject: {} as ProjectSchema,
   loading: "pending",
 };
 
-const currentProjectSlice = createSlice({
+const currentprojectsSlice = createSlice({
   name: "currentProject",
   initialState,
   reducers: {
@@ -19,5 +19,5 @@ const currentProjectSlice = createSlice({
   },
 });
 
-export const currentProjectActions = currentProjectSlice.actions;
-export const currentProjectReducer = currentProjectSlice.reducer;
+export const currentProjectActions = currentprojectsSlice.actions;
+export const currentProjectReducer = currentprojectsSlice.reducer;

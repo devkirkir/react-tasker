@@ -8,34 +8,36 @@ import { type ProjectsSliceSchema } from "./types";
 
 const initialState: ProjectsSliceSchema = {
   projects: [],
-  loading: "pending",
+  loadingProjects: "pending",
   error: null,
 };
 
-const projectSlice = createSlice({
+const projectsSlice = createSlice({
   name: "projects",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllProjects.pending, (state) => {
-        state.loading = "pending";
+        state.loadingProjects = "pending";
       })
       .addCase(fetchAllProjects.fulfilled, (state, { payload }) => {
-        state.loading = "fulfilled";
+        state.loadingProjects = "fulfilled";
 
         state.projects = payload;
       })
       .addCase(fetchAllProjects.rejected, (state, { payload }) => {
-        state.loading = "rejected";
+        state.loadingProjects = "rejected";
 
         if (typeof payload === "string") {
           state.error = payload;
+          return;
         }
+
+        state.error = "Unexpected error";
       })
 
       .addCase(addNewProject.fulfilled, (state, { payload }) => {
-        state.loading = "fulfilled";
         state.projects.push(payload);
       })
       .addCase(addNewProject.rejected, (state, { payload }) => {
@@ -44,11 +46,11 @@ const projectSlice = createSlice({
           return;
         }
 
-        state.error = "error";
+        state.error = "Unexpected error";
       })
 
       .addCase(likeProject.fulfilled, (state, { payload }) => {
-        state.loading = "fulfilled";
+        state.loadingProjects = "fulfilled";
         state.projects = [
           ...state.projects.filter((project) => project.id !== payload.id),
           payload,
@@ -58,10 +60,13 @@ const projectSlice = createSlice({
       .addCase(likeProject.rejected, (state, { payload }) => {
         if (typeof payload === "string") {
           state.error = payload;
+          return;
         }
+
+        state.error = "Unexpected error";
       });
   },
 });
 
-export const projectsActions = projectSlice.actions;
-export const projectsReducer = projectSlice.reducer;
+export const projectsActions = projectsSlice.actions;
+export const projectsReducer = projectsSlice.reducer;

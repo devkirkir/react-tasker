@@ -3,7 +3,7 @@
     {
       "id": "project-id-1",
       "projectTitle": "Alpha",
-      "favorite": true,
+      "favorite": false,
       "icon": {
         "iconType": "circle",
         "color": "#2a7de1"
@@ -12,7 +12,7 @@
     {
       "id": "project-id-2",
       "projectTitle": "Beta",
-      "favorite": true,
+      "favorite": false,
       "icon": {
         "iconType": "square",
         "color": "#bc822b"
@@ -43,6 +43,15 @@
       "icon": {
         "iconType": "circle",
         "color": "#2a7de1"
+      }
+    },
+    {
+      "id": "qw-1709267188659",
+      "projectTitle": "qw",
+      "favorite": true,
+      "icon": {
+        "iconType": "star",
+        "color": "#de4fa5"
       }
     }
   ]

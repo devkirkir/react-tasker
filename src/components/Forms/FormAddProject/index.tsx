@@ -8,11 +8,11 @@ import InputErrorMessage from "components/shared/InputErrorMessage";
 import InputText from "components/shared/InputText";
 import InputSwitcher from "components/shared/InputSwitcher";
 import ColorCircle from "components/shared/ColorCircle";
+import ShapedIcon from "components/shared/ShapedIcon";
 
 import { currentProjectActions } from "store/slices/currentProjectSlice";
 import { addNewProject } from "store/slices/projectsSlice/servcies/addNewProject";
 
-import { RU_EN_DIGITS_REGEXP } from "consts/regexp";
 import type { ProjectSchema } from "store/slices/projectsSlice/types";
 import {
   ShapedIcons,
@@ -20,8 +20,10 @@ import {
   ShapedIconsComponents,
 } from "components/shared/ShapedIcon/config/ShapedIconConfig";
 
+import { RU_EN_DIGITS_REGEXP } from "consts/regexp";
+
 import classes from "./FormAddProject.module.css";
-import ShapedIcon from "components/shared/ShapedIcon";
+import { forwardRef, useEffect, useRef } from "react";
 
 interface FormAddProjectProps {
   toggleHandler: () => void;
@@ -44,6 +46,12 @@ const initialInputs: Inputs = {
 
 const FormAddProject = (props: FormAddProjectProps) => {
   const { toggleHandler } = props;
+
+  const myRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    myRef.current.focus();
+  }, []);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -132,6 +140,7 @@ const FormAddProject = (props: FormAddProjectProps) => {
         }}
         isError={!!projectName.error}
         label="Project name"
+        ref={myRef}
       />
 
       {projectName.error && <InputErrorMessage>{projectName.error}</InputErrorMessage>}

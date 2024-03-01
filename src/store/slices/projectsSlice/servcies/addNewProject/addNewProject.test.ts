@@ -4,21 +4,15 @@ import { ProjectSchema, type ProjectsSliceSchema } from "../../types";
 
 const initialState: ProjectsSliceSchema = {
   projects: [],
-  loading: "pending",
+  loadingProjects: "pending",
   error: null,
 };
 
 describe("Projects | Service addNewProject", () => {
-  // test("addNewProject.pending", () => {
-  //   const state = projectsReducer(initialState, addNewProject.pending);
-
-  //   expect(state.loading).toBe("pending");
-  // });
-
   test("addNewProject.rejected", () => {
     const state = projectsReducer(initialState, addNewProject.rejected);
 
-    expect(state.error).toBe("error");
+    expect(state.error).toBe("Unexpected error");
   });
 
   test("addNewProject.fulfilled", () => {
@@ -34,7 +28,6 @@ describe("Projects | Service addNewProject", () => {
 
     const state = projectsReducer(initialState, addNewProject.fulfilled(mock, null, null));
 
-    expect(state.loading).toBe("fulfilled");
     expect(state.projects[0]).toMatchObject({
       id: "project-id",
       projectTitle: "Post",
