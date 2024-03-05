@@ -7,6 +7,7 @@ import App from "./components/App";
 import ThemeProvider from "./providers/ThemeProvider";
 import ErrorBoundary from "providers/ErrorBoundary";
 import ReduxProvider from "providers/ReduxProvider";
+import NotificationProvider from "providers/NotificationProvider";
 
 const root = document.getElementById("root");
 
@@ -16,7 +17,9 @@ createRoot(root).render(
       <ReduxProvider>
         <BrowserRouter>
           <ThemeProvider>
-            <App />
+            <NotificationProvider>
+              <App />
+            </NotificationProvider>
           </ThemeProvider>
         </BrowserRouter>
       </ReduxProvider>

@@ -33,7 +33,7 @@ describe("Projects | Service fetchAllProjects", () => {
     const state = projectsReducer(initialState, fetchAllProjects.fulfilled(mock, null));
 
     expect(state.loadingProjects).toBe("fulfilled");
-
+    expect(state.error).toBe(null);
     expect(state.projects).toMatchObject({
       id: "id",
       projectTitle: "title",

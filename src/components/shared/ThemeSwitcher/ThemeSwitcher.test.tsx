@@ -25,6 +25,8 @@ describe("Component | ThemeSwitcher", () => {
   test("App component Light classname", async () => {
     const { findByTestId } = ComponentRender(<App />);
 
+    screen.debug();
+
     fireEvent.click(await findByTestId("theme-switcher"));
 
     const lazyElement = await findByTestId("app");

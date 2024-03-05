@@ -3,7 +3,7 @@
     {
       "id": "project-id-1",
       "projectTitle": "Alpha",
-      "favorite": false,
+      "favorite": true,
       "icon": {
         "iconType": "circle",
         "color": "#2a7de1"
@@ -12,7 +12,7 @@
     {
       "id": "project-id-2",
       "projectTitle": "Beta",
-      "favorite": false,
+      "favorite": true,
       "icon": {
         "iconType": "square",
         "color": "#bc822b"
@@ -48,7 +48,7 @@
     {
       "id": "qw-1709267188659",
       "projectTitle": "qw",
-      "favorite": true,
+      "favorite": false,
       "icon": {
         "iconType": "star",
         "color": "#de4fa5"

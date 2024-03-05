@@ -23,8 +23,8 @@ const projectsSlice = createSlice({
       })
       .addCase(fetchAllProjects.fulfilled, (state, { payload }) => {
         state.loadingProjects = "fulfilled";
-
         state.projects = payload;
+        state.error = null;
       })
       .addCase(fetchAllProjects.rejected, (state, { payload }) => {
         state.loadingProjects = "rejected";

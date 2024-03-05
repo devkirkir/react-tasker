@@ -1,5 +1,6 @@
 import Container from "components/Container";
 import { Sidebar } from "components/Sidebar";
+import { NotificationHandler } from "components/NotificationHandler";
 
 const AppPage = () => {
   return (
@@ -7,6 +8,8 @@ const AppPage = () => {
       <Sidebar />
 
       <Container />
+
+      <NotificationHandler />
     </>
   );
 };

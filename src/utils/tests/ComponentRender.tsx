@@ -6,6 +6,7 @@ import ThemeProvider from "providers/ThemeProvider";
 import ReduxProvider from "providers/ReduxProvider";
 
 import { StateSchema } from "store/types/StateSchema";
+import NotificationProvider from "providers/NotificationProvider";
 
 interface ComponentRenderOptions {
   initialState?: DeepPartial<StateSchema>;
@@ -18,7 +19,9 @@ function ComponentRender(component: JSX.Element, options: ComponentRenderOptions
   return render(
     <ReduxProvider initialState={initialState as StateSchema}>
       <ThemeProvider>
-        <MemoryRouter initialEntries={[route]}>{component}</MemoryRouter>
+        <NotificationProvider>
+          <MemoryRouter initialEntries={[route]}>{component}</MemoryRouter>
+        </NotificationProvider>
       </ThemeProvider>
     </ReduxProvider>,
   );

@@ -1,12 +1,11 @@
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch } from "hooks/useAppDispatch";
 import useForm, { type InputValues } from "hooks/useForm";
 
+import { InputErrorMessage, InputSwitcher, InputText } from "components/shared/Inputs";
 import Button from "components/shared/Button";
-import InputErrorMessage from "components/shared/InputErrorMessage";
-import InputText from "components/shared/InputText";
-import InputSwitcher from "components/shared/InputSwitcher";
 import ColorCircle from "components/shared/ColorCircle";
 import ShapedIcon from "components/shared/ShapedIcon";
 
@@ -23,7 +22,6 @@ import {
 import { RU_EN_DIGITS_REGEXP } from "consts/regexp";
 
 import classes from "./FormAddProject.module.css";
-import { forwardRef, useEffect, useRef } from "react";
 
 interface FormAddProjectProps {
   toggleHandler: () => void;

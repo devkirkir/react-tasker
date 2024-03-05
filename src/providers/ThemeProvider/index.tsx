@@ -2,9 +2,7 @@ import { PropsWithChildren, createContext, useMemo, useState } from "react";
 import { ThemeVariants } from "hooks/useTheme";
 
 interface ThemeContextProps {
-  // eslint-disable-next-line
   theme?: ThemeVariants;
-  // eslint-disable-next-line
   setTheme?: (theme: ThemeVariants) => void;
 }
 
