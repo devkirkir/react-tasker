@@ -30,7 +30,7 @@
     {
       "id": "project-id-4",
       "projectTitle": "Gamma",
-      "favorite": false,
+      "favorite": true,
       "icon": {
         "iconType": "star",
         "color": "#de4fa5"
@@ -52,6 +52,15 @@
       "icon": {
         "iconType": "star",
         "color": "#de4fa5"
+      }
+    },
+    {
+      "id": "wq-1709620696182",
+      "projectTitle": "wq",
+      "favorite": false,
+      "icon": {
+        "iconType": "circle",
+        "color": "#7864f1"
       }
     }
   ]
