@@ -1,17 +1,20 @@
 import { AnimatePresence, motion } from "framer-motion";
 
+import useNotification from "hooks/useNotification";
+
+import type { NotificationSchema } from "providers/NotificationProvider";
 import { SLIDE_BOTTOM_ANIM } from "consts/animations";
 
 import classes from "./Notification.module.css";
 
-interface NotificationProps {
-  text: string;
+interface NotificationProps extends NotificationSchema {
   type: "error";
-  isVisible: boolean;
 }
 
 const Notification = (props: NotificationProps) => {
-  const { text, type, isVisible } = props;
+  const { id, text, type, isVisible } = props;
+
+  const { closeNotification } = useNotification();
 
   return (
     <AnimatePresence>
@@ -20,9 +23,10 @@ const Notification = (props: NotificationProps) => {
           variants={SLIDE_BOTTOM_ANIM}
           initial="hidden"
           animate="visible"
-          exit={{ opacity: 0, x: 300 }}
+          exit={{ opacity: 0 }}
           key="modal-motion-key"
           className={`${classes.Notification} ${classes[type]}`}
+          onClick={() => closeNotification(id)}
         >
           {text}
         </motion.div>

@@ -6,6 +6,12 @@
   border-radius: 12px;
 
   padding: 20px;
+
+  cursor: pointer;
+
+  &:first-child {
+    margin-top: 12px;
+  }
 }
 
 .error {

@@ -16,14 +16,14 @@ const NotificationHandler = (props: NotificationHandlerProps) => {
   const { notifications } = useNotification();
 
   const renderNotifications = () =>
-    notifications.map(({ text, isVisible }, index) => (
-      <Notification text={text} type="error" key={`notification-${index}`} isVisible={isVisible} />
+    notifications.map((props, index) => (
+      <Notification type="error" key={`notification-${index}`} {...props} />
     ));
 
   return portalContainer
     ? createPortal(
         <div className={classes.NotificationHandler}>
-          {Boolean(notifications.length) && renderNotifications()}
+          {!!notifications.length && renderNotifications()}
         </div>,
         portalContainer,
       )
