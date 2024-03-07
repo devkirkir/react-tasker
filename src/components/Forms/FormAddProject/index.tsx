@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { nanoid } from "@reduxjs/toolkit";
 
 import { useAppDispatch } from "hooks/useAppDispatch";
 import useForm, { type InputValues } from "hooks/useForm";
@@ -95,7 +96,7 @@ const FormAddProject = (props: FormAddProjectProps) => {
 
   const onSubmit = () => {
     // формируем id проекта
-    const projectId = `${projectName.value}-${Date.now()}`;
+    const projectId = `${projectName.value}-${nanoid(12)}`;
 
     // формируем объект нового проекта
     const newProject: ProjectSchema = {

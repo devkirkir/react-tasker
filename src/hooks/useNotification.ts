@@ -1,31 +1,57 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { nanoid } from "@reduxjs/toolkit";
 
 import { NotificationContext } from "providers/NotificationProvider";
 
 const useNotification = () => {
   const { notifications, setNotifications } = useContext(NotificationContext);
 
+  const [iteration, setIteration] = useState(0);
+
   const removeNotificationByInterval = () => {
-    const [firstNotification, ...rest] = notifications;
+    const visibleNotificationsLength = notifications.filter(
+      (notification) => notification.isVisible,
+    ).length;
 
-    setNotifications([{ ...firstNotification, isVisible: false }, ...rest]);
+    if (!visibleNotificationsLength) {
+      setNotifications([]);
 
-    setTimeout(() => setNotifications(rest), 500);
+      return;
+    }
+
+    const withoutCurrentNotification = notifications.filter((notification) => {
+      console.log("notification", notification);
+
+      return notification.id !== notifications[iteration].id;
+    });
+
+    setNotifications([
+      { ...notifications[iteration], isVisible: false },
+      ...withoutCurrentNotification,
+    ]);
+
+    setIteration((iteration) => iteration + 1);
   };
 
   useEffect(() => {
-    if (notifications.length) {
-      const interval = setInterval(removeNotificationByInterval, 3000);
+    if (iteration < notifications.length) {
+      const interval = setInterval(removeNotificationByInterval, 1000);
 
       return () => clearInterval(interval);
     }
-  }, [notifications]);
+
+    setIteration(0);
+  }, [iteration, notifications]);
 
   const addNotification = (text: string) => {
-    setNotifications((notifications) => [...notifications, { id: "iddd", text, isVisible: true }]);
+    const id = nanoid(4);
+
+    setIteration(0);
+    setNotifications((notifications) => [...notifications, { id, text, isVisible: true }]);
   };
 
   const closeNotification = (id: string) => {
+    setIteration(0);
     setNotifications(notifications.filter((notification) => notification.id !== id));
   };
 
