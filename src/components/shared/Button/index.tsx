@@ -4,7 +4,7 @@ import classes from "./Button.module.css";
 import classNames from "classnames";
 
 interface ButtonProps extends PropsWithChildren {
-  title: string;
+  title?: string;
   type: "primary" | "secondary";
   isSubmit?: boolean;
   isDisabled?: boolean;

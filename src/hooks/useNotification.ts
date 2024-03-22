@@ -19,11 +19,9 @@ const useNotification = () => {
       return;
     }
 
-    const withoutCurrentNotification = notifications.filter((notification) => {
-      console.log("notification", notification);
-
-      return notification.id !== notifications[iteration].id;
-    });
+    const withoutCurrentNotification = notifications.filter(
+      (notification) => notification.id !== notifications[iteration].id,
+    );
 
     setNotifications([
       { ...notifications[iteration], isVisible: false },

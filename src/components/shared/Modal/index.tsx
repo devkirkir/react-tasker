@@ -1,4 +1,4 @@
-import { type PropsWithChildren, useEffect } from "react";
+import { type PropsWithChildren, useEffect, SetStateAction, Dispatch } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 
@@ -9,7 +9,7 @@ import { SLIDE_BOTTOM_ANIM } from "consts/animations";
 import classes from "./Modal.module.css";
 
 interface ModalProps extends PropsWithChildren {
-  toggleHandler: () => void;
+  toggleHandler: () => void | Dispatch<SetStateAction<boolean>>;
   modalName?: string;
   portalContainer?: HTMLElement;
 }

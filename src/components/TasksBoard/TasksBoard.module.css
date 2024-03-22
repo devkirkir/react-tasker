@@ -1,0 +1,5 @@
+.Board {
+  width: 200px;
+  height: 350px;
+  border: 2px solid var(--border-color);
+}
