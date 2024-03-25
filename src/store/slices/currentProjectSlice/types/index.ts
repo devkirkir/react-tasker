@@ -1,5 +1,5 @@
-import { ProjectSchema } from "store/slices/projectsSlice/types";
-import { LoadingStatuses } from "types";
+import { type ProjectSchema } from "store/slices/projectsSlice/types";
+import { type LoadingStatuses } from "types";
 
 export interface CurrentprojectsSliceSchema {
   currentProject: ProjectSchema;

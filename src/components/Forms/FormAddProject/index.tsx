@@ -12,11 +12,12 @@ import ShapedIcon from "components/shared/ShapedIcon";
 
 import { currentProjectActions } from "store/slices/currentProjectSlice";
 import { addNewProject } from "store/slices/projectsSlice/servcies/addNewProject";
-
 import type { ProjectSchema } from "store/slices/projectsSlice/types";
+
+import { Colors } from "types";
 import {
+  ShapeColors,
   ShapedIcons,
-  ShapedIconsColors,
   ShapedIconsComponents,
 } from "components/shared/ShapedIcon/config/ShapedIconConfig";
 
@@ -74,13 +75,13 @@ const FormAddProject = (props: FormAddProjectProps) => {
     >
       <ShapedIcon
         iconType={name as ShapedIcons}
-        color={(radioColors.value as ShapedIconsColors) || "#2a7de1"}
+        color={(radioColors.value as Colors) || "#2a7de1"}
       />
     </InputSwitcher>
   ));
 
   // рендерим радио кнопки с цветами для иконок
-  const renderIconColors = ShapedIconsColors.map((color: ShapedIconsColors, index) => (
+  const renderIconColors = ShapeColors.map((color: Colors, index) => (
     <InputSwitcher
       inputAttributes={{
         name: "radioColors",
@@ -105,8 +106,9 @@ const FormAddProject = (props: FormAddProjectProps) => {
       favorite: false,
       icon: {
         iconType: radioIcons.value as ShapedIcons,
-        color: radioColors.value as ShapedIconsColors,
+        color: radioColors.value as Colors,
       },
+      boards: [],
     };
 
     // добавляем новый проект

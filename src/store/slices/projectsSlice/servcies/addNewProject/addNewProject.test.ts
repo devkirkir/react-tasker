@@ -24,6 +24,20 @@ describe("Projects | Service addNewProject", () => {
         iconType: "circle",
         color: "#bc822b",
       },
+      boards: [
+        {
+          id: "1",
+          title: "Title",
+          tasks: [
+            {
+              id: "item-1",
+              title: "Title of the task",
+              description: "Description of the task",
+              tags: [{ color: "#7864f1", label: "App" }],
+            },
+          ],
+        },
+      ],
     };
 
     const state = projectsReducer(initialState, addNewProject.fulfilled(mock, null, null));
@@ -36,6 +50,20 @@ describe("Projects | Service addNewProject", () => {
         iconType: "circle",
         color: "#bc822b",
       },
+      boards: [
+        {
+          id: "1",
+          title: "Title",
+          tasks: [
+            {
+              id: "item-1",
+              title: "Title of the task",
+              description: "Description of the task",
+              tags: [{ color: "#7864f1", label: "App" }],
+            },
+          ],
+        },
+      ],
     });
   });
 });

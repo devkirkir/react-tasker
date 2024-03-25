@@ -1,0 +1,23 @@
+.TasksBoard {
+  width: 300px;
+  height: fit-content;
+
+  & .BoardHeader {
+    & .BoardTitle {
+      color: var(--text-color);
+      font-size: 16px;
+      font-weight: 600;
+
+      transition: color 0.3s linear;
+    }
+
+    & .TasksCount {
+      color: var(--label-color);
+      margin-left: 8px;
+    }
+  }
+
+  & .TasksContainer {
+    margin-top: 20px;
+  }
+}

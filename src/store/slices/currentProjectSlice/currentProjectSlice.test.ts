@@ -14,6 +14,20 @@ describe("CurrentProject | currentprojectsSlice", () => {
       favorite: false,
       icon: { color: "#2a7de1", iconType: "circle" },
       projectTitle: "title",
+      boards: [
+        {
+          id: "1",
+          title: "Title",
+          tasks: [
+            {
+              id: "item-1",
+              title: "Title of the task",
+              description: "Description of the task",
+              tags: [{ color: "#7864f1", label: "App" }],
+            },
+          ],
+        },
+      ],
     };
 
     const state = currentProjectReducer(
@@ -27,6 +41,20 @@ describe("CurrentProject | currentprojectsSlice", () => {
         favorite: false,
         icon: { color: "#2a7de1", iconType: "circle" },
         projectTitle: "title",
+        boards: [
+          {
+            id: "1",
+            title: "Title",
+            tasks: [
+              {
+                id: "item-1",
+                title: "Title of the task",
+                description: "Description of the task",
+                tags: [{ color: "#7864f1", label: "App" }],
+              },
+            ],
+          },
+        ],
       },
     ]);
   });

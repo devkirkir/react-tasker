@@ -1,9 +1,9 @@
-import { ShapedIconsColors } from "../ShapedIcon/config/ShapedIconConfig";
+import { Colors } from "types";
 
 import classes from "./ColorCircle.module.css";
 
 interface ColorCircleProps {
-  color: ShapedIconsColors;
+  color: Colors;
 }
 
 const ColorCircle = (props: ColorCircleProps) => {

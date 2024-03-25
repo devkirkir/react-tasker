@@ -1,8 +1,8 @@
 import NotificationProvider from "providers/NotificationProvider";
 
 import Container from "components/Container";
-import { Sidebar } from "components/Sidebar";
-import { NotificationHandler } from "components/NotificationHandler";
+import Sidebar from "components/Sidebar";
+import NotificationHandler from "components/NotificationHandler";
 
 const AppPage = () => {
   return (

@@ -1,0 +1,6 @@
+.Boards {
+  display: flex;
+  gap: 24px;
+
+  padding: 20px;
+}

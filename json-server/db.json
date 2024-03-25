@@ -7,7 +7,60 @@
       "icon": {
         "iconType": "circle",
         "color": "#2a7de1"
-      }
+      },
+      "boards": [
+        {
+          "id": "1",
+          "title": "New",
+          "tasks": [
+            {
+              "id": "item-1",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "In Process",
+          "tasks": [
+            {
+              "id": "item-2",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Done",
+          "tasks": [
+            {
+              "id": "item-3",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "project-id-2",
@@ -16,7 +69,60 @@
       "icon": {
         "iconType": "square",
         "color": "#bc822b"
-      }
+      },
+      "boards": [
+        {
+          "id": "1",
+          "title": "New",
+          "tasks": [
+            {
+              "id": "item-1",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "In Process",
+          "tasks": [
+            {
+              "id": "item-2",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Done",
+          "tasks": [
+            {
+              "id": "item-3",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "project-id-3",
@@ -25,7 +131,60 @@
       "icon": {
         "iconType": "triangle",
         "color": "#7864f1"
-      }
+      },
+      "boards": [
+        {
+          "id": "1",
+          "title": "New",
+          "tasks": [
+            {
+              "id": "item-1",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "In Process",
+          "tasks": [
+            {
+              "id": "item-2",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Done",
+          "tasks": [
+            {
+              "id": "item-3",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "project-id-4",
@@ -34,7 +193,60 @@
       "icon": {
         "iconType": "star",
         "color": "#de4fa5"
-      }
+      },
+      "boards": [
+        {
+          "id": "1",
+          "title": "New",
+          "tasks": [
+            {
+              "id": "item-1",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "In Process",
+          "tasks": [
+            {
+              "id": "item-2",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Done",
+          "tasks": [
+            {
+              "id": "item-3",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "project-id-5",
@@ -43,25 +255,60 @@
       "icon": {
         "iconType": "circle",
         "color": "#2a7de1"
-      }
-    },
-    {
-      "id": "qw-1709267188659",
-      "projectTitle": "qw",
-      "favorite": false,
-      "icon": {
-        "iconType": "star",
-        "color": "#de4fa5"
-      }
-    },
-    {
-      "id": "wq-1709620696182",
-      "projectTitle": "wq",
-      "favorite": false,
-      "icon": {
-        "iconType": "circle",
-        "color": "#7864f1"
-      }
+      },
+      "boards": [
+        {
+          "id": "1",
+          "title": "New",
+          "tasks": [
+            {
+              "id": "item-1",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "In Process",
+          "tasks": [
+            {
+              "id": "item-2",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Done",
+          "tasks": [
+            {
+              "id": "item-3",
+              "title": "Title of the task",
+              "description": "Description of the task",
+              "tags": [
+                {
+                  "color": "#7864f1",
+                  "label": "App"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -67,4 +67,10 @@
 
   --skeleton-from-color: rgba(222, 222, 222, 0.65);
   --skeleton-to-color: rgba(238, 238, 238, 0.55);
+
+  /* TASK COLOR */
+
+  --task: #ededed;
+
+  --white: #fff;
 }

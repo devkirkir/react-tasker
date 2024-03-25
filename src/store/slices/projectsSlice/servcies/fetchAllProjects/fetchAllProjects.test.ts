@@ -28,6 +28,20 @@ describe("Projects | Service fetchAllProjects", () => {
       projectTitle: "title",
       favorite: false,
       icon: { color: "#de4fa5", iconType: "star" },
+      boards: [
+        {
+          id: "1",
+          title: "Title",
+          tasks: [
+            {
+              id: "item-1",
+              title: "Title of the task",
+              description: "Description of the task",
+              tags: [{ color: "#7864f1", label: "App" }],
+            },
+          ],
+        },
+      ],
     };
 
     const state = projectsReducer(initialState, fetchAllProjects.fulfilled(mock, null));
@@ -39,6 +53,20 @@ describe("Projects | Service fetchAllProjects", () => {
       projectTitle: "title",
       favorite: false,
       icon: { color: "#de4fa5", iconType: "star" },
+      boards: [
+        {
+          id: "1",
+          title: "Title",
+          tasks: [
+            {
+              id: "item-1",
+              title: "Title of the task",
+              description: "Description of the task",
+              tags: [{ color: "#7864f1", label: "App" }],
+            },
+          ],
+        },
+      ],
     });
   });
 });
