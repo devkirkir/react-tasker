@@ -42,8 +42,8 @@
 
   /** SECONDARY BUTTON COLORS **/
 
-  --secondary-button-color: #dbdbdb;
-  --secondary-button-color-hover: #cecece;
+  --secondary-button-color: #ebebeb;
+  --secondary-button-color-hover: #e4e4e4;
 
   --secondary-button-text-color: #888888;
   --secondary-button-text-color-active: #686868;
@@ -56,7 +56,7 @@
 
   /* SECONDARY NAVIGATE LINK */
 
-  --secondary-navigatelink-color-hover: #e4e4e4;
+  --secondary-navigatelink-color-hover: #ebebeb;
   --secondary-navigatelink-text-color-active: #686868;
 
   /* ERROR COLOR */
@@ -70,7 +70,7 @@
 
   /* TASK COLOR */
 
-  --task: #ededed;
+  --task: #ebebeb;
 
   --white: #fff;
 }

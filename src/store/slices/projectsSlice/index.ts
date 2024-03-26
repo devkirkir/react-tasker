@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchAllProjects } from "./servcies/fetchAllProjects";
 import { addNewProject } from "./servcies/addNewProject";
 import { likeProject } from "./servcies/likeProject";
+import { addNewTask } from "./servcies/addNewTask";
 
 import { type ProjectsSliceSchema } from "./types";
 
@@ -58,6 +59,22 @@ const projectsSlice = createSlice({
       })
 
       .addCase(likeProject.rejected, (state, { payload }) => {
+        if (typeof payload === "string") {
+          state.error = payload;
+          return;
+        }
+
+        state.error = "Unexpected error";
+      })
+
+      .addCase(addNewTask.fulfilled, (state, { payload }) => {
+        state.projects = [
+          ...state.projects.filter((project) => project.id !== payload.id),
+          payload,
+        ];
+      })
+
+      .addCase(addNewTask.rejected, (state, { payload }) => {
         if (typeof payload === "string") {
           state.error = payload;
           return;

@@ -78,7 +78,7 @@ const Projects = () => {
               <ExpandList title="favorites" items={renderProjects(favoriteProjects)} />
             )}
 
-            <ExpandList title="projects" items={renderProjects(basicsProjects)} />
+            <ExpandList title="all projects" items={renderProjects(basicsProjects)} />
           </motion.div>
 
           <div className={classes.ProjectsBottom}>

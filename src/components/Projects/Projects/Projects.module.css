@@ -4,9 +4,7 @@
   justify-content: space-between;
   gap: 18px;
 
-  max-width: var(--projects-max-width);
-  min-width: var(--projects-min-width);
-  width: 100%;
+  flex: 0 0 var(--projects-width);
 
   border-right: 1px solid var(--border-color);
 

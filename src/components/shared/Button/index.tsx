@@ -1,7 +1,7 @@
 import { PropsWithChildren, memo } from "react";
 
-import classes from "./Button.module.css";
 import classNames from "classnames";
+import classes from "./Button.module.css";
 
 interface ButtonProps extends PropsWithChildren {
   title?: string;

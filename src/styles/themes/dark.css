@@ -50,14 +50,14 @@
 
   /* PRIMARY NAVIGATE LINK */
 
-  --primary-navigatelink-color: #29293a;
+  --primary-navigatelink-color: #20222b;
   --primary-navigatelink-text-color: #a3a3a3;
   --primary-navigatelink-text-color-active: #fff;
 
   /* SECONDARY NAVIGATE LINK */
 
-  --secondary-navigatelink-color-hover: #29293a;
-  --secondary-navigatelink-text-color-active: #777;
+  --secondary-navigatelink-color-hover: #20222b;
+  --secondary-navigatelink-text-color-active: #fff;
 
   /* ERROR COLOR */
 

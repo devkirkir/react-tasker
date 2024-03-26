@@ -1,4 +1,4 @@
-import { ProjectSchema } from "store/slices/projectsSlice/types";
+import { type ProjectSchema } from "store/slices/projectsSlice/types";
 import { CustomError } from "utils/CustomError";
 
 export class ApiProjects {
@@ -29,6 +29,22 @@ export class ApiProjects {
 
     if (!response.ok) {
       throw new CustomError({ errorName: "HTTP_ERROR", message: "Project creation error" });
+    }
+
+    return await response.json();
+  }
+
+  async addNewTask(projectData: ProjectSchema) {
+    const response = await fetch(this.url, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(projectData),
+    });
+
+    if (!response.ok) {
+      throw new CustomError({ errorName: "HTTP_ERROR", message: "Adding task error" });
     }
 
     return await response.json();
