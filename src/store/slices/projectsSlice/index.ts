@@ -16,7 +16,11 @@ const initialState: ProjectsSliceSchema = {
 const projectsSlice = createSlice({
   name: "projects",
   initialState,
-  reducers: {},
+  reducers: {
+    removeError(state) {
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllProjects.pending, (state) => {
@@ -51,7 +55,6 @@ const projectsSlice = createSlice({
       })
 
       .addCase(likeProject.fulfilled, (state, { payload }) => {
-        state.loadingProjects = "fulfilled";
         state.projects = [
           ...state.projects.filter((project) => project.id !== payload.id),
           payload,

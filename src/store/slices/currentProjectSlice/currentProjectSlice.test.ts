@@ -5,6 +5,7 @@ import type { CurrentprojectsSliceSchema } from "./types";
 const initialState: CurrentprojectsSliceSchema = {
   currentProject: null,
   loading: "fulfilled",
+  error: null,
 };
 
 describe("CurrentProject | currentprojectsSlice", () => {

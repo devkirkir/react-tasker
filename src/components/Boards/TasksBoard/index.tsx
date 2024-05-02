@@ -1,11 +1,15 @@
-import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
+import { SortableContext, rectSortingStrategy, useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { nanoid } from "@reduxjs/toolkit";
 
 import { useAppSelector } from "hooks/useAppSelector";
 import { useAppDispatch } from "hooks/useAppDispatch";
 
 import { getCurrentProject } from "store/slices/currentProjectSlice/selectors/getCurrentProject";
-import { AddNewTaskData, addNewTask } from "store/slices/projectsSlice/servcies/addNewTask";
+import {
+  AddNewTaskData,
+  addNewTask as addNewTaskService,
+} from "store/slices/projectsSlice/servcies/addNewTask";
 
 import Task from "components/Boards/Task";
 import Button from "components/shared/Button";
@@ -19,10 +23,22 @@ const TasksBoard = (props: ProjectBoards) => {
   const { tasks = [], id, title } = props;
 
   const dispatch = useAppDispatch();
-
   const currentProject = useAppSelector(getCurrentProject);
 
-  const addNewTaskk = () => {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id,
+    transition: {
+      duration: 200,
+      easing: "cubic-bezier(0.25, 1, 0.5, 1)",
+    },
+  });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  const addNewTask = () => {
     const boards = currentProject.boards.filter((board) => board.id !== id);
 
     const newTask: ProjectSchema = {
@@ -55,17 +71,23 @@ const TasksBoard = (props: ProjectBoards) => {
       newTask,
     };
 
-    dispatch(addNewTask(taskData));
+    dispatch(addNewTaskService(taskData));
   };
 
   return (
-    <div className={classes.TasksBoard}>
+    <div
+      className={classes.TasksBoard}
+      ref={setNodeRef}
+      {...attributes}
+      {...listeners}
+      style={style}
+    >
       <div className={classes.BoardHeader}>
         <span className={classes.BoardTitle}>{title}</span>
         <span className={classes.TasksCount}>{tasks.length}</span>
       </div>
 
-      <Button type="secondary" title="Add New Task" callback={addNewTaskk}>
+      <Button type="secondary" title="Add New Task" callback={addNewTask}>
         <PlusIcon />
       </Button>
 

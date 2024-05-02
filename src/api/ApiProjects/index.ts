@@ -1,4 +1,4 @@
-import { type ProjectSchema } from "store/slices/projectsSlice/types";
+import { ProjectBoards, type ProjectSchema } from "store/slices/projectsSlice/types";
 import { CustomError } from "utils/CustomError";
 
 export class ApiProjects {
@@ -58,6 +58,24 @@ export class ApiProjects {
       },
       body: JSON.stringify({
         favorite,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new CustomError({ errorName: "HTTP_ERROR", message: "Server error" });
+    }
+
+    return await response.json();
+  }
+
+  async changeBoardsOrder(boards: ProjectBoards[]) {
+    const response = await fetch(this.url, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        boards,
       }),
     });
 

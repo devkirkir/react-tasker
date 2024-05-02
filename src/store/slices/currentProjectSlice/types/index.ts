@@ -4,4 +4,5 @@ import { type LoadingStatuses } from "types";
 export interface CurrentprojectsSliceSchema {
   currentProject: ProjectSchema;
   loading: LoadingStatuses;
+  error: null | string;
 }

@@ -6,5 +6,5 @@ import { ProjectSchema } from "../../types";
 
 export const getProjectById = (currentId: string) =>
   createSelector(getAllProjects, (projects: ProjectSchema[]) =>
-    projects.filter((project) => project.id === currentId),
+    projects.find((project) => project.id === currentId),
   );

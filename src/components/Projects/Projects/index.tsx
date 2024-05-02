@@ -6,10 +6,13 @@ import { useAppSelector } from "hooks/useAppSelector";
 import useNotification from "hooks/useNotification";
 
 import { fetchAllProjects } from "store/slices/projectsSlice/servcies/fetchAllProjects";
+import { projectsActions } from "store/slices/projectsSlice";
+
 import { getFavoritedProjects } from "store/slices/projectsSlice/selectors/getFavoritedProjects";
 import { getBasicProjects } from "store/slices/projectsSlice/selectors/getBasicProjects";
 import { getLoadingStatus } from "store/slices/projectsSlice/selectors/getLoadingStatus";
 import { getErrorProjects } from "store/slices/projectsSlice/selectors/getErrorProjects";
+
 import type { ProjectSchema } from "store/slices/projectsSlice/types";
 
 import { FormAddProject } from "components/Forms";
@@ -42,6 +45,8 @@ const Projects = () => {
   useEffect(() => {
     if (errorProjects) {
       addNotification(errorProjects);
+
+      dispatch(projectsActions.removeError());
     }
   }, [errorProjects]);
 

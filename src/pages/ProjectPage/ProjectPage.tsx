@@ -19,7 +19,7 @@ const ProjectPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [currentProject] = useAppSelector(getProjectById(projectId));
+  const currentProject = useAppSelector(getProjectById(projectId));
   const loadingStatus = useAppSelector(getLoadingStatus);
 
   useEffect(() => {
