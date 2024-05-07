@@ -2,24 +2,33 @@ import { useSortable } from "@dnd-kit/sortable";
 
 import Tag from "components/shared/Tag";
 
-import { type BoardTasks } from "store/slices/projectsSlice/types";
+import { type BoardTask } from "store/slices/projectsSlice/types";
 
 import classes from "./Task.module.css";
+import { CSS } from "@dnd-kit/utilities";
 
-export const Task = (props: BoardTasks) => {
+export const Task = (props: BoardTask) => {
   const { id, title, description, tags = [] } = props;
-  const { attributes, listeners, setNodeRef, transform } = useSortable({ id });
 
-  const style = transform
-    ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)` }
-    : undefined;
+  const { setNodeRef, attributes, listeners, transform, transition } = useSortable({
+    id,
+    data: {
+      type: "task",
+      elem: props,
+    },
+  });
+
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
 
   const renderTags = tags.map((tag, index) => (
     <Tag {...tag} key={`${title}-${tag.label}-${index}`} />
   ));
 
   return (
-    <div ref={setNodeRef} className={classes.Task} style={style} {...attributes} {...listeners}>
+    <div className={classes.Task} style={style} ref={setNodeRef} {...attributes} {...listeners}>
       <div className={classes.Tags}>{renderTags}</div>
 
       <span className={classes.Title}>{title}</span>

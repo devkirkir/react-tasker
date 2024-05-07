@@ -11,7 +11,7 @@ export interface TaskTags {
   label: string;
 }
 
-export interface BoardTasks {
+export interface BoardTask {
   id: string;
   title: string;
   description: string;
@@ -21,7 +21,7 @@ export interface BoardTasks {
 export interface ProjectBoards {
   id: string;
   title: string;
-  tasks: BoardTasks[];
+  tasks: BoardTask[];
 }
 
 export interface ProjectSchema {

@@ -69,7 +69,7 @@ export class ApiProjects {
   }
 
   async changeBoardsOrder(boards: ProjectBoards[]) {
-    const response = await fetch(this.url, {
+    const response = await fetch(this.url + 1, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

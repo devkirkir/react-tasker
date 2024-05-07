@@ -3,7 +3,7 @@ import { ApiProjects } from "api/ApiProjects";
 import { ProjectBoards } from "store/slices/projectsSlice/types";
 import { CustomError } from "utils/CustomError";
 
-interface ChangeBoardOrderData {
+export interface ChangeBoardOrderData {
   boards: ProjectBoards[];
   projectId: string;
 }

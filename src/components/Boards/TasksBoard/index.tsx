@@ -1,4 +1,4 @@
-import { SortableContext, rectSortingStrategy, useSortable } from "@dnd-kit/sortable";
+import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { nanoid } from "@reduxjs/toolkit";
 
@@ -18,6 +18,7 @@ import PlusIcon from "components/shared/Icons/PlusIcon";
 import { ProjectSchema, type ProjectBoards } from "store/slices/projectsSlice/types";
 
 import classes from "./TasksBoard.module.css";
+import { useMemo } from "react";
 
 const TasksBoard = (props: ProjectBoards) => {
   const { tasks = [], id, title } = props;
@@ -25,17 +26,19 @@ const TasksBoard = (props: ProjectBoards) => {
   const dispatch = useAppDispatch();
   const currentProject = useAppSelector(getCurrentProject);
 
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+  const tasksIds = useMemo(() => tasks.map((task) => task.id), [tasks]);
+
+  const { setNodeRef, attributes, listeners, transform, transition } = useSortable({
     id,
-    transition: {
-      duration: 200,
-      easing: "cubic-bezier(0.25, 1, 0.5, 1)",
+    data: {
+      type: "board",
+      elem: props,
     },
   });
 
   const style = {
-    transform: CSS.Transform.toString(transform),
     transition,
+    transform: CSS.Transform.toString(transform),
   };
 
   const addNewTask = () => {
@@ -77,10 +80,10 @@ const TasksBoard = (props: ProjectBoards) => {
   return (
     <div
       className={classes.TasksBoard}
+      style={style}
       ref={setNodeRef}
       {...attributes}
       {...listeners}
-      style={style}
     >
       <div className={classes.BoardHeader}>
         <span className={classes.BoardTitle}>{title}</span>
@@ -91,13 +94,13 @@ const TasksBoard = (props: ProjectBoards) => {
         <PlusIcon />
       </Button>
 
-      <SortableContext id={id} items={tasks} strategy={rectSortingStrategy}>
-        <div className={classes.TasksContainer}>
+      <div className={classes.TasksContainer}>
+        <SortableContext items={tasksIds}>
           {tasks.map((task) => (
             <Task {...task} key={`task-${task.id}`} />
           ))}
-        </div>
-      </SortableContext>
+        </SortableContext>
+      </div>
     </div>
   );
 };

@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
+  Active,
   DndContext,
+  DragEndEvent,
   DragOverEvent,
+  DragOverlay,
+  DragStartEvent,
   PointerSensor,
   closestCorners,
   useSensor,
@@ -18,23 +22,30 @@ import { getProjectBoards } from "store/slices/currentProjectSlice/selectors/get
 import { getCurrentProject } from "store/slices/currentProjectSlice/selectors/getCurrentProject";
 import { getErrorCurrentProjects } from "store/slices/currentProjectSlice/selectors/getErrorCurrentProjects";
 
-import { changeBoardOrder } from "store/slices/currentProjectSlice/services/changeBoardOrder";
+import {
+  ChangeBoardOrderData,
+  changeBoardOrder,
+} from "store/slices/currentProjectSlice/services/changeBoardOrder";
 import { currentProjectActions } from "store/slices/currentProjectSlice";
 
 import TasksBoard from "../TasksBoard";
 
-import { type ProjectBoards } from "store/slices/projectsSlice/types";
+import type { ProjectBoards } from "store/slices/projectsSlice/types";
 
 import classes from "./Boards.module.css";
 
 const Boards = () => {
-  const [currentBoards, setCurrentBoards] = useState<ProjectBoards[] | null>(null);
+  const dispatch = useAppDispatch();
   const { addNotification } = useNotification();
 
-  const boards = useAppSelector(getProjectBoards);
-  const boardId = currentBoards?.map((board) => board.id) || [];
+  const [activeElem, setActiveElem] = useState<Active | null>(null);
+  const [boards, setBoards] = useState<ProjectBoards[] | null>(null);
+
   const currentProject = useAppSelector(getCurrentProject);
+  const getBoardsSelector = useAppSelector(getProjectBoards);
   const errorCurrentProjects = useAppSelector(getErrorCurrentProjects);
+
+  const boardsIds = useMemo(() => boards?.map((board) => board.id), [boards]);
 
   useEffect(() => {
     if (errorCurrentProjects) {
@@ -44,44 +55,76 @@ const Boards = () => {
       return;
     }
 
-    setCurrentBoards(boards);
-  }, [boards, errorCurrentProjects]);
-
-  const dispatch = useAppDispatch();
-
-  const dragEnd = (event: DragOverEvent) => {
-    const currentBoardId = event.active.id;
-    const overBoardId = event.over.id;
-
-    if (currentBoardId === overBoardId) return;
-
-    const currentIndex = currentBoards.findIndex((board) => currentBoardId === board.id);
-    const overIndex = currentBoards.findIndex((board) => overBoardId === board.id);
-
-    const newBoards = arrayMove(currentBoards, currentIndex, overIndex);
-
-    const data = {
-      projectId: currentProject.id,
-      boards: newBoards,
-    };
-
-    dispatch(changeBoardOrder(data));
-
-    setCurrentBoards(newBoards);
-  };
+    setBoards(getBoardsSelector);
+  }, [getBoardsSelector, errorCurrentProjects]);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
-      activationConstraint: { distance: 30 },
+      activationConstraint: {
+        distance: 10,
+      },
     }),
   );
 
+  const handleDragStart = (event: DragStartEvent) => {
+    setActiveElem(event.active);
+  };
+
+  const handleDragOver = (event: DragOverEvent) => {
+    const { active, over } = event;
+
+    if (active.id === over.id) return;
+  };
+
+  const handleDragEnd = async (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (active.id === over.id) return;
+
+    if (activeElem.data.current.type === "board" && over.data.current.type === "board") {
+      const indexActive = boards.findIndex((board) => board.id === active.id);
+      const indexOver = boards.findIndex((board) => board.id === over.id);
+
+      if (currentProject.id) {
+        const newBoardsArray = arrayMove(boards, indexActive, indexOver);
+
+        const data: ChangeBoardOrderData = {
+          projectId: currentProject.id,
+          boards: newBoardsArray,
+        };
+
+        dispatch(changeBoardOrder(data));
+
+        setBoards(newBoardsArray);
+      }
+    }
+  };
+
   return (
     <div className={classes.Boards}>
-      <DndContext collisionDetection={closestCorners} onDragEnd={dragEnd} sensors={sensors}>
-        <SortableContext items={boardId}>
-          {currentBoards?.map((board) => <TasksBoard {...board} key={`board-${board.id}`} />)}
-        </SortableContext>
+      <DndContext
+        collisionDetection={closestCorners}
+        onDragStart={handleDragStart}
+        onDragOver={handleDragOver}
+        onDragEnd={handleDragEnd}
+        sensors={sensors}
+      >
+        {!!boards && (
+          <SortableContext items={boardsIds}>
+            {boards.map((board) => (
+              <TasksBoard {...board} key={`board-${board.id}`} />
+            ))}
+          </SortableContext>
+        )}
+
+        <DragOverlay>
+          {activeElem?.data.current.type === "board" && (
+            <TasksBoard
+              {...activeElem.data.current.elem}
+              key={`board-active-${activeElem.data.current.elem.id}`}
+            />
+          )}
+        </DragOverlay>
       </DndContext>
     </div>
   );

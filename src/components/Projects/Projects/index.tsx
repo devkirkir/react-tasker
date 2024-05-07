@@ -39,7 +39,9 @@ const Projects = () => {
   const errorProjects = useAppSelector(getErrorProjects);
 
   useEffect(() => {
-    dispatch(fetchAllProjects());
+    if (loadingStatus == "pending") {
+      dispatch(fetchAllProjects());
+    }
   }, []);
 
   useEffect(() => {
