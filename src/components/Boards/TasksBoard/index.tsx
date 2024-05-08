@@ -18,7 +18,8 @@ import PlusIcon from "components/shared/Icons/PlusIcon";
 import { ProjectSchema, type ProjectBoards } from "store/slices/projectsSlice/types";
 
 import classes from "./TasksBoard.module.css";
-import { useMemo } from "react";
+import { CSSProperties, useMemo } from "react";
+import classNames from "classnames";
 
 const TasksBoard = (props: ProjectBoards) => {
   const { tasks = [], id, title } = props;
@@ -28,7 +29,7 @@ const TasksBoard = (props: ProjectBoards) => {
 
   const tasksIds = useMemo(() => tasks.map((task) => task.id), [tasks]);
 
-  const { setNodeRef, attributes, listeners, transform, transition } = useSortable({
+  const { setNodeRef, attributes, listeners, transform, transition, isDragging } = useSortable({
     id,
     data: {
       type: "board",
@@ -36,10 +37,14 @@ const TasksBoard = (props: ProjectBoards) => {
     },
   });
 
-  const style = {
+  const style: CSSProperties = {
     transition,
     transform: CSS.Transform.toString(transform),
   };
+
+  const tasksBoardClassnames = classNames(classes.TasksBoard, {
+    [classes.BoardDragging]: isDragging,
+  });
 
   const addNewTask = () => {
     const boards = currentProject.boards.filter((board) => board.id !== id);
@@ -79,7 +84,7 @@ const TasksBoard = (props: ProjectBoards) => {
 
   return (
     <div
-      className={classes.TasksBoard}
+      className={tasksBoardClassnames}
       style={style}
       ref={setNodeRef}
       {...attributes}

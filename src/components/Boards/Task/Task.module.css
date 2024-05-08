@@ -8,8 +8,6 @@
 
   padding: 12px;
 
-  transition: all 0.2s linear;
-
   &:active {
     cursor: grab;
   }
@@ -30,5 +28,16 @@
     font-size: 14px;
 
     transition: color 0.2s linear;
+  }
+}
+
+.TaskDragging {
+  border: 2px dashed var(--border-color);
+  background-color: transparent;
+
+  transition: 0.2s linear;
+
+  & > * {
+    opacity: 0.1;
   }
 }

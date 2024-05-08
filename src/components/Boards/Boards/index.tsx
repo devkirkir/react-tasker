@@ -19,8 +19,8 @@ import { useAppDispatch } from "hooks/useAppDispatch";
 import useNotification from "hooks/useNotification";
 
 import { getProjectBoards } from "store/slices/currentProjectSlice/selectors/getProjectBoards";
-import { getCurrentProject } from "store/slices/currentProjectSlice/selectors/getCurrentProject";
 import { getErrorCurrentProjects } from "store/slices/currentProjectSlice/selectors/getErrorCurrentProjects";
+import { getCurrentProjectId } from "store/slices/currentProjectSlice/selectors/getCurrentProjectId";
 
 import {
   ChangeBoardOrderData,
@@ -29,6 +29,7 @@ import {
 import { currentProjectActions } from "store/slices/currentProjectSlice";
 
 import TasksBoard from "../TasksBoard";
+import Task from "../Task";
 
 import type { ProjectBoards } from "store/slices/projectsSlice/types";
 
@@ -41,7 +42,7 @@ const Boards = () => {
   const [activeElem, setActiveElem] = useState<Active | null>(null);
   const [boards, setBoards] = useState<ProjectBoards[] | null>(null);
 
-  const currentProject = useAppSelector(getCurrentProject);
+  const currentProjectId = useAppSelector(getCurrentProjectId);
   const getBoardsSelector = useAppSelector(getProjectBoards);
   const errorCurrentProjects = useAppSelector(getErrorCurrentProjects);
 
@@ -73,30 +74,44 @@ const Boards = () => {
   const handleDragOver = (event: DragOverEvent) => {
     const { active, over } = event;
 
-    if (active.id === over.id) return;
+    const activeType = active.data.current.type;
+    const overType = over.data.current.type;
+
+    if (active.id === over.id || activeType !== overType) return;
+
+    // if (active.data.current.type === "task") {
+    // const overArray = over.data.current.sortable.items;
+
+    // const indexActive = active.data.current.sortable.index;
+    // const indexOver = over.data.current.sortable.index;
+
+    // const newArray: BoardTask[] = arrayMove(overArray, indexActive, indexOver);
+
+    // нужно что-то делать с бэком
+    // }
   };
 
-  const handleDragEnd = async (event: DragEndEvent) => {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
-    if (active.id === over.id) return;
+    const activeType = active.data.current.type;
+    const overType = over.data.current.type;
 
-    if (activeElem.data.current.type === "board" && over.data.current.type === "board") {
-      const indexActive = boards.findIndex((board) => board.id === active.id);
-      const indexOver = boards.findIndex((board) => board.id === over.id);
+    if (active.id === over.id || activeType !== overType) return;
 
-      if (currentProject.id) {
-        const newBoardsArray = arrayMove(boards, indexActive, indexOver);
+    if (activeElem.data.current.type === "board") {
+      const indexActive = active.data.current.sortable.index;
+      const indexOver = over.data.current.sortable.index;
 
-        const data: ChangeBoardOrderData = {
-          projectId: currentProject.id,
-          boards: newBoardsArray,
-        };
+      const newBoardsArray = arrayMove(boards, indexActive, indexOver);
 
-        dispatch(changeBoardOrder(data));
+      const data: ChangeBoardOrderData = {
+        projectId: currentProjectId,
+        boards: newBoardsArray,
+      };
 
-        setBoards(newBoardsArray);
-      }
+      dispatch(changeBoardOrder(data));
+      setBoards(newBoardsArray);
     }
   };
 
@@ -117,14 +132,21 @@ const Boards = () => {
           </SortableContext>
         )}
 
-        <DragOverlay>
-          {activeElem?.data.current.type === "board" && (
-            <TasksBoard
-              {...activeElem.data.current.elem}
-              key={`board-active-${activeElem.data.current.elem.id}`}
-            />
-          )}
-        </DragOverlay>
+        {!!activeElem && (
+          <DragOverlay>
+            {activeElem?.data.current.type === "board" ? (
+              <TasksBoard
+                {...activeElem.data.current.elem}
+                key={`board-active-${activeElem.data.current.elem.id}`}
+              />
+            ) : (
+              <Task
+                {...activeElem.data.current.elem}
+                key={`task-active-${activeElem.data.current.elem.id}`}
+              />
+            )}
+          </DragOverlay>
+        )}
       </DndContext>
     </div>
   );

@@ -9,8 +9,6 @@
 
   padding: 10px;
 
-  transition: border 0.2s linear;
-
   & .BoardHeader {
     & .BoardTitle {
       color: var(--text-color);
@@ -38,12 +36,14 @@
   & .TasksContainer {
     margin-top: 10px;
   }
+}
 
-  &:active {
-    border-color: var(--border-color);
+.BoardDragging {
+  border: 2px dashed var(--border-color);
 
-    & > * {
-      opacity: 0;
-    }
+  transition: 0.2s linear;
+
+  & > * {
+    opacity: 0.1;
   }
 }

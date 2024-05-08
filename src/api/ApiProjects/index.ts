@@ -69,7 +69,7 @@ export class ApiProjects {
   }
 
   async changeBoardsOrder(boards: ProjectBoards[]) {
-    const response = await fetch(this.url + 1, {
+    const response = await fetch(this.url, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -85,4 +85,22 @@ export class ApiProjects {
 
     return await response.json();
   }
+
+  // async changeTasksOrder(boards: ProjectBoards[]) {
+  //   const response = await fetch(this.url, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       boards,
+  //     }),
+  //   });
+
+  //   if (!response.ok) {
+  //     throw new CustomError({ errorName: "HTTP_ERROR", message: "Server error" });
+  //   }
+
+  //   return await response.json();
+  // }
 }

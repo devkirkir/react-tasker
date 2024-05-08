@@ -10,7 +10,7 @@
       },
       "boards": [
         {
-          "id": "1",
+          "id": "board-id-1",
           "title": "New",
           "tasks": [
             {
@@ -27,7 +27,7 @@
           ]
         },
         {
-          "id": "2",
+          "id": "board-id-2",
           "title": "In Process",
           "tasks": [
             {
@@ -44,7 +44,7 @@
           ]
         },
         {
-          "id": "3",
+          "id": "board-id-3",
           "title": "Done",
           "tasks": [
             {
@@ -72,7 +72,7 @@
       },
       "boards": [
         {
-          "id": "1",
+          "id": "board-id-1",
           "title": "New",
           "tasks": [
             {
@@ -89,7 +89,7 @@
           ]
         },
         {
-          "id": "2",
+          "id": "board-id-2",
           "title": "In Process",
           "tasks": [
             {
@@ -106,7 +106,7 @@
           ]
         },
         {
-          "id": "3",
+          "id": "board-id-3",
           "title": "Done",
           "tasks": [
             {
@@ -134,7 +134,7 @@
       },
       "boards": [
         {
-          "id": "1",
+          "id": "board-id-1",
           "title": "New",
           "tasks": [
             {
@@ -151,7 +151,7 @@
           ]
         },
         {
-          "id": "2",
+          "id": "board-id-2",
           "title": "In Process",
           "tasks": [
             {
@@ -168,7 +168,7 @@
           ]
         },
         {
-          "id": "3",
+          "id": "board-id-3",
           "title": "Done",
           "tasks": [
             {
@@ -196,7 +196,7 @@
       },
       "boards": [
         {
-          "id": "1",
+          "id": "board-id-1",
           "title": "New",
           "tasks": [
             {
@@ -213,7 +213,7 @@
           ]
         },
         {
-          "id": "2",
+          "id": "board-id-2",
           "title": "In Process",
           "tasks": [
             {
@@ -230,7 +230,7 @@
           ]
         },
         {
-          "id": "3",
+          "id": "board-id-3",
           "title": "Done",
           "tasks": [
             {
@@ -258,7 +258,7 @@
       },
       "boards": [
         {
-          "id": "1",
+          "id": "board-id-1",
           "title": "New",
           "tasks": [
             {
@@ -275,7 +275,7 @@
           ]
         },
         {
-          "id": "2",
+          "id": "board-id-2",
           "title": "In Process",
           "tasks": [
             {
@@ -292,7 +292,7 @@
           ]
         },
         {
-          "id": "3",
+          "id": "board-id-3",
           "title": "Done",
           "tasks": [
             {
