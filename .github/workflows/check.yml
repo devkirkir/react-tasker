@@ -1,21 +1,24 @@
 name: Check
 on: push
 jobs:
-  lint:
+  ssh:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install
-        run: npm ci
-      - name: Lint
-        run: npm run eslint
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install
-        run: npm ci;
-      - name: Jest Tests
-        run: npm run test:jest
+      - name: ssh
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
+          key: ${{secrets.SSH}}
+          port: ${{secrets.PORT}}
+          script: |
+            cd ${{secrets.FOLDER}}
+            ls -la
+            rm -rf react-tasker
+            ls -la
+            git clone git@github.com:devkirkir/react-tasker.git
+            ls -la
+            docker build ./react-tasker -t react-nginx
+            docker run --rm -p 8080:80 --name react-nginx react-nginx
