@@ -36,3 +36,4 @@ jobs:
             rm -rf react-tasker
             git clone git@github.com:devkirkir/react-tasker.git
             docker build ./react-tasker -t tasker
+            exit 0
