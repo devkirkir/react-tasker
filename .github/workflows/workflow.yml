@@ -1,4 +1,4 @@
-name: Check
+name: workflow
 on: push
 jobs:
   lint:
@@ -13,17 +13,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: Install
         run: npm ci;
       - name: Jest Tests
         run: npm run test:jest
   ssh:
+    if: github.ref == 'refs/heads/main'
+    needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: ssh
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -35,4 +33,4 @@ jobs:
             cd ${{secrets.FOLDER}}
             rm -rf react-tasker
             git clone git@github.com:devkirkir/react-tasker.git
-            docker build ./react-tasker -t react-nginx
+            docker build ./react-tasker -t tasker
